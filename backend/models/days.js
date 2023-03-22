@@ -41,4 +41,4 @@ const daysSchema = new mongoose.Schema({
   progress: [progressSchema]
 })
 
-export default mongoose.model('Day', songSchema)
+export default mongoose.model('Day', daysSchema)
