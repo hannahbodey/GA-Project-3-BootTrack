@@ -1,9 +1,10 @@
 import express from 'express'
 
-import { getAllDays, getSingleDay, createProgress } from '../controllers/days.js'
-import { createHomework, updateHomework, deleteHomework } from '../controllers/homework.js'
+import { getAllDays, getSingleDay } from '../controllers/days.js'
+import { createHomework, updateHomework, deleteHomework } from '../controllers/homeworkNotes.js'
 import { addClassNotes, deleteClassNotes } from '../controllers/classworkNotes.js'
 import { registerUser, loginUser  } from '../controllers/auth.js'
+import { putProgress } from '../controllers/progress.js'
 
 
 const router = express.Router()
@@ -21,7 +22,7 @@ router.route('/api/days/:dayId')
   .get(getSingleDay)
 
 router.route('/api/days/:dayId/progress')
-  .post(createProgress)
+  .post(putProgress)
 
 router.route('/api/days/:dayId/homework')
   .post(createHomework)
