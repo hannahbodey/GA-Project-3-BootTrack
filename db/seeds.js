@@ -2,7 +2,7 @@ import mongoose from "mongoose"
 import 'dotenv/config'
 
 import Day from '../models/days.js'
-import User from '../models/user.js'
+import User from '../models/users.js'
 
 import userData from './data/user.js'
 import dayData from './data/days.js'
@@ -25,7 +25,7 @@ const seedDatabase = async () => {
     //Create users
     const createdUsers = await User.create(userData)
 
-    const daysWithOwner = dayData.map(day=> {
+    const daysWithUser = dayData.map(day=> {
       return { ...day, owner: createdUsers[0]._id }
     })
 

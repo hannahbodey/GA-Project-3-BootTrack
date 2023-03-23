@@ -5,7 +5,7 @@ import { createHomework, updateHomework, deleteHomework } from '../controllers/h
 import { addClassNotes, deleteClassNotes } from '../controllers/classworkNotes.js'
 import { registerUser, loginUser  } from '../controllers/auth.js'
 import { putProgress } from '../controllers/progress.js'
-import { secureRoute } from '../config/secureRout.js'
+import { secureRoute } from '../config/secureRoute.js'
 
 
 const router = express.Router()

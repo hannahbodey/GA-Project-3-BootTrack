@@ -2,6 +2,7 @@ export default [
   {
     username: 'janeDoe',
     email: 'jane@example.com',
-    password: 'pass'
+    password: 'pass', 
+    passwordConfirmation: 'pass'
   }
 ]
