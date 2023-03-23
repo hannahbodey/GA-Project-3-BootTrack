@@ -6,8 +6,8 @@ import 'dotenv/config'
 import Day from './models/days.js'
 
 const app = express()
-const PORT = 5000
-const MONGO_URI = 'mongodb://127.0.0.1:27017/project-3'
+const PORT = process.env.PORT
+const MONGO_URI = process.env.MONGO_URI 
 
 const startServer = async () => {
   try {

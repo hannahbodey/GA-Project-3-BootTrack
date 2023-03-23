@@ -422,7 +422,7 @@ export default [
     week: 7,
     topicTitle: "Model-View-Controller (MVC) Architecture",
     classworkDescription: [
-      "Learn about the Model-View-Controller (MVC) architecture and how to apply it to our web applications, using models and controllers",
+      "Learn about the Model-View-Controller (MVC) architecture and how to apply it to our web applications, using models and controllers"
     ],
     homeworkDescription: [
       "Split our code from the previous day's homework into models and controllers, and implement the MVC architecture to interact with the data"
@@ -588,7 +588,7 @@ export default [
     ],
     homeworkDescription: [
       "Complete Python exercises"
-    ],
+    ]
   },
   {
     courseName: "Software Engineering Immersive Bootcamp",
@@ -600,7 +600,7 @@ export default [
     ],
     homeworkDescription: [
       "Practice Python and SQL exercises"
-    ],
+    ]
   },
   {
     courseName: "Software Engineering Immersive Bootcamp",
@@ -612,7 +612,7 @@ export default [
     ],
     homeworkDescription: [
       "Replicate the classwork on local systems"
-    ],
+    ]
   },
   {
     courseName: "Software Engineering Immersive Bootcamp",
@@ -624,7 +624,7 @@ export default [
     ],
     homeworkDescription: [
       "Replicate the classwork on local systems"
-    ],
+    ]
   },
   {
     courseName: "Software Engineering Immersive Bootcamp",
@@ -636,7 +636,7 @@ export default [
     ],
     homeworkDescription: [
       "Replicate the classwork on local systems"
-    ],
+    ]
   },
   {
     courseName: "Software Engineering Immersive Bootcamp",
@@ -648,7 +648,7 @@ export default [
     ],
     homeworkDescription: [
       "Consider ideas for the final project"
-    ],
+    ]
   },
   {
     courseName: "Software Engineering Immersive Bootcamp",
@@ -661,7 +661,7 @@ export default [
     ],
     homeworkDescription: [
       "Continue working on the project assignment"
-    ],
+    ]
   },
   {
     courseName: "Software Engineering Immersive Bootcamp",
@@ -673,7 +673,7 @@ export default [
     ],
     homeworkDescription: [
       "Continue working on the project assignment"
-    ],
+    ]
   },
   {
     courseName: "Software Engineering Immersive Bootcamp",
@@ -685,7 +685,7 @@ export default [
     ],
     homeworkDescription: [
       "Continue working on the project assignment"
-    ],
+    ]
   },
   {
     courseName: "Software Engineering Immersive Bootcamp",
@@ -697,7 +697,7 @@ export default [
     ],
     homeworkDescription: [
       "Continue working on the project assignment"
-    ],
+    ]
   },
   {
     courseName: "Software Engineering Immersive Bootcamp",
@@ -709,7 +709,7 @@ export default [
     ],
     homeworkDescription: [
       "Continue working on the project assignment"
-    ],
+    ]
   },
   {
     courseName: "Software Engineering Immersive Bootcamp",
@@ -721,7 +721,7 @@ export default [
     ],
     homeworkDescription: [
       "Continue working on the project assignment"
-    ],
+    ]
   },
   {
     courseName: "Software Engineering Immersive Bootcamp",
@@ -733,7 +733,7 @@ export default [
     ],
     homeworkDescription: [
       "Continue working on the project assignment"
-    ],
+    ]
   },
   {
     courseName: "Software Engineering Immersive Bootcamp",
@@ -745,7 +745,7 @@ export default [
     ],
     homeworkDescription: [
       "Continue working on the project assignment"
-    ],
+    ]
   },
   {
     courseName: "Software Engineering Immersive Bootcamp",
@@ -758,30 +758,7 @@ export default [
     ],
     homeworkDescription: [
       "No homework assigned"
-    ],
-  },
-]
-
-export default [
-  {
-    day_number: 1,
-    in_class_activities: [
-      'Introduce ourselves and participate in icebreaker activities',
-      'Get an overview of the course and topics that will be covered',
-      'Install necessary software and tools'
-    ],
-    homework_activities: [
-      'Review course materials',
-      'Ensure understanding of course requirements' ],
-  },
-  {
-    day_number: 2,
-    in_class_activities: [
-      'Learn about HTML tags and how they structure a website',
-      'Practice writing HTML code',
-      'Ask questions to clarify confusion'
-    ],
-    'homework_activities': [
-      'Apply appropriate HTML tags to a pre-written website page'],
+    ]
   }
 ]
+

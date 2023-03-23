@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt'
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true, maxlength: 15 },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
+  password: { type: String, required: true }
   //! These may be added as an extra once MVP is completed.
   // teacher: { type: Boolean, required: true },
   // course: { type: String, required: true, maxlength: 3 }
@@ -18,19 +18,19 @@ const userSchema = new mongoose.Schema({
 userSchema.virtual('homework', {
   ref: 'Day',
   localField: '_id',
-  foreignField: 'owner',
+  foreignField: 'owner'
 })
 
 userSchema.virtual('notes', {
   ref: 'Day',
   localField: '_id',
-  foreignField: 'owner',
+  foreignField: 'owner'
 })
 
 userSchema.virtual('progress',{
   ref: 'Day',
   localField: '_id',
-  foreignField: 'owner',
+  foreignField: 'owner'
 })
 
 userSchema
@@ -44,7 +44,7 @@ userSchema.set('toJSON', {
   virtuals: true,
   transform(doc, ret){
     delete ret.password
-  },
+  }
 })
 
 //? Validation and authentication
