@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt'
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true, maxlength: 15 },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
+  password: { type: String, required: true }
   //! These may be added as an extra once MVP is completed.
   // teacher: { type: Boolean, required: true },
   // course: { type: String, required: true, maxlength: 3 }
@@ -34,10 +34,10 @@ userSchema.virtual('progress',{
 })
 
 userSchema
-.virtual('passwordConfirmation')
-.set(function(userPasswordConfirmation){
-  this._passwordConfirmation = userPasswordConfirmation
-})
+  .virtual('passwordConfirmation')
+  .set(function(userPasswordConfirmation){
+    this._passwordConfirmation = userPasswordConfirmation
+  })
 
 //? To JSON command so that it removes password and shows the virtual fields
 userSchema.set('toJSON', {
