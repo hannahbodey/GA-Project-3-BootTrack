@@ -7,33 +7,33 @@ import { getAllDays, getSingleDay } from '../controllers/days.js'
 import { putProgress } from '../controllers/progress.js'
 const router = express.Router()
 
-router.route('/api/days/:dayId/notes')
-  .post(secureRoute, addClassNotes)
-
 router.route('/api/register')
   .post(registerUser)
 
+router.route('/api/login')
+  .post(secureRoute, loginUser)
+
 router.route('/api/days')
   .get(getAllDays)
-
-router.route('/api/login')
-  .post(loginUser)
 
 router.route('/api/days/:dayId')
   .get(getSingleDay)
 
 router.route('/api/days/:dayId/progress')
-  .post(putProgress)
+  .post(secureRoute, putProgress)
 
 router.route('/api/days/:dayId/homework')
-  .post(createHomework)
+  .post(secureRoute, createHomework)
 
 router.route('/api/days/:dayId/homework/:homework')
-  .put(updateHomework)
-  .delete(deleteHomework)
+  .put(secureRoute, updateHomework)
+  .delete(secureRoute, deleteHomework)
+
+router.route('/api/days/:dayId/notes')
+  .post(secureRoute, addClassNotes)
 
 router.route('/api/days/:dayId/notes/:notesId')
-  .put(updateClassNotes)
-  .delete(deleteClassNotes)
+  .put(secureRoute, updateClassNotes)
+  .delete(secureRoute, deleteClassNotes)
 
 export default router 
