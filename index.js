@@ -33,60 +33,60 @@ const startServer = async () => {
 
     //GET Days
     //Endpoint : /api/days
-    app.get('/api/days', async (req, res) => {
-      try {
-        const days = await Day.find()
-        //res.status(200).json({ message: 'Get all days' })
-        return res.json(days)
-      } catch (err) {
-        console.log(err)
-      }
-    })
+    // app.get('/api/days', async (req, res) => {
+    //   try {
+    //     const days = await Day.find()
+    //     //res.status(200).json({ message: 'Get all days' })
+    //     return res.json(days)
+    //   } catch (err) {
+    //     console.log(err)
+    //   }
+    // })
 
     //GET singleDay
     //Endpoint : /api/days/:dayId
-    app.get('/api/days/:dayId', async (req, res) => {
-      try {
-        const { dayId } = req.params
-        const day = await Day.findById(dayId)
-        console.log('getting single day')
+    // app.get('/api/days/:dayId', async (req, res) => {
+    //   try {
+    //     const { dayId } = req.params
+    //     const day = await Day.findById(dayId)
+    //     console.log('getting single day')
 
-        if (!day) {
-          throw new Error('Day not found')
-        }
+    //     if (!day) {
+    //       throw new Error('Day not found')
+    //     }
 
-        return res.json(day)
-      } catch (err) {
-        console.log(err)
-      }
-    })
+    //     return res.json(day)
+    //   } catch (err) {
+    //     console.log(err)
+    //   }
+    // })
 
 
     //?Progress Routes     
     //!Embedded relationship
     //PUT Progress 
     //Endpoint : /api/days/:dayId/progress
-    app.post('/api/days/:dayId/progress', async (req,res) =>{
-      try {
-        const { dayId } = req.params
+    // app.post('/api/days/:dayId/progress', async (req,res) =>{
+    //   try {
+    //     const { dayId } = req.params
 
-        const day = await Day.findById(dayId)
-        if (!day) throw new Error('Day not found')
+    //     const day = await Day.findById(dayId)
+    //     if (!day) throw new Error('Day not found')
 
-        const createdProgress = { ...req.body, user: req.loggedInUser._id }
+    //     const createdProgress = { ...req.body, user: req.loggedInUser._id }
 
-        day.progress.push(createdProgress)
-        console.log('DAY -->', day)
+    //     day.progress.push(createdProgress)
+    //     console.log('DAY -->', day)
 
-        await day.save()
+    //     await day.save()
 
-        return res.status(201).json(day)
+    //     return res.status(201).json(day)
       
-      } catch (err) {
-        console.log(err)
-        return res.status(422).json(err)
-      }
-    })
+    //   } catch (err) {
+    //     console.log(err)
+    //     return res.status(422).json(err)
+    //   }
+    // })
     
 
 
@@ -94,84 +94,84 @@ const startServer = async () => {
     //!Embedded relationship
 
     //POST Homework
-    //Endpoing : /api/days/:dayId/homework
-    app.post('/api/days/:dayId/homework', async (req, res)=>{
-      try {
-        const { dayId } = req.params
+    //Endpoint : /api/days/:dayId/homework
+    // app.post('/api/days/:dayId/homework', async (req, res)=>{
+    //   try {
+    //     const { dayId } = req.params
 
-        const day = await Day.findById(dayId)
-        if (!day) throw new Error('Day not found')
+    //     const day = await Day.findById(dayId)
+    //     if (!day) throw new Error('Day not found')
 
-        const createdHomeWork = { ...req.body, user: req.loggedInUser._id }
+    //     const createdHomeWork = { ...req.body, user: req.loggedInUser._id }
 
-        day.homework.push(createdHomeWork)
-        console.log('DAY -->', day)
+    //     day.homework.push(createdHomeWork)
+    //     console.log('DAY -->', day)
 
-        await day.save()
+    //     await day.save()
 
-        return res.status(201).json(day)
+    //     return res.status(201).json(day)
 
-      } catch (err) {
-        console.log(err)
-        return res.status(422).json(err)
-      }
-    })
+    //   } catch (err) {
+    //     console.log(err)
+    //     return res.status(422).json(err)
+    //   }
+    // })
 
-    //PUT Homework
-    //Endpoint : /api/days/:dayId/homework/:homeworkId
-    app.put('/api/days/:dayId/homework/:homeworkId', async (req,res)=>{
-      try {
-        const { dayId, homeworkId } = req.params
-        const loggedInUser = req.loggedInUser._id
+    // //PUT Homework
+    // //Endpoint : /api/days/:dayId/homework/:homeworkId
+    // app.put('/api/days/:dayId/homework/:homeworkId', async (req,res)=>{
+    //   try {
+    //     const { dayId, homeworkId } = req.params
+    //     const loggedInUser = req.loggedInUser._id
 
-        const day = await Day.findById(dayId)
-        if (!day) throw new Error('Day not found')
+    //     const day = await Day.findById(dayId)
+    //     if (!day) throw new Error('Day not found')
 
-        const homeworkToUpdate = day.homework.id(homeworkId)
-        if (!homeworkToUpdate) throw new Error('Homework not found')
+    //     const homeworkToUpdate = day.homework.id(homeworkId)
+    //     if (!homeworkToUpdate) throw new Error('Homework not found')
 
-        if (!homeworkToUpdate.user.equals(loggedInUser)){
-          console.log('NOT your HOMEWORK')
-          throw new Error('Unauthorized')
+    //     if (!homeworkToUpdate.user.equals(loggedInUser)){
+    //       console.log('NOT your HOMEWORK')
+    //       throw new Error('Unauthorized')
 
-        } 
-      } catch (err){
-        console.log(err)
-        return res.status(422).json(err)
-      }
+    //     } 
+    //   } catch (err){
+    //     console.log(err)
+    //     return res.status(422).json(err)
+    //   }
       
-    })
+    // })
 
     //DELETE Homework
     //Endpoint : /api/days/:dayId/homework/:homeworkId
-    app.post('/api/days/:dayId/homework/:homeworkId', async (req,res)=>{
-      try {
-        const { dayId, homeworkId } = req.params
-        const loggedInUser = req.loggedInUser._id
+    // app.post('/api/days/:dayId/homework/:homeworkId', async (req,res)=>{
+    //   try {
+    //     const { dayId, homeworkId } = req.params
+    //     const loggedInUser = req.loggedInUser._id
 
-        const day = await Day.findById(dayId)
-        if (!day) throw new Error('Day not found')
+    //     const day = await Day.findById(dayId)
+    //     if (!day) throw new Error('Day not found')
 
-        const homeworkToDelete = day.homework.id(homeworkId)
-        if (!homeworkToDelete) throw new Error('Homework not found')
+    //     const homeworkToDelete = day.homework.id(homeworkId)
+    //     if (!homeworkToDelete) throw new Error('Homework not found')
 
-        if (!homeworkToDelete.user.equals(loggedInUser)){
-          console.log('NOT your HOMEWORK')
-          throw new Error('Unauthorized')
-        }
+    //     if (!homeworkToDelete.user.equals(loggedInUser)){
+    //       console.log('NOT your HOMEWORK')
+    //       throw new Error('Unauthorized')
+    //     }
 
-        await homeworkToDelete.deleteOne()
-        console.log(day)
+    //     await homeworkToDelete.deleteOne()
+    //     console.log(day)
 
-        await day.save()
-        return res.sendStatus(204)
+    //     await day.save()
+    //     return res.sendStatus(204)
 
-      } catch (err){
-        console.log(err)
-        if (err.kind === 'ObjectId') return res.status(422).json(err)
-        return res.status(404).json(err)
-      }
-    })
+    //   } catch (err){
+    //     console.log(err)
+    //     if (err.kind === 'ObjectId') return res.status(422).json(err)
+    //     return res.status(404).json(err)
+    //   }
+    // })
 
     //? Notes Routes 
     //!Embedded relationship
@@ -201,55 +201,55 @@ const startServer = async () => {
     
     //PUT Notes
     //Endpoint : /api/days/:dayId/notes/:notesId
-    app.put('/api/days/:dayId/notes/:notesId', async (req,res)=>{
-      try {
-        const { dayId } = req.params
-        const day = await Day.findById(dayId)
+    // app.put('/api/days/:dayId/notes/:notesId', async (req,res)=>{
+    //   try {
+    //     const { dayId } = req.params
+    //     const day = await Day.findById(dayId)
 
-        if (!day) throw new Error('Day not found')
+    //     if (!day) throw new Error('Day not found')
 
-        const noteToAdd = { ...req.body, user: req.loggedInUser._id }
-        day.notes.push(noteToAdd)
+    //     const noteToAdd = { ...req.body, user: req.loggedInUser._id }
+    //     day.notes.push(noteToAdd)
         
-        await day.save()
+    //     await day.save()
         
-        return res.status(201).json(day)
+    //     return res.status(201).json(day)
         
-      } catch (err){
-        console.log(err)
-        return res.status(422).json(err)
-      }
-    })
+    //   } catch (err){
+    //     console.log(err)
+    //     return res.status(422).json(err)
+    //   }
+    // })
 
     //DELETE Notes
     //Endpoint : /api/days/:dayId/notes/:notesId
-    app.post('/api/days/:dayId/notes/:notesId', async (req,res)=>{
-      try {
-        const { dayId, noteId } = req.params
-        const loggedInUserId = req.loggedInUser._id
+    // app.post('/api/days/:dayId/notes/:notesId', async (req,res)=>{
+    //   try {
+    //     const { dayId, noteId } = req.params
+    //     const loggedInUserId = req.loggedInUser._id
 
-        const day = await Day.findById(dayId)
+    //     const day = await Day.findById(dayId)
 
-        if (!day) throw new Error('Day not found')
+    //     if (!day) throw new Error('Day not found')
       
 
-        const noteToDelete = day.notes.id(noteId)
-        if (!noteToDelete) throw new Error('Notes not found')
+    //     const noteToDelete = day.notes.id(noteId)
+    //     if (!noteToDelete) throw new Error('Notes not found')
 
-        if (!noteToDelete.owner.equals(loggedInUserId)){
-          console.log('Owner not found')
-          throw new Error('Unauthorized')
-        }
-        await noteToDelete.deleteOne()
+    //     if (!noteToDelete.owner.equals(loggedInUserId)){
+    //       console.log('Owner not found')
+    //       throw new Error('Unauthorized')
+    //     }
+    //     await noteToDelete.deleteOne()
 
-        await day.save()
+    //     await day.save()
 
-        return res.sendStatus(204)
-      } catch (err){
-        console.log(err)
-        return res.status(404).json(err)
-      }
-    })
+    //     return res.sendStatus(204)
+    //   } catch (err){
+    //     console.log(err)
+    //     return res.status(404).json(err)
+    //   }
+    // })
 
     // ? 404 catch all middleware
     app.use((req, res) => {

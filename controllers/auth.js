@@ -2,7 +2,6 @@ import User from '../models/users.js'
 import jwt from 'jsonwebtoken'
 import 'dotenv/config'
 
-
 // REGISTER ROUTE
 //Endpoint: /register]
 export const registerUser = async (req,res) =>{

@@ -1,23 +1,27 @@
 import Day from '../models/days.js'
 
-export const addClassNotes = async (req, res, next)=>{
-  // secureRoute(req, res, next)
-  console.log('🗒️ post classwork notes route hit')
-  console.log('req.loggedInUser', req.loggedInUser)
+export const getAllDays = async (req, res) => {
   try {
-    //req.body.note = req.loggedInUser._id
-    console.log('req.body', req.body)
-    console.log('req.params', req.params)
-    const notesToAdd = { ...req.body, owner: req.loggedInUser._id }
-    console.log(notesToAdd)
-    const { dayId } = req.params
-    console.log('id', dayId)
-    const day = await Day.findById(dayId)
-    console.log('day', day)
-    day.classworkNotes.push(notesToAdd)
-    return res.status(201).json(day)
+    const days = await Day.find()
+    //res.status(200).json({ message: 'Get all days' })
+    return res.json(days)
   } catch (err) {
     console.log(err)
-    return res.status(422).json(err)
+  }
+}
+
+export const getSingleDay = async (req, res) => {
+  try {
+    const { dayId } = req.params
+    const day = await Day.findById(dayId)
+    console.log('getting single day')
+
+    if (!day) {
+      throw new Error('Day not found')
+    }
+
+    return res.json(day)
+  } catch (err) {
+    console.log(err)
   }
 }
