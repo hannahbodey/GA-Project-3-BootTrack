@@ -11,7 +11,7 @@ router.route('/api/register')
   .post(registerUser)
 
 router.route('/api/login')
-  .post(secureRoute, loginUser)
+  .post(loginUser)
 
 router.route('/api/days')
   .get(getAllDays)
@@ -25,15 +25,15 @@ router.route('/api/days/:dayId/progress')
 router.route('/api/days/:dayId/homework')
   .post(secureRoute, createHomework)
 
-router.route('/api/days/:dayId/homework/:homework')
-  .put(secureRoute, updateHomework)
-  .delete(secureRoute, deleteHomework)
+// router.route('/api/days/:dayId/homework/:homework')
+//   .put(secureRoute, updateHomework)
+//   .delete(secureRoute, deleteHomework)
 
 router.route('/api/days/:dayId/notes')
   .post(secureRoute, addClassNotes)
 
-router.route('/api/days/:dayId/notes/:notesId')
-  .put(secureRoute, updateClassNotes)
-  .delete(secureRoute, deleteClassNotes)
+// router.route('/api/days/:dayId/notes/:notesId')
+//   .put(secureRoute, updateClassNotes)
+//   .delete(secureRoute, deleteClassNotes)
 
 export default router 
