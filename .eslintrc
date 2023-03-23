@@ -60,10 +60,10 @@
     "no-console": "off",
     "no-fallthrough": "warn",
     "prefer-const": "error",
-    "quotes": [
-      "error",
-      "single"
-    ],
+    // "quotes": [
+    //   "error",
+    //   "single"
+    // ],
     "semi": [
       "error",
       "never"
