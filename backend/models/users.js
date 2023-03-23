@@ -18,33 +18,33 @@ const userSchema = new mongoose.Schema({
 userSchema.virtual('homework', {
   ref: 'Day',
   localField: '_id',
-  foreignField: 'owner'
+  foreignField: 'owner',
 })
 
 userSchema.virtual('notes', {
   ref: 'Day',
   localField: '_id',
-  foreignField: 'owner'
+  foreignField: 'owner',
 })
 
 userSchema.virtual('progress',{
   ref: 'Day',
   localField: '_id',
-  foreignField: 'owner'
+  foreignField: 'owner',
 })
 
 userSchema
-.virtual('passwordConfirmation')
-.set(function(userPasswordConfirmation){
-  this._passwordConfirmation = userPasswordConfirmation
-})
+  .virtual('passwordConfirmation')
+  .set(function(userPasswordConfirmation){
+    this._passwordConfirmation = userPasswordConfirmation
+  })
 
 //? To JSON command so that it removes password and shows the virtual fields
 userSchema.set('toJSON', {
   virtuals: true,
   transform(doc, ret){
     delete ret.password
-  }
+  },
 })
 
 //? Validation and authentication
