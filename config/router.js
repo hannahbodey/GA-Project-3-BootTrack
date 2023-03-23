@@ -1,10 +1,13 @@
 import express from 'express'
-import { loginUser, registerUser } from '../controllers/auth.js'
-import { addClassNotes, updateClassNotes, deleteClassNotes } from '../controllers/classworkNotes.js'
-import { createHomework, updateHomework, deleteHomework } from '../controllers/homeworkNotes.js'
-import { secureRoute } from './secureRoute.js'
+
 import { getAllDays, getSingleDay } from '../controllers/days.js'
+import { createHomework, updateHomework, deleteHomework } from '../controllers/homeworkNotes.js'
+import { addClassNotes, deleteClassNotes } from '../controllers/classworkNotes.js'
+import { registerUser, loginUser  } from '../controllers/auth.js'
 import { putProgress } from '../controllers/progress.js'
+import { secureRoute } from '../config/secureRoute.js'
+
+
 const router = express.Router()
 
 router.route('/api/register')
@@ -35,5 +38,8 @@ router.route('/api/days/:dayId/notes')
 // router.route('/api/days/:dayId/notes/:notesId')
 //   .put(secureRoute, updateClassNotes)
 //   .delete(secureRoute, deleteClassNotes)
+
+
+
 
 export default router 
