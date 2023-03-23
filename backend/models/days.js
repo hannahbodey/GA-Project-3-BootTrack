@@ -33,7 +33,7 @@ const daysSchema = new mongoose.Schema({
   courseName: { type: String, required: true },
   day: { type: Number, required: true },
   week: { type: Number, required: true },
-  topicTitle: { type: String, required: true, maxlength: 20 },
+  topicTitle: { type: String, required: true },
   classworkDescription: [{ type: String, required: true, maxlength: 250 }],
   homeworkDescription: [{ type: String, required: false, maxlength: 250 }],
   classworkNotes: [notesSchema],
