@@ -1,9 +1,10 @@
 import express from 'express'
 import mongoose from 'mongoose'
-// import router from './config/router.js'
+import router from './config/router.js'
 import 'dotenv/config'
 
 import Day from './models/days.js'
+import { secureRoute } from './config/secureRoute.js'
 
 const app = express()
 const PORT = process.env.PORT
@@ -27,7 +28,7 @@ const startServer = async () => {
 
     // ! Routes
 
-
+    app.use(router)
     //? Day / singleDay Routes
 
     //GET Days
@@ -35,7 +36,7 @@ const startServer = async () => {
     app.get('/api/days', async (req, res) => {
       try {
         const days = await Day.find()
-        res.status(200).json({ message: 'Get all days' })
+        //res.status(200).json({ message: 'Get all days' })
         return res.json(days)
       } catch (err) {
         console.log(err)
@@ -175,18 +176,28 @@ const startServer = async () => {
     //? Notes Routes 
     //!Embedded relationship
     //POST Notes
-    //Endpoing : /api/days/:dayId
-    app.post('/api/days/:dayId', async (req, res)=>{
-      try {
-        req.body.note = req.loggedInUser._id
-        const createdNote = await Day.create(req.boyd)
-        return res.status(201).json(createdNote)
-
-      } catch (err) {
-        console.log(err)
-        return res.status(422).json(err)
-      }
-    })
+    //Endpoint : /api/days/:dayId/notes
+    // app.post('/api/days/:dayId/notes', async (req, res, next)=>{
+    //   secureRoute(req, res, next)
+    //   console.log('🗒️ post classwork notes route hit')
+    //   console.log('req.loggedInUser', req.loggedInUser)
+    //   try {
+    //     //req.body.note = req.loggedInUser._id
+    //     console.log('req.body', req.body)
+    //     console.log('req.params', req.params)
+    //     const notesToAdd = { ...req.body, owner: req.loggedInUser._id } // need to add owner id once secure route established
+    //     console.log(notesToAdd)
+    //     const { dayId } = req.params
+    //     console.log('id', dayId)
+    //     const day = await Day.findById(dayId)
+    //     console.log('day', day)
+    //     day.classworkNotes.push(notesToAdd)
+    //     return res.status(201).json(day)
+    //   } catch (err) {
+    //     console.log(err)
+    //     return res.status(422).json(err)
+    //   }
+    // })
     
     //PUT Notes
     //Endpoint : /api/days/:dayId/notes/:notesId
