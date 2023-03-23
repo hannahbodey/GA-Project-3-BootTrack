@@ -5,6 +5,7 @@ import { createHomework, updateHomework, deleteHomework } from '../controllers/h
 import { addClassNotes, deleteClassNotes } from '../controllers/classworkNotes.js'
 import { registerUser, loginUser  } from '../controllers/auth.js'
 import { putProgress } from '../controllers/progress.js'
+import { secureRoute } from '../config/secureRout.js'
 
 
 const router = express.Router()
@@ -35,7 +36,7 @@ router.route('/api/days/:dayId/notes')
   .post(secureRoute, addClassNotes)
 
 router.route('/api/days/:dayId/notes/:notesId')
-  .put(secureRoute, updateClassNotes)
+  .put(secureRoute, addClassNotes )
   .delete(secureRoute, deleteClassNotes)
 
 
