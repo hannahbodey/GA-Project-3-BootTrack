@@ -118,7 +118,7 @@ const startServer = async () => {
 
     //PUT Homework
     //Endpoint : /api/days/:dayId/homework/:homeworkId
-    app.put('/api/days/:dayId/homework/:homework', async (req,res)=>{
+    app.put('/api/days/:dayId/homework/:homeworkId', async (req,res)=>{
       try {
         const { dayId, homeworkId } = req.params
         const loggedInUser = req.loggedInUser._id
