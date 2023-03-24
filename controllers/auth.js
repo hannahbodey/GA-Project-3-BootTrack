@@ -27,12 +27,12 @@ export const loginUser = async (req, res) =>{
     const userToLogin = await User.findOne({ email: email })
     console.log(userToLogin)
     if (!userToLogin) {
-      throw new NotFound('User not found')
+      throw new Unauthorized('Invalid credentials')
     }
 
     const userIsValidated = await userToLogin.validatePassword(password)
     if (!userIsValidated) {
-      throw new Unauthorized('Invalid password')
+      throw new Unauthorized('Invalid credentials')
     }
 
     //JWT 

@@ -1,75 +1,55 @@
 import Day from '../models/days.js'
+import { filterDayByUser } from '../helper/filterDays.js'
+import { assessError, NotFound } from '../config/errors.js'
 
-export const modifyHomework = async (req, res)=>{
+export const modifyHomework = async (req, res) => {
   try {
+    const stringLoggedInUserId = req.loggedInUser._id.toString()
     const { dayId } = req.params
-
+    const { homeworkTitle, homeworkLink } = req.body
     const day = await Day.findById(dayId)
-    if (!day) throw new Error('Day not found')
-
-    const createdHomeWork = { ...req.body, user: req.loggedInUser._id }
-
-    day.homework.push(createdHomeWork)
-    console.log('DAY -->', day)
-
+    if (!day) {
+      throw new NotFound('Day not found')
+    }
+    const userHomework = day.homeworkUploads.find(note => note.owner.toString() === stringLoggedInUserId)
+    if (!userHomework) {
+      if (!homeworkTitle || !homeworkLink) throw new Error('Missing fields')
+      const newUserHomework = {
+        homeworkTitle,
+        homeworkLink,
+        owner: stringLoggedInUserId,
+      }
+      day.homeworkUploads.push(newUserHomework)
+    } else {
+      userHomework.homeworkTitle = homeworkTitle || userHomework.homeworkTitle
+      userHomework.homeworkLink = homeworkLink || userHomework.homeworkLink
+    }
     await day.save()
-
-    return res.status(201).json(day)
-
+    const filteredDay = filterDayByUser(day, req.loggedInUser._id)
+    return res.status(200).json(filteredDay)
   } catch (err) {
-    console.log(err)
-    return res.status(422).json(err)
+    return assessError(err, res)
   }
 }
 
-// export const updateHomework = async (req,res)=>{
-//   try {
-//     const { dayId, homeworkId } = req.params
-//     const loggedInUser = req.loggedInUser._id
-
-//     const day = await Day.findById(dayId)
-//     if (!day) throw new Error('Day not found')
-
-//     const homeworkToUpdate = day.homework.id(homeworkId)
-//     if (!homeworkToUpdate) throw new Error('Homework not found')
-
-//     if (!homeworkToUpdate.user.equals(loggedInUser)){
-//       console.log('NOT your HOMEWORK')
-//       throw new Error('Unauthorized')
-
-//     } 
-//   } catch (err){
-//     console.log(err)
-//     return res.status(422).json(err)
-//   }
-  
-// }
-
-export const deleteHomework = async (req,res)=>{
+export const deleteHomework = async (req, res) => {
   try {
-    const { dayId, homeworkId } = req.params
-    const loggedInUser = req.loggedInUser._id
+    const { dayId } = req.params
+    const stringLoggedInUserId = req.loggedInUser._id.toString()
 
     const day = await Day.findById(dayId)
-    if (!day) throw new Error('Day not found')
+    if (!day) throw new NotFound('Day not found')
 
-    const homeworkToDelete = day.homework.id(homeworkId)
-    if (!homeworkToDelete) throw new Error('Homework not found')
-
-    if (!homeworkToDelete.user.equals(loggedInUser)){
-      console.log('NOT your HOMEWORK')
-      throw new Error('Unauthorized')
-    }
+    const homeworkToDelete = day.homeworkUploads.find(hw => hw.owner.toString() === stringLoggedInUserId)
+    if (!homeworkToDelete) throw new NotFound('Homework not found')
 
     await homeworkToDelete.deleteOne()
-    console.log(day)
 
     await day.save()
     return res.sendStatus(204)
-
-  } catch (err){
+  } catch (err) {
     console.log(err)
-    if (err.kind === 'ObjectId') return res.status(422).json(err)
-    return res.status(404).json(err)
+    // if (err.kind === 'ObjectId') return res.status(422).json(err)
+    return assessError(err, res)
   }
 }

@@ -48,8 +48,7 @@ export const modifyClassNotes = async (req, res) => {
 export const deleteClassNotes = async (req, res) => {
   try {
     const { dayId } = req.params
-    const loggedInUserId = req.loggedInUser._id
-    const stringLoggedInUserId = loggedInUserId.toString()
+    const stringLoggedInUserId = req.loggedInUser._id.toString()
 
     const day = await Day.findById(dayId)
     if (!day) throw new NotFound('Day not found')
