@@ -1,9 +1,12 @@
 import Day from '../models/days.js'
 import { filterDayByUser } from '../helper/filterDays.js'
-import { assessError, NotFound } from '../config/errors.js'
+import { assessError, NotFound, DemoCaught } from '../config/errors.js'
 
 export const modifyClassNotes = async (req, res) => {
   try {
+    if (req.loggedInUser.isDemo === true) {
+      throw new DemoCaught()
+    }
     // LoggedInUserId, but represented as a string instead of an object so it can be compared later on
     const stringLoggedInUserId = req.loggedInUser._id.toString()
     // Destruct the params
@@ -47,6 +50,9 @@ export const modifyClassNotes = async (req, res) => {
 
 export const deleteClassNotes = async (req, res) => {
   try {
+    if (req.loggedInUser.isDemo === true) {
+      throw new DemoCaught()
+    }
     const { dayId } = req.params
     const stringLoggedInUserId = req.loggedInUser._id.toString()
 

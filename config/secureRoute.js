@@ -19,7 +19,7 @@ export const secureRoute = async (req, res, next) => {
     const loggedInUser = await User.findById(payload.sub)
     // console.log('logged in user', loggedInUser)
     req.loggedInUser = loggedInUser
-    // console.log(req.loggedInUser)
+    console.log(req.loggedInUser)
     if (!loggedInUser) throw new Unauthorized()
     //console.log('User not found')
   } catch (error) {

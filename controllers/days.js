@@ -6,16 +6,13 @@ export const getAllDays = async (req, res) => {
   try {
     const days = await Day.find().lean()
 
-    console.log(days)
-
-    // const filteredDays = days.map(day => {
-    //   day.progress = day.progress.filter(progress => progress.owner?.toString() === req.loggedInUser._id.toString())
-    //   day.homeworkUploads = day.homeworkUploads.filter(homework => homework.owner?.toString() === req.loggedInUser._id.toString())
-    //   day.classworkNotes = day.classworkNotes.filter(notes => notes.owner?.toString() === req.loggedInUser._id.toString())
-    //   return day
-    //})
-    return res.json(days)
-    //return res.json(filteredDays)
+    const filteredDays = days.map(day => {
+      day.progress = day.progress.filter(progress => progress.owner?.toString() === req.loggedInUser._id.toString())
+      day.homeworkUploads = day.homeworkUploads.filter(homework => homework.owner?.toString() === req.loggedInUser._id.toString())
+      day.classworkNotes = day.classworkNotes.filter(notes => notes.owner?.toString() === req.loggedInUser._id.toString())
+      return day
+    })
+    return res.json(filteredDays)
   } catch (err) {
     return assessError(err, res)
   }

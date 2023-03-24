@@ -1,9 +1,12 @@
 import Day from '../models/days.js'
 import { filterDayByUser } from '../helper/filterDays.js'
-import { assessError, NotFound } from '../config/errors.js'
+import { assessError, NotFound, DemoCaught } from '../config/errors.js'
 
 export const modifyProgress = async (req, res) => {
   try {
+    if (req.loggedInUser.isDemo === true) {
+      throw new DemoCaught()
+    }
     const stringLoggedInUserId = req.loggedInUser._id.toString()
     const { dayId } = req.params
     const { completed, confidenceRating, bookmarked } = req.body
