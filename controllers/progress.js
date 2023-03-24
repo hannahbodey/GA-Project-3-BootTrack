@@ -13,7 +13,7 @@ export const modifyProgress = async (req, res) => {
     }
     const userProgress = day.progress.find(p => p.owner.toString() === stringLoggedInUserId)
     if (!userProgress) {
-      if ( completed === undefined || confidenceRating === undefined || !bookmarked === undefined ) throw new Error('Missing fields')
+      if ( completed === undefined || confidenceRating === undefined || bookmarked === undefined ) throw new Error('Missing fields')
       const newUserProgress = {
         completed,
         confidenceRating,
