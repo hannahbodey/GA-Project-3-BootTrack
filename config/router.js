@@ -17,7 +17,7 @@ router.route('/api/login') // ✅
   .post(loginUser)
 
 router.route('/api/days') // ✅
-  .get(secureRoute, getAllDays)
+  .get(getAllDays)
 
 router.route('/api/days/:dayId') // ✅
   .get(secureRoute, getSingleDay)
