@@ -24,7 +24,7 @@ const Days = () => {
         setDays(data)
       } catch (error) {
         console.log(error)
-        setError(error.message)
+        setError(error.response.data.message)
       }
     }
     getDays()
