@@ -22,15 +22,11 @@ export const getSingleDay = async (req, res) => {
   try {
     const { dayId } = req.params
     const day = await Day.findById(dayId).lean()
-
     console.log('getting single day')
-
     if (!day) {
       throw new NotFound('Day not found')
     }
-
     filterDayByUser(day, req.loggedInUser._id)
-
     return res.json(day)
   } catch (err) {
     return assessError(err, res)
