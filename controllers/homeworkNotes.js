@@ -1,6 +1,6 @@
 import Day from '../models/days.js'
 
-export const createHomework = async (req, res)=>{
+export const modifyHomework = async (req, res)=>{
   try {
     const { dayId } = req.params
 
@@ -22,28 +22,28 @@ export const createHomework = async (req, res)=>{
   }
 }
 
-export const updateHomework = async (req,res)=>{
-  try {
-    const { dayId, homeworkId } = req.params
-    const loggedInUser = req.loggedInUser._id
+// export const updateHomework = async (req,res)=>{
+//   try {
+//     const { dayId, homeworkId } = req.params
+//     const loggedInUser = req.loggedInUser._id
 
-    const day = await Day.findById(dayId)
-    if (!day) throw new Error('Day not found')
+//     const day = await Day.findById(dayId)
+//     if (!day) throw new Error('Day not found')
 
-    const homeworkToUpdate = day.homework.id(homeworkId)
-    if (!homeworkToUpdate) throw new Error('Homework not found')
+//     const homeworkToUpdate = day.homework.id(homeworkId)
+//     if (!homeworkToUpdate) throw new Error('Homework not found')
 
-    if (!homeworkToUpdate.user.equals(loggedInUser)){
-      console.log('NOT your HOMEWORK')
-      throw new Error('Unauthorized')
+//     if (!homeworkToUpdate.user.equals(loggedInUser)){
+//       console.log('NOT your HOMEWORK')
+//       throw new Error('Unauthorized')
 
-    } 
-  } catch (err){
-    console.log(err)
-    return res.status(422).json(err)
-  }
+//     } 
+//   } catch (err){
+//     console.log(err)
+//     return res.status(422).json(err)
+//   }
   
-}
+// }
 
 export const deleteHomework = async (req,res)=>{
   try {

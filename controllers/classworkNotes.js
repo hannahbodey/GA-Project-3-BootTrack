@@ -1,6 +1,6 @@
 import Day from '../models/days.js'
 import { filterDayByUser } from '../helper/filterDays.js'
-import { assessError, Unauthorized, NotFound } from '../config/errors.js'
+import { assessError, NotFound } from '../config/errors.js'
 
 export const modifyClassNotes = async (req, res) => {
   try {
