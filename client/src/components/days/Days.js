@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 
 import Error from '../common/Error'
 
+import { userTokenFunction } from '../../helpers/auth'
+
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -17,8 +19,8 @@ const Days = () => {
   useEffect(() => {
     const getDays = async () => {
       try {
-        const { data } = await axios.get('/api/days')
-        console.log(data)
+        const userToken = userTokenFunction()
+        const { data } = await axios.get('/api/days', userToken)
         setDays(data)
       } catch (error) {
         console.log(error)
@@ -40,7 +42,7 @@ const Days = () => {
               const { _id, day, week, topicTitle } = item
               return (
                 <Col key={_id} lg='5' sm='1' className='day'>
-                  <Link to={`/api/days/${_id}`}>
+                  <Link to={`/days/${_id}`}>
                     <Card>
                       <Card.Body>
                         <Card.Text>Week: {week} - Day: {day} - Topic: {topicTitle}</Card.Text>
