@@ -18,19 +18,19 @@ const userSchema = new mongoose.Schema({
 userSchema.virtual('homework', {
   ref: 'Day',
   localField: '_id',
-  foreignField: 'owner'
+  foreignField: 'homeworkSchema.owner'
 })
 
 userSchema.virtual('notes', {
   ref: 'Day',
   localField: '_id',
-  foreignField: 'owner'
+  foreignField: 'notesSchema.owner'
 })
 
 userSchema.virtual('progress',{
   ref: 'Day',
   localField: '_id',
-  foreignField: 'owner'
+  foreignField: 'progressSchema.owner'
 })
 
 userSchema

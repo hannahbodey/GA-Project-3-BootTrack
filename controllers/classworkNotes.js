@@ -1,96 +1,69 @@
 import Day from '../models/days.js'
+import { filterDayByUser } from '../helper/filterDays.js'
+import { assessError, Unauthorized, NotFound } from '../config/errors.js'
 
-export const addClassNotes = async (req, res) => {
-  console.log('🗒️ post classwork notes route hit')
-  console.log('req.loggedInUser', req.loggedInUser)
+export const modifyClassNotes = async (req, res) => {
   try {
-    //req.body.note = req.loggedInUser._id
-    console.log('req.body', req.body)
-    console.log('req.params', req.params)
-    // const notesToAdd = { ...req.body, owner: req.loggedInUser._id }
-    // console.log(notesToAdd)
-    const loggedInUserId = req.loggedInUser._id
-    console.log('user id object', loggedInUserId)
-    const stringLoggedInUserId = loggedInUserId.toString()
-    console.log('string user id', stringLoggedInUserId)
+    // LoggedInUserId, but represented as a string instead of an object so it can be compared later on
+    const stringLoggedInUserId = req.loggedInUser._id.toString()
+    // Destruct the params
     const { dayId } = req.params
-    console.log('id', dayId)
+    // Destruct the body
     const { notesTitle, notesDescription } = req.body
-    console.log('body', notesTitle, notesDescription)
-
+    // Retrieve the correct day, and throw an error if this does not exist
     const day = await Day.findById(dayId)
-    // console.log('day', day)
-
-    const userClassNotes = day.classworkNotes.find(note => note.owner === stringLoggedInUserId)
-    console.log('CHECK', userClassNotes)
-
+    if (!day) {
+      throw new NotFound('Day not found')
+    }
+    // Retrieve the correct note, using 'find' method as notes are represented as an array
+    const userClassNotes = day.classworkNotes.find(note => note.owner.toString() === stringLoggedInUserId)
+    // If a note is not found with the users ID, we will create one
     if (!userClassNotes) {
+      // If both fields are not being submitted in the request, then we error as both are required for creation
       if (!notesTitle || !notesDescription) throw new Error('Missing fields')
+      // If both fields are submitted, we create the note and assign the users ID as the 'owner'
       const newUserClassNotes = {
         notesTitle,
         notesDescription,
         owner: stringLoggedInUserId,
       }
+      // We push the note into the notes array on completion
       day.classworkNotes.push(newUserClassNotes)
+      // If a note is found, we simply update the field(s) submitted as per 'else'
     } else {
       userClassNotes.notesTitle = notesTitle || userClassNotes.notesTitle
       userClassNotes.notesDescription = notesDescription || userClassNotes.notesDescription
     }
-
+    // We save all our updates on the day
     await day.save()
-
-    // day.classworkNotes.push(notesToAdd)
-    return res.status(201).json(day)
+    // Finally, we filter in only the progress/classwork/homework belonging to that user
+    const filteredDay = filterDayByUser(day, req.loggedInUser._id)
+    // 200 returned as depending on the starting state, we are either creating (typically 201), or amending (typically 200/202)
+    return res.status(200).json(filteredDay)
   } catch (err) {
-    console.log(err)
-    return res.status(422).json(err)
-  }
-}
-
-export const updateClassNotes = async (req, res) => {
-  try {
-    const { dayId } = req.params
-    const day = await Day.findById(dayId)
-
-    if (!day) throw new Error('Day not found')
-
-    const noteToAdd = { ...req.body, user: req.loggedInUser._id }
-    day.notes.push(noteToAdd)
-
-    await day.save()
-
-    return res.status(201).json(day)
-
-  } catch (err) {
-    console.log(err)
-    return res.status(422).json(err)
+    return assessError(err, res)
   }
 }
 
 export const deleteClassNotes = async (req, res) => {
   try {
-    const { dayId, noteId } = req.params
+    const { dayId } = req.params
     const loggedInUserId = req.loggedInUser._id
+    const stringLoggedInUserId = loggedInUserId.toString()
 
     const day = await Day.findById(dayId)
+    if (!day) throw new NotFound('Day not found')
 
-    if (!day) throw new Error('Day not found')
+    const userClassNotes = day.classworkNotes.find(note => note.owner.toString() === stringLoggedInUserId)
+    if (!userClassNotes) throw new NotFound('No note found')
 
-
-    const noteToDelete = day.notes.id(noteId)
-    if (!noteToDelete) throw new Error('Notes not found')
-
-    if (!noteToDelete.owner.equals(loggedInUserId)) {
-      console.log('Owner not found')
-      throw new Error('Unauthorized')
-    }
-    await noteToDelete.deleteOne()
+    await userClassNotes.deleteOne()
 
     await day.save()
 
     return res.sendStatus(204)
   } catch (err) {
     console.log(err)
-    return res.status(404).json(err)
+    return assessError(err, res)
   }
 }

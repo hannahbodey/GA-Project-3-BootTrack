@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import jwt from 'jsonwebtoken'
 import User from '../models/users.js'
-import { Unauthorized, NotFound, assessError } from './errors.js'
+import { Unauthorized, assessError } from './errors.js'
 
 const secret = process.env.SECRET 
 

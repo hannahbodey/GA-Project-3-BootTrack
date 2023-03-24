@@ -30,7 +30,7 @@ const seedDatabase = async () => {
     })
 
     // Create course content (days)
-    const createDays = await Day.create(dayData)
+    const createDays = await Day.create(daysWithUser)
     console.log(`${createDays.length} days worth of data added 📆`)
 
     // Close connection
