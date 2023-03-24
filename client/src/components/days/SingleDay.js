@@ -4,9 +4,12 @@ import { useParams } from 'react-router-dom'
 
 import { userTokenFunction } from '../../helpers/auth'
 
+import HomeworkSubmission from '../common/HomeworkSubmission'
+
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import NotesSubmission from '../common/NotesSubmission'
 
 const SingleDay = () => {
 
@@ -23,7 +26,7 @@ const SingleDay = () => {
         setDay(data)
       } catch (error) {
         console.log(error)
-        setError(error)
+        setError(error.response.data.message)
       }
     }
     getDay()
@@ -65,6 +68,30 @@ const SingleDay = () => {
                     <p>{day.homeworkDescription}</p>
                   </>
                 }
+                { day.homeworkUploads ?
+                  day.homeworkUploads.map(homework => {
+                    return (
+                      <>
+                        <p key={homework.homeworkTitle}>Homework Title: {homework.homeworkTitle}</p>
+                        <p key={homework.homeworkLink}>Homework Link: {homework.homeworkLink}</p>
+                      </>
+                    )
+                  })
+                  : <p>Please submit your homework!</p>
+                }
+                <HomeworkSubmission />
+                { day.classworkNotes ?
+                  day.classworkNotes.map(note => {
+                    return (
+                      <>
+                        <p key={note.notesTitle}>Notes Title: {note.notesTitle}</p>
+                        <p key={note.notesDescription}>Notes Description: {note.notesDescription}</p>
+                      </>
+                    )
+                  })
+                  : <p>Please submit your notes!</p>
+                }
+                <NotesSubmission />
               </Col>
             </>
           }
