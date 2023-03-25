@@ -12,7 +12,11 @@ export default [
     homeworkDescription: [
       "Review course materials",
       "Ensure understanding of course requirements"
-    ]
+    ],
+    classworkNotes: [{
+      notesTitle: "Testing classwork title",
+      notesDescription: "Testing classwork description"
+    }]
   },
   {
     courseName: "Software Engineering Immersive Bootcamp",
@@ -26,7 +30,15 @@ export default [
     ],
     homeworkDescription: [
       "Apply appropriate HTML tags to a pre-written website page"
-    ]
+    ],
+    classworkNotes: [{
+      notesTitle: "Testing classwork title",
+      notesDescription: "Testing classwork description"
+    }],
+    homeworkUploads: [{
+      homeworkTitle: "Testing homework title",
+      homeworkLink: "Testing homework link"
+    }]
   },
   {
     courseName: "Software Engineering Immersive Bootcamp",
@@ -41,7 +53,11 @@ export default [
     ],
     homeworkDescription: [
       "Apply styling to a pre-written website page"
-    ]
+    ],
+    homeworkUploads: [{
+      homeworkTitle: "Testing homework title",
+      homeworkLink: "Testing homework link"
+    }]
   },
   {
     courseName: "Software Engineering Immersive Bootcamp",
@@ -470,7 +486,7 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 2,
     week: 8,
-    topicTitle: "Error Classes and Getter Virtuals",
+    topicTitle: "Error Classes, Getter Virtuals and Project Brief 3",
     classworkDescription: [
       "Learn how to implement error classes that extend the default one",
       "Use getter virtuals to retrieve and compute data from the MongoDB database",
@@ -497,7 +513,7 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 4,
     week: 8,
-    topicTitle: "Project Work",
+    topicTitle: "Continued Project Work",
     classworkDescription: [
       "Continue working on the project assignment"
     ],
@@ -509,7 +525,7 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 5,
     week: 8,
-    topicTitle: "Project Work and Presentations",
+    topicTitle: "Continued Project Work",
     classworkDescription: [
       "Continue working on the project assignment"
     ],
@@ -521,7 +537,7 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 1,
     week: 9,
-    topicTitle: "Project Work and Presentations",
+    topicTitle: "Continued Project Work",
     classworkDescription: [
       "Continue working on the project assignment"
     ],
@@ -533,7 +549,7 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 2,
     week: 9,
-    topicTitle: "Project Work and Presentations",
+    topicTitle: "Continued Project Work",
     classworkDescription: [
       "Continue working on the project assignment"
     ],
@@ -545,7 +561,7 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 3,
     week: 9,
-    topicTitle: "Project Work and Presentations",
+    topicTitle: "Continued Project Work",
     classworkDescription: [
       "Continue working on the project assignment"
     ],
@@ -557,7 +573,7 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 4,
     week: 9,
-    topicTitle: "Project Work and Presentations",
+    topicTitle: "Continued Project Work",
     classworkDescription: [
       "Continue working on the project assignment"
     ],
@@ -569,7 +585,7 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 5,
     week: 9,
-    topicTitle: "Project Work and Presentations",
+    topicTitle: "Project Presentations",
     classworkDescription: [
       "Continue working on the project assignment",
       "Prepare and deliver presentation for classmates/instructors"
@@ -594,7 +610,7 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 2,
     week: 10,
-    topicTitle: "Continue with Python, Introduction to Postgres and SQL",
+    topicTitle: "Introduction to Postgres and SQL",
     classworkDescription: [
       "Continue with Python", "Introduction to Postgres and SQL"
     ],
@@ -606,7 +622,7 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 3,
     week: 10,
-    topicTitle: "Code along: Implement index, show, and create routes",
+    topicTitle: "Python and Postgres API: Index, Show, Create",
     classworkDescription: [
       "Code along: Implement index, show, and create routes"
     ],
@@ -618,7 +634,7 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 4,
     week: 10,
-    topicTitle: "Code along: Implement update, delete routes, and seed database",
+    topicTitle: "Python and Postgres CRUD: Update, Delete, Seed",
     classworkDescription: [
       "Code along: Implement update, delete routes, and seed database"
     ],
@@ -630,7 +646,7 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 5,
     week: 10,
-    topicTitle: "Code along: Implement relationships",
+    topicTitle: "Python and Postgres API: Relationships",
     classworkDescription: [
       "Code along: Implement relationships"
     ],
@@ -642,9 +658,9 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 1,
     week: 11,
-    topicTitle: "Code along: Implement authentication, Receive briefing for the final project",
+    topicTitle: "Python and Postgres API: Authentication",
     classworkDescription: [
-      "Code along: Implement authentication", "Receive briefing for the final project"
+      "Code along: Implement authentication"
     ],
     homeworkDescription: [
       "Consider ideas for the final project"
@@ -654,8 +670,9 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 2,
     week: 11,
-    topicTitle: "Spend the day producing wireframes and plans for the project, Present the wireframes and plans to the instructors to gain their sign-off",
+    topicTitle: "Project Brief and Planning",
     classworkDescription: [
+      "Receive briefing for the final project",
       "Spend the day producing wireframes and plans for the project",
       "Present the wireframes and plans to the instructors to gain their sign-off"
     ],
@@ -667,7 +684,7 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 3,
     week: 11,
-    topicTitle: "Continue working on the project assignment",
+    topicTitle: "Continued Project Work",
     classworkDescription: [
       "Continue working on the project assignment"
     ],
@@ -679,7 +696,7 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 4,
     week: 11,
-    topicTitle: "Continue working on the project assignment",
+    topicTitle: "Continued Project Work",
     classworkDescription: [
       "Continue working on the project assignment"
     ],
@@ -691,7 +708,7 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 5,
     week: 11,
-    topicTitle: "Continue working on the project assignment",
+    topicTitle: "Continued Project Work",
     classworkDescription: [
       "Continue working on the project assignment"
     ],
@@ -703,7 +720,7 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 1,
     week: 12,
-    topicTitle: "Continue working on the project assignment",
+    topicTitle: "Continued Project Work",
     classworkDescription: [
       "Continue working on the project assignment"
     ],
@@ -715,7 +732,7 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 2,
     week: 12,
-    topicTitle: "Continue working on the project assignment",
+    topicTitle: "Continued Project Work",
     classworkDescription: [
       "Continue working on the project assignment"
     ],
@@ -727,7 +744,7 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 3,
     week: 12,
-    topicTitle: "Continue working on the project assignment",
+    topicTitle: "Continued Project Work",
     classworkDescription: [
       "Continue working on the project assignment"
     ],
@@ -739,7 +756,7 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 4,
     week: 12,
-    topicTitle: "Continue working on the project assignment",
+    topicTitle: "Continued Project Work",
     classworkDescription: [
       "Continue working on the project assignment"
     ],
@@ -751,7 +768,7 @@ export default [
     courseName: "Software Engineering Immersive Bootcamp",
     day: 5,
     week: 12,
-    topicTitle: "Continue working on the project assignment, Prepare and deliver presentation for classmates/instructors",
+    topicTitle: "Project Presentations",
     classworkDescription: [
       "Continue working on the project assignment",
       "Prepare and deliver presentation for classmates/instructors"

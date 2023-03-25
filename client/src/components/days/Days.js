@@ -13,15 +13,21 @@ import Card from 'react-bootstrap/Card'
 
 const Days = () => {
 
-  const [ days, setDays ] = useState([])
-  const [ error, setError ] = useState('')
+  const [days, setDays] = useState([])
+  const [error, setError] = useState('')
 
   useEffect(() => {
     const getDays = async () => {
       try {
         const userToken = userTokenFunction()
         const { data } = await axios.get('/api/days', userToken)
-        setDays(data)
+        const sortedDays = data.sort((a, b) => {
+          if (a.week !== b.week) {
+            return a.week - b.week
+          }
+          return a.day - b.day
+        })
+        setDays(sortedDays)
       } catch (error) {
         console.log(error)
         setError(error.response.data.message)
@@ -52,7 +58,7 @@ const Days = () => {
                 </Col>
               )
             })
-            : 
+            :
             <>
               <Error error={error} />
             </>
