@@ -14,8 +14,9 @@ export const authenticatedUser = () => {
   console.log(payload)
   if (!payload) return false
   const currentTime = Date.now()
-  console.log(currentTime)
-  if (currentTime < payload.exp){
+  console.log('current ->', currentTime)
+  console.log('payload ->', payload.exp)
+  if (currentTime < payload.exp * 1000){
     console.log('if statement')
     return true
   }

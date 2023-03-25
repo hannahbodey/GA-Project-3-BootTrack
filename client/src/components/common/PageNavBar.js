@@ -19,7 +19,7 @@ const PageNavBar = () => {
         <Link to='/' className={location.pathname === '/' ? 'active' : ''}>Home</Link>
         <Link to='/days' className={location.pathname === '/days' ? 'active' : ''}>All Days</Link>
         <Link to='/days/:dayId'>Single Day</Link>
-        { !authenticatedUser() ? 
+        {authenticatedUser() ?
           <span className='nav-link' onClick={handleLogOut}>Log Out</span>
           :
           <>
