@@ -14,6 +14,14 @@ export class NotFound extends Error {
   }
 }
 
+export class DemoCaught extends Error {
+  constructor(message = 'You do not have the permissions to perform this action'){
+    super(message)
+    this.name = 'DemoWithoutPriviliges'
+    this.status = 451
+  }
+}
+
 export const assessError = (error, res) => {
   console.log(error)
   if (error.status) return res.status(error.status).json({ message: error.message })

@@ -1,10 +1,7 @@
-@import './global/base';
 @import './global/variables';
+@import './global/base';
 @import './components/navbar';
 @import './components/days';
 @import './components/form-page';
 @import './components/home';
-
-* {
-  box-sizing: border-box;
-}
+@import './components/singleDay';

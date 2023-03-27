@@ -25,9 +25,25 @@ const seedDatabase = async () => {
     //Create users
     const createdUsers = await User.create(userData)
 
-    const daysWithUser = dayData.map(day=> {
-      return { ...day, owner: createdUsers[0]._id }
+    const daysWithUser = dayData.map(day => {
+      if (day.classworkNotes) {
+        day = {
+          ...day, classworkNotes: [{ ...day.classworkNotes[0], owner: createdUsers[0]._id }]
+        }
+      }
+      if (day.homeworkUploads) {
+        day = {
+          ...day, homeworkUploads: [{ ...day.homeworkUploads[0], owner: createdUsers[0]._id }]
+        }
+      }
+      if (day.progress) {
+        day = {
+          ...day, progress: [{ ...day.progress[0], owner: createdUsers[0]._id }]
+        }
+      }
+      return { ...day }
     })
+
 
     // Create course content (days)
     const createDays = await Day.create(daysWithUser)
@@ -40,7 +56,7 @@ const seedDatabase = async () => {
   } catch (error) {
 
     console.log(error)
-    
+
   }
 
 }

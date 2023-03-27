@@ -1,23 +1,26 @@
 import Day from '../models/days.js'
 import { filterDayByUser } from '../helper/filterDays.js'
-import { assessError, NotFound } from '../config/errors.js'
+import { assessError, NotFound, DemoCaught } from '../config/errors.js'
 
 export const modifyHomework = async (req, res) => {
   try {
+    if (req.loggedInUser.isDemo === true) {
+      throw new DemoCaught()
+    }
     const stringLoggedInUserId = req.loggedInUser._id.toString()
     const { dayId } = req.params
-    const { homeworkTitle, homeworkLink } = req.body
+    const { homeworkLink } = req.body
     const day = await Day.findById(dayId)
     if (!day) {
       throw new NotFound('Day not found')
     }
     const userHomework = day.homeworkUploads.find(note => note.owner.toString() === stringLoggedInUserId)
     if (!userHomework) {
-      if (!homeworkTitle || !homeworkLink) throw new Error('Missing fields')
+      if (!homeworkLink) throw new Error('Missing field')
       const newUserHomework = {
-        homeworkTitle,
+        //homeworkTitle,
         homeworkLink,
-        owner: stringLoggedInUserId,
+        owner: stringLoggedInUserId
       }
       day.homeworkUploads.push(newUserHomework)
     } else {
@@ -34,6 +37,9 @@ export const modifyHomework = async (req, res) => {
 
 export const deleteHomework = async (req, res) => {
   try {
+    if (req.loggedInUser.isDemo === true) {
+      throw new DemoCaught()
+    }
     const { dayId } = req.params
     const stringLoggedInUserId = req.loggedInUser._id.toString()
 

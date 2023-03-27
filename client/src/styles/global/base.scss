@@ -1,3 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
+
+@media (max-width: 768px) {
+  .main-container {
+    padding-top: 78px;
+  }
+  span {
+    padding: 0 !important;
+  }
+}
+
 .site-wrapper {
   display: flex;
   flex-direction: column;
@@ -7,14 +21,27 @@
 main {
   flex-grow: 1;
   padding: 2em 0;
-  background-color: rgb(222, 232, 229);
+  background-color: $background;
 }
 
-.button {
-  background-color: aquamarine;
-  color: #000;
+// .button {
+//   background-color: $button;
+//   color: #000;
+//   border: none;
+//   &:hover, &:active {
+//     color: #fff;
+//   }
+// }
+
+.red-button {
+  background-color: $button;
+  color: #fff;
   border: none;
+  border-radius: 3px;
+  padding: 8px 15px;
   &:hover, &:active {
+    background-color: lighten($button, 8%);
     color: #fff;
+    cursor: pointer;
   }
 }

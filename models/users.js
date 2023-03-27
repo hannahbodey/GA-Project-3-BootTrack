@@ -6,7 +6,8 @@ import bcrypt from 'bcrypt'
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true, maxlength: 15 },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  isDemo: { type: Boolean, default: false }
   //! These may be added as an extra once MVP is completed.
   // teacher: { type: Boolean, required: true },
   // course: { type: String, required: true, maxlength: 3 }
