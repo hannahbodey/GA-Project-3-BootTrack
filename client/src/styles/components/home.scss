@@ -1,0 +1,21 @@
+.home {
+  /*@extend %flex-center;*/
+  background-color: white;
+  .hero {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+  }
+}
+
+.btn-register{
+  background-color: red;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  &:hover, &:active {
+    background-color: darken(grey, 8%) !important;
+    color: red;
+  }
+}
