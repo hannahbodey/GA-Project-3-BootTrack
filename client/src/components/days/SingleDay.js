@@ -18,6 +18,7 @@ const SingleDay = () => {
 
   const [day, setDay] = useState(null)
   const [error, setError] = useState('')
+  const [demoAccount, setDemoAccount] = useState(false)
   const { dayId } = useParams()
   console.log(dayId)
 
@@ -32,7 +33,17 @@ const SingleDay = () => {
         setError(error.response.data.message)
       }
     }
+    const checkDemo = async () => {
+      try {
+        const userToken = userTokenFunction()
+        const { data } = await axios.get('/api/user', userToken)
+        setDemoAccount(data.isDemo)
+      } catch (error) {
+        console.log(error)
+      }
+    }
     getDay()
+    checkDemo()
   }, [dayId])
 
   return (
@@ -94,7 +105,7 @@ const SingleDay = () => {
                   })
                   : <p>Please submit your notes!</p>
                 } */}
-                <NotesSubmission notes={day.classworkNotes} />
+                <NotesSubmission notes={day.classworkNotes} demoAccount={demoAccount}/>
                 {day.progress &&
                   day.progress.map((p, index) => {
                     const { completed, confidenceRating, bookmarked } = p
@@ -102,13 +113,13 @@ const SingleDay = () => {
                       <div key={index}>
                         <h4>Progress:</h4>
                         <div>
-                          Completed: {completed.toString()}
+                          Completed: {completed ? '🟢' : '🔴'}
                         </div>
                         <div>
                           Confidence Rating: {confidenceRating}
                         </div>
                         <div>
-                          Bookmarked: {bookmarked.toString()}
+                          Bookmarked: {bookmarked ? '🟢' : '🔴'}
                         </div>
                       </div>
                     )

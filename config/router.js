@@ -3,7 +3,7 @@ import express from 'express'
 import { getAllDays, getSingleDay } from '../controllers/days.js'
 import { modifyHomework, deleteHomework } from '../controllers/homeworkNotes.js'
 import { modifyClassNotes, deleteClassNotes } from '../controllers/classworkNotes.js'
-import { registerUser, loginUser, loginDemo } from '../controllers/auth.js'
+import { registerUser, loginUser, loginDemo, getUser } from '../controllers/auth.js'
 import { modifyProgress } from '../controllers/progress.js'
 import { secureRoute } from '../config/secureRoute.js'
 
@@ -18,6 +18,9 @@ router.route('/api/login')
 
 router.route('/api/demo-login')
   .post(loginDemo)
+
+router.route('/api/user')
+  .get(secureRoute, getUser)
 
 router.route('/api/days')
   .get(secureRoute, getAllDays)
