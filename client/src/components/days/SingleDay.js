@@ -18,6 +18,9 @@ const SingleDay = () => {
 
   const [day, setDay] = useState(null)
   const [error, setError] = useState('')
+  const [homeworkForm, setHomeworkForm] = useState({
+    homeworkLink: '',
+  })
   const { dayId } = useParams()
   console.log(dayId)
 
@@ -35,6 +38,34 @@ const SingleDay = () => {
     getDay()
   }, [dayId])
 
+  const handleUpload = async (e) => {
+    const image = e.target.files[0]
+    console.log(image)
+    const dataPic = new FormData()
+    dataPic.append('file', image)
+    console.log('file', dataPic)
+    dataPic.append('upload_preset', process.env.REACT_APP_UPLOAD_PRESET)
+    console.log(dataPic)
+    try {
+      const { data } = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDNAME}/image/upload`, dataPic)
+      console.log('secure URL for cloud', data.secure_url)
+      setHomeworkForm({ ...homeworkForm, homeworkLink: data.secure_url })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const userToken = userTokenFunction()
+      const { data } = await axios.put(`/api/days/${dayId}/homework`, homeworkForm, userToken)
+    } catch (error) {
+      console.log(error)
+      setError(error.response.data.message)
+    }
+  }
+
   return (
     <main className='main-container'>
       <Container>
@@ -45,8 +76,32 @@ const SingleDay = () => {
                 <h1>Week {day.week} Day {day.day}</h1>
                 <h2>{day.topicTitle}</h2>
               </Col>
-              <Col md='6'>
-                <h4>Your image will go here</h4>
+              <Col lg='6' md='6' sm='12'>
+                <form className='image-field' onSubmit={handleSubmit}>
+                  <label>Homework Uploads</label>
+                  { homeworkForm.homeworkLink ? <img src={homeworkForm.homeworkLink} /> : <input type="file" onChange={handleUpload}/> }
+                  <button className='red-button'>Submit Homework</button>
+                </form>
+                {day.progress &&
+                  day.progress.map((p, index) => {
+                    const { completed, confidenceRating, bookmarked } = p
+                    return (
+                      <div key={index}>
+                        <h4>Progress:</h4>
+                        <div>
+                          Completed: {completed.toString()}
+                        </div>
+                        <div>
+                          Confidence Rating: {confidenceRating}
+                        </div>
+                        <div>
+                          Bookmarked: {bookmarked.toString()}
+                        </div>
+                      </div>
+                    )
+                  })}
+              </Col>
+              <Col lg='6' md= '6' sm='12'>
                 <h4>Class Notes</h4>
                 {day.classworkDescription.length > 1 ?
                   day.classworkDescription.map(day => {
@@ -95,24 +150,6 @@ const SingleDay = () => {
                   : <p>Please submit your notes!</p>
                 } */}
                 <NotesSubmission notes={day.classworkNotes} />
-                {day.progress &&
-                  day.progress.map((p, index) => {
-                    const { completed, confidenceRating, bookmarked } = p
-                    return (
-                      <div key={index}>
-                        <h4>Progress:</h4>
-                        <div>
-                          Completed: {completed.toString()}
-                        </div>
-                        <div>
-                          Confidence Rating: {confidenceRating}
-                        </div>
-                        <div>
-                          Bookmarked: {bookmarked.toString()}
-                        </div>
-                      </div>
-                    )
-                  })}
               </Col>
             </>
             :

@@ -10,6 +10,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
+import { trusted } from 'mongoose'
 
 const Days = () => {
 
@@ -53,9 +54,8 @@ const Days = () => {
                       <Card.Body>
                         <Card.Text>Week: {week} - Day: {day}</Card.Text>
                         <Card.Text>Topic: {topicTitle}</Card.Text>
-                        {!progress.completed && <Card.Text>Progress: Not yet started</Card.Text>}
-                        {/* The above will ultimately need to be 'if progress.completed === 0 then... */}
-                        {progress.completed && <Card.Text>Progress: {progress.completed}</Card.Text>}
+                        {(!progress.completed || progress[0].completed === false) ? <Card.Text>🔴</Card.Text> : <Card.Text>🟢</Card.Text>}
+                        {/* {progress[0].completed === true && } */}
                       </Card.Body>
                     </Card>
                   </Link>
@@ -69,9 +69,7 @@ const Days = () => {
           }
         </Row>
       </Container>
-
     </main>
-
   )
 }
 

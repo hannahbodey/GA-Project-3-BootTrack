@@ -9,7 +9,7 @@ export const modifyHomework = async (req, res) => {
     }
     const stringLoggedInUserId = req.loggedInUser._id.toString()
     const { dayId } = req.params
-    const { homeworkTitle, homeworkLink } = req.body
+    const { homeworkLink } = req.body
     const day = await Day.findById(dayId)
     if (!day) {
       throw new NotFound('Day not found')
@@ -18,9 +18,9 @@ export const modifyHomework = async (req, res) => {
     if (!userHomework) {
       if (!homeworkLink) throw new Error('Missing field')
       const newUserHomework = {
-        homeworkTitle,
+        //homeworkTitle,
         homeworkLink,
-        owner: stringLoggedInUserId,
+        owner: stringLoggedInUserId
       }
       day.homeworkUploads.push(newUserHomework)
     } else {
