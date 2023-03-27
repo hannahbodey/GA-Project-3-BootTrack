@@ -12,7 +12,7 @@ export const modifyClassNotes = async (req, res) => {
     // Destruct the params
     const { dayId } = req.params
     // Destruct the body
-    const { notesTitle, notesDescription } = req.body
+    const { notesDescription } = req.body
     // Retrieve the correct day, and throw an error if this does not exist
     const day = await Day.findById(dayId)
     if (!day) {
@@ -23,19 +23,20 @@ export const modifyClassNotes = async (req, res) => {
     // If a note is not found with the users ID, we will create one
     if (!userClassNotes) {
       // If both fields are not being submitted in the request, then we error as both are required for creation
-      if (!notesTitle || !notesDescription) throw new Error('Missing fields')
+      if (notesDescription === undefined) throw new Error('Missing field')
       // If both fields are submitted, we create the note and assign the users ID as the 'owner'
       const newUserClassNotes = {
-        notesTitle,
-        notesDescription,
+        notesDescription,// : notesDescription === '' ? null : notesDescription,
         owner: stringLoggedInUserId,
       }
       // We push the note into the notes array on completion
       day.classworkNotes.push(newUserClassNotes)
       // If a note is found, we simply update the field(s) submitted as per 'else'
     } else {
-      userClassNotes.notesTitle = notesTitle || userClassNotes.notesTitle
-      userClassNotes.notesDescription = notesDescription || userClassNotes.notesDescription
+      // userClassNotes.notesDescription = notesDescription || userClassNotes.notesDescription
+      if (notesDescription !== undefined) {
+        userClassNotes.notesDescription = notesDescription// === '' ? null : notesDescription
+      }
     }
     // We save all our updates on the day
     await day.save()

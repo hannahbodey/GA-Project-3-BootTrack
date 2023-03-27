@@ -16,7 +16,7 @@ export const modifyHomework = async (req, res) => {
     }
     const userHomework = day.homeworkUploads.find(note => note.owner.toString() === stringLoggedInUserId)
     if (!userHomework) {
-      if (!homeworkTitle || !homeworkLink) throw new Error('Missing fields')
+      if (!homeworkLink) throw new Error('Missing field')
       const newUserHomework = {
         homeworkTitle,
         homeworkLink,
