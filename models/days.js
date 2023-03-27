@@ -6,7 +6,7 @@ const homeworkSchema = new mongoose.Schema({
   homeworkLink: { type: String, required: true },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 },
-  { timestamps: true }
+{ timestamps: true }
 )
 
 //? Classwork Schema - embedded in daysSchema
@@ -28,7 +28,7 @@ const progressSchema = new mongoose.Schema({
   bookmarked: { type: Boolean, required: true },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 },
-  { timestamps: true }
+{ timestamps: true }
 )
 
 //? Days Schema - for data for each day 
