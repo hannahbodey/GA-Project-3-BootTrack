@@ -37,7 +37,19 @@ const Login = () => {
 
   const loginDemo = async () => {
     try {
-      const { data } = await axios.post('/api/login', { email: 'demo@demo.com', password: 'demo123' })
+      const { data } = await axios.post('/api/demo-login')
+      localStorage.setItem('PROJECT-3-TOKEN', data.token)
+      navigate('/days')
+    } catch (error) {
+      console.log(error)
+      setError(error.response.data.message)
+    }
+  }
+
+  // ! TO BE DELETED!
+  const loginJane = async () => {
+    try {
+      const { data } = await axios.post('/api/login', { email: 'jane@example.com', password: 'pass' })
       localStorage.setItem('PROJECT-3-TOKEN', data.token)
       navigate('/days')
     } catch (error) {
@@ -60,6 +72,7 @@ const Login = () => {
         {error && <p className='text-danger text-center'>{error}</p>}
       </form>
       <button onClick={loginDemo}>Try Demo Account!</button>
+      <button onClick={loginJane}>Log in as Jane</button>
     </main>
   )
 }

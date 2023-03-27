@@ -21,7 +21,7 @@ const notesSchema = new mongoose.Schema({
 //? Progress Schema - embedded in daysSchema
 const progressSchema = new mongoose.Schema({
   completed: { type: Boolean, required: true },
-  confidenceRating: { type: Number, required: true, min: 1, max: 5 },
+  confidenceRating: { type: Number, min: 1, max: 5 },
   bookmarked: { type: Boolean, required: true },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 },

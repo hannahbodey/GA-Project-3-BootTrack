@@ -11,13 +11,12 @@ export const getPayload = () => {
 
 export const authenticatedUser = () => {
   const payload = getPayload()
-  console.log(payload)
+  console.log('payload', payload)
   if (!payload) return false
   const currentTime = Date.now()
   console.log('current ->', currentTime)
-  console.log('payload ->', payload.exp)
-  if (currentTime < payload.exp * 1000){
-    console.log('if statement')
+  console.log('payload ->', payload.exp * 1000)
+  if (currentTime < payload.exp * 1000) {
     return true
   }
   return false
@@ -25,7 +24,7 @@ export const authenticatedUser = () => {
 
 export const userTokenFunction = () => {
   const token = localStorage.getItem(tokenName)
-  if (!token) return 
+  if (!token) return
   const userToken = {
     headers: { Authorization: `Bearer ${token}` },
   }

@@ -6,7 +6,7 @@ import { assessError, Unauthorized, NotFound } from '../config/errors.js'
 const secret = process.env.SECRET
 
 // REGISTER ROUTE
-//Endpoint: /register]
+//Endpoint: /register
 export const registerUser = async (req,res) =>{
   try {
     const newUser = await User.create(req.body)
@@ -16,7 +16,6 @@ export const registerUser = async (req,res) =>{
     return assessError(err, res)
   }
 }
-
 
 //LOGIN ROUTE
 //Endpoint: /login
@@ -41,5 +40,18 @@ export const loginUser = async (req, res) =>{
 
   } catch (err) {
     return assessError(err, res)
+  }
+}
+
+export const loginDemo = async (req, res) => {
+  try {
+    const demoUser = await User.findOne({ email: 'demo@demo.com' });
+    if (!demoUser) {
+      throw new NotFound('Demo user not found');
+    }
+    const token = jwt.sign({ sub: demoUser._id }, secret, { expiresIn: '7d' });
+    return res.json({ message: `Welcome, ${demoUser.username}`, token: token });
+  } catch (err) {
+    return assessError(err, res);
   }
 }

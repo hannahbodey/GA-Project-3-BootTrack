@@ -36,6 +36,11 @@ const seedDatabase = async () => {
           ...day, homeworkUploads: [{ ...day.homeworkUploads[0], owner: createdUsers[0]._id }]
         }
       }
+      if (day.progress) {
+        day = {
+          ...day, progress: [{ ...day.progress[0], owner: createdUsers[0]._id }]
+        }
+      }
       return { ...day }
     })
 

@@ -13,8 +13,8 @@ import NotesSubmission from '../common/NotesSubmission'
 
 const SingleDay = () => {
 
-  const [ day, setDay ] = useState(null)
-  const [ error, setError ] = useState('')
+  const [day, setDay] = useState(null)
+  const [error, setError] = useState('')
   const { dayId } = useParams()
   console.log(dayId)
 
@@ -36,7 +36,7 @@ const SingleDay = () => {
     <main>
       <Container>
         <Row>
-          {day && 
+          {day &&
             <>
               <Col xs='12'>
                 <h1>Week {day.week} Day {day.day}</h1>
@@ -45,7 +45,7 @@ const SingleDay = () => {
               <Col md='6'>
                 <h4>Your image will go here</h4>
                 <h4>Class Notes</h4>
-                { day.classworkDescription.length > 1 ? 
+                {day.classworkDescription.length > 1 ?
                   day.classworkDescription.map(day => {
                     return (
                       <p key={day}>{day}</p>
@@ -57,7 +57,7 @@ const SingleDay = () => {
                   </>
                 }
                 <h4>Homework Instructions</h4>
-                { day.homeworkDescription.length > 1 ? 
+                {day.homeworkDescription.length > 1 ?
                   day.homeworkDescription.map(day => {
                     return (
                       <p key={day}>{day}</p>
@@ -68,7 +68,7 @@ const SingleDay = () => {
                     <p>{day.homeworkDescription}</p>
                   </>
                 }
-                { day.homeworkUploads ?
+                {day.homeworkUploads ?
                   day.homeworkUploads.map(homework => {
                     return (
                       <>
@@ -80,18 +80,36 @@ const SingleDay = () => {
                   : <p>Please submit your homework!</p>
                 }
                 <HomeworkSubmission />
-                { day.classworkNotes ?
+                {day.classworkNotes ?
                   day.classworkNotes.map(note => {
                     return (
                       <>
-                        <p key={note.notesTitle}>Notes Title: {note.notesTitle}</p>
-                        <p key={note.notesDescription}>Notes Description: {note.notesDescription}</p>
+                        <p>Notes:</p>
+                        <p key={note}>Notes Description: {note.notesDescription}</p>
                       </>
                     )
                   })
                   : <p>Please submit your notes!</p>
                 }
                 <NotesSubmission />
+                {day.progress &&
+                  day.progress.map((p, index) => {
+                    const { completed, confidenceRating, bookmarked } = p
+                    return (
+                      <div key={index}>
+                        <h4>Progress:</h4>
+                        <div>
+                          Completed: {completed.toString()}
+                        </div>
+                        <div>
+                          Confidence Rating: {confidenceRating}
+                        </div>
+                        <div>
+                          Bookmarked: {bookmarked.toString()}
+                        </div>
+                      </div>
+                    )
+                  })}
               </Col>
             </>
           }
