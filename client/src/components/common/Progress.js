@@ -15,12 +15,6 @@ const Progress = ({ progress, demoAccount }) => {
     setProgressValues(updatedProgressValues)
   }
 
-  const { completed, confidenceRating, bookmarked } = progress
-
-  console.log(progress[0])
-  console.log(progress[0].completed)
-  console.log(progress[0].confidenceRating)
-
   return (
     <section>
       {progress &&
