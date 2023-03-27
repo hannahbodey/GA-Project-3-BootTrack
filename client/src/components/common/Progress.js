@@ -11,54 +11,15 @@ const Progress = ({ progress, demoAccount }) => {
 
   const handleProgressChange = (field, value) => {
     const updatedProgressValues = [...progressValues]
-    updatedProgressValues[field] = value
+    updatedProgressValues[0][field] = value
     setProgressValues(updatedProgressValues)
   }
 
-
-  //   return (
-  //     <section>
-  //       {progress &&
-  //         progress.map((p, index) => {
-  //           const { completed, confidenceRating, bookmarked } = p
-  //           return (
-  //             <div key={index}>
-  //               <h4>Progress:</h4>
-  //               <div className='progress-value'>
-  //                 Completed:
-  //                 <Form className='completed-switch'>
-  //                   <Form.Check
-  //                     // label="Completed"
-  //                     type="switch"
-  //                     id={`completed-switch-${index}`}
-  //                     checked={completed}
-  //                     onChange={(e) => handleProgressChange(index, 'completed', e.target.checked)}
-  //                   />
-  //                 </Form>
-  //               </div>
-  //               <div className='progress-value'>
-  //                 Confidence Rating: {confidenceRating}
-  //               </div>
-  //               <div className='progress-value'>
-  //                 Bookmarked:
-  //                 <Form className='completed-switch'>
-  //                   <Form.Check
-  //                     // label="Completed"
-  //                     type="switch"
-  //                     id={`completed-switch-${index}`}
-  //                     checked={bookmarked}
-  //                     onChange={(e) => handleProgressChange(index, 'bookmarked', e.target.checked)}
-  //                   />
-  //                 </Form>
-  //               </div>
-  //             </div>
-  //           )
-  //         })}
-  //     </section>
-  //   )
-  // }
-
   const { completed, confidenceRating, bookmarked } = progress
+
+  console.log(progress[0])
+  console.log(progress[0].completed)
+  console.log(progress[0].confidenceRating)
 
   return (
     <section>
@@ -73,13 +34,13 @@ const Progress = ({ progress, demoAccount }) => {
                 className='progress-switch'
                 type='switch'
                 id='completed-switch'
-                checked={completed}
+                checked={progress[0].completed}
                 onChange={(e) => handleProgressChange('completed', e.target.checked)}
               />
             </Form>
           </div>
           <div className='progress-value'>
-            Confidence Rating: {confidenceRating}
+            Confidence Rating: {progress[0].confidenceRating}
           </div>
           <div className='progress-value'>
             Bookmarked:
@@ -89,7 +50,7 @@ const Progress = ({ progress, demoAccount }) => {
                 className='--bs-red'
                 type='switch'
                 id='bookmarked-switch'
-                checked={bookmarked}
+                checked={progress[0].bookmarked}
                 onChange={(e) => handleProgressChange('bookmarked', e.target.checked)}
               />
             </Form>
