@@ -1,0 +1,17 @@
+
+
+.day {
+  margin-bottom: 1.5rem;
+  a {
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+  }
+  .card {
+    overflow: hidden;
+    .card-body {
+      background-color: $overlay;
+      box-shadow: 30px 3px #000;
+    }
+  }
+}

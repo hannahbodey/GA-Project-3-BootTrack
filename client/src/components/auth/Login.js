@@ -59,8 +59,8 @@ const Login = () => {
   }
 
   return (
-    <main className='form-page'>
-      <form onSubmit={handleSubmit}>
+    <main className='form-page main-container'>
+      <form className='form-submission' onSubmit={handleSubmit}>
         <h1>Login In Now!</h1>
         {/* Email */}
         <label htmlFor='email'>Email</label>
@@ -68,11 +68,11 @@ const Login = () => {
         {/* Password */}
         <label htmlFor='password'>Password</label>
         <input type='password' name='password' placeholder='Password' onChange={handleChange} value={formFields.password} />
-        <button className='button'>Login</button>
+        <button className='red-button'>Login</button>
         {error && <p className='text-danger text-center'>{error}</p>}
+        <button className='red-button' onClick={loginDemo}>Try Demo Account!</button>
+        <button className='red-button' onClick={loginJane}>Log in as Jane</button>
       </form>
-      <button onClick={loginDemo}>Try Demo Account!</button>
-      <button onClick={loginJane}>Log in as Jane</button>
     </main>
   )
 }

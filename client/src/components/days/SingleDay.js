@@ -33,7 +33,7 @@ const SingleDay = () => {
   }, [dayId])
 
   return (
-    <main>
+    <main className='main-container'>
       <Container>
         <Row>
           {day &&
