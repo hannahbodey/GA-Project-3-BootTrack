@@ -23,7 +23,7 @@ export const modifyClassNotes = async (req, res) => {
     // If a note is not found with the users ID, we will create one
     if (!userClassNotes) {
       // If both fields are not being submitted in the request, then we error as both are required for creation
-      if (!notesTitle || !notesDescription) throw new Error('Missing fields')
+      if (!notesDescription) throw new Error('Missing field')
       // If both fields are submitted, we create the note and assign the users ID as the 'owner'
       const newUserClassNotes = {
         notesTitle,

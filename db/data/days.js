@@ -951,6 +951,7 @@ export default [
     ],
     progress: [{
         completed: false,
+        confidenceRating: 0,
         bookmarked: false,
       }]
   },
@@ -967,6 +968,7 @@ export default [
     ],
     progress: [{
         completed: false,
+        confidenceRating: 0,
         bookmarked: false,
       }]
   },
@@ -983,6 +985,7 @@ export default [
     ],
     progress: [{
         completed: false,
+        confidenceRating: 0,
         bookmarked: false,
       }]
   },
@@ -999,6 +1002,7 @@ export default [
     ],
     progress: [{
         completed: false,
+        confidenceRating: 0,
         bookmarked: false,
       }]
   },
@@ -1015,6 +1019,7 @@ export default [
     ],
     progress: [{
         completed: false,
+        confidenceRating: 0,
         bookmarked: false,
       }]
   },
@@ -1031,6 +1036,7 @@ export default [
     ],
     progress: [{
         completed: false,
+        confidenceRating: 0,
         bookmarked: false,
       }]
   },
@@ -1049,6 +1055,7 @@ export default [
     ],
     progress: [{
         completed: false,
+        confidenceRating: 0,
         bookmarked: false,
       }]
   },
@@ -1065,6 +1072,7 @@ export default [
     ],
     progress: [{
         completed: false,
+        confidenceRating: 0,
         bookmarked: false,
       }]
   },
@@ -1081,6 +1089,7 @@ export default [
     ],
     progress: [{
         completed: false,
+        confidenceRating: 0,
         bookmarked: false,
       }]
   },
@@ -1097,6 +1106,7 @@ export default [
     ],
     progress: [{
         completed: false,
+        confidenceRating: 0,
         bookmarked: false,
       }]
   },
@@ -1113,6 +1123,7 @@ export default [
     ],
     progress: [{
         completed: false,
+        confidenceRating: 0,
         bookmarked: false,
       }]
   },
@@ -1129,6 +1140,7 @@ export default [
     ],
     progress: [{
         completed: false,
+        confidenceRating: 0,
         bookmarked: false,
       }]
   },
@@ -1145,6 +1157,7 @@ export default [
     ],
     progress: [{
         completed: false,
+        confidenceRating: 0,
         bookmarked: false,
       }]
   },
@@ -1161,6 +1174,7 @@ export default [
     ],
     progress: [{
         completed: false,
+        confidenceRating: 0,
         bookmarked: false,
       }]
   },
@@ -1178,6 +1192,7 @@ export default [
     ],
     progress: [{
         completed: false,
+        confidenceRating: 0,
         bookmarked: false,
       }]
   }
