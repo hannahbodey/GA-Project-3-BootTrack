@@ -7,6 +7,7 @@ import Error from '../common/Error'
 import { userTokenFunction } from '../../helpers/auth'
 
 import HomeworkSubmission from '../common/HomeworkSubmission'
+import Progress from '../common/Progress'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -93,24 +94,7 @@ const SingleDay = () => {
                   { homeworkForm.homeworkLink ? <img src={homeworkForm.homeworkLink} /> : <input type="file" onChange={handleUpload}/> }
                   <button className='red-button'>Submit Homework</button>
                 </form>
-                {day.progress &&
-                  day.progress.map((p, index) => {
-                    const { completed, confidenceRating, bookmarked } = p
-                    return (
-                      <div key={index}>
-                        <h4>Progress:</h4>
-                        <div>
-                          Completed: {completed.toString()}
-                        </div>
-                        <div>
-                          Confidence Rating: {confidenceRating}
-                        </div>
-                        <div>
-                          Bookmarked: {bookmarked.toString()}
-                        </div>
-                      </div>
-                    )
-                  })}
+                <Progress progress={day.progress} demoAccount={demoAccount}/>
               </Col>
               <Col lg='6' md= '6' sm='12'>
                 <h4>Class Notes</h4>
@@ -161,24 +145,6 @@ const SingleDay = () => {
                   : <p>Please submit your notes!</p>
                 } */}
                 <NotesSubmission notes={day.classworkNotes} demoAccount={demoAccount}/>
-                {day.progress &&
-                  day.progress.map((p, index) => {
-                    const { completed, confidenceRating, bookmarked } = p
-                    return (
-                      <div key={index}>
-                        <h4>Progress:</h4>
-                        <div>
-                          Completed: {completed ? '🟢' : '🔴'}
-                        </div>
-                        <div>
-                          Confidence Rating: {confidenceRating}
-                        </div>
-                        <div>
-                          Bookmarked: {bookmarked ? '🟢' : '🔴'}
-                        </div>
-                      </div>
-                    )
-                  })}
               </Col>
             </>
             :
