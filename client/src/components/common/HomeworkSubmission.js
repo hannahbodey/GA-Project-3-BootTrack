@@ -7,9 +7,9 @@ import { userTokenFunction } from '../../helpers/auth'
 const HomeworkSubmission = () => {
 
   const [ submission, setSubmission ] = useState({
-    homeworkTitle: '',
     homeworkLink: '',
   })
+  
   const [ error, setError ] = useState('')
 
   const { dayId } = useParams()
@@ -34,7 +34,7 @@ const HomeworkSubmission = () => {
   return (
     <section>
       <form onSubmit={handleSubmit}>
-        <input type='text' name='homeworkTitle' id='homeworkTitle' placeholder='Name your homework' onChange={handleChange} value={submission.homeworkTitle}/>
+        {/* <input type='text' name='homeworkTitle' id='homeworkTitle' placeholder='Name your homework' onChange={handleChange} value={submission.homeworkTitle}/> */}
         <input type='text' name='homeworkLink' id='homeworkLink' placeholder='Drop your homework here!' onChange={handleChange} value={submission.homeworkLink}/>
         <button className='button'>Submit your homework!</button>
       </form>

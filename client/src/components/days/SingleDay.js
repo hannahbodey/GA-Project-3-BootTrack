@@ -2,6 +2,8 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
+import Error from '../common/Error'
+
 import { userTokenFunction } from '../../helpers/auth'
 
 import HomeworkSubmission from '../common/HomeworkSubmission'
@@ -10,6 +12,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import NotesSubmission from '../common/NotesSubmission'
+
 
 const SingleDay = () => {
 
@@ -36,7 +39,7 @@ const SingleDay = () => {
     <main>
       <Container>
         <Row>
-          {day &&
+          {day ?
             <>
               <Col xs='12'>
                 <h1>Week {day.week} Day {day.day}</h1>
@@ -72,26 +75,26 @@ const SingleDay = () => {
                   day.homeworkUploads.map(homework => {
                     return (
                       <>
-                        <p key={homework.homeworkTitle}>Homework Title: {homework.homeworkTitle}</p>
-                        <p key={homework.homeworkLink}>Homework Link: {homework.homeworkLink}</p>
+                        <p>Homework Image:</p>
+                        <p key={homework.homeworkLink}>{homework.homeworkLink}</p>
                       </>
                     )
                   })
                   : <p>Please submit your homework!</p>
                 }
                 <HomeworkSubmission />
-                {day.classworkNotes ?
+                {/* {day.classworkNotes ?
                   day.classworkNotes.map(note => {
                     return (
                       <>
                         <p>Notes:</p>
-                        <p key={note}>Notes Description: {note.notesDescription}</p>
+                        <p key={note}>{note.notesDescription}</p>
                       </>
                     )
                   })
                   : <p>Please submit your notes!</p>
-                }
-                <NotesSubmission />
+                } */}
+                <NotesSubmission notes={day.classworkNotes} />
                 {day.progress &&
                   day.progress.map((p, index) => {
                     const { completed, confidenceRating, bookmarked } = p
@@ -111,6 +114,10 @@ const SingleDay = () => {
                     )
                   })}
               </Col>
+            </>
+            :
+            <>
+              <Error error={error} />
             </>
           }
         </Row>

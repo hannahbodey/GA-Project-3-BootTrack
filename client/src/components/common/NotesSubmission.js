@@ -4,13 +4,21 @@ import { useParams } from 'react-router-dom'
 
 import { userTokenFunction } from '../../helpers/auth'
 
-const NotesSubmission = () => {
+const NotesSubmission = ({ notes }) => {
 
-  const [ submission, setSubmission ] = useState({
-    notesTitle: '',
+  const [submission, setSubmission] = useState({
     notesDescription: '',
   })
-  const [ error, setError ] = useState('')
+  const [error, setError] = useState('')
+  const [editMode, setEditMode] = useState(false)
+
+  useEffect(() => {
+    console.log(notes[0])
+    if (notes && notes.length > 0) {
+      setSubmission(notes[0])
+    }
+  }, [notes])
+
 
   const { dayId } = useParams()
 
@@ -25,22 +33,38 @@ const NotesSubmission = () => {
     try {
       const userToken = userTokenFunction()
       const { data } = await axios.put(`/api/days/${dayId}/notes`, submission, userToken)
+      setEditMode(false)
     } catch (error) {
       console.log(error)
       setError(error.response.data.message)
     }
   }
 
+  const handleEditClick = () => {
+    setEditMode(!editMode)
+  }
+
   return (
     <section>
-      <form onSubmit={handleSubmit}>
-        <input type='text' name='notesTitle' id='notesTitle' placeholder='Name your notes' onChange={handleChange} value={submission.notesTitle}/>
-        <input type='text' name='notesDescription' id='notesDescription' placeholder='Drop your notes here!' onChange={handleChange} value={submission.notesDescription}/>
-        <button className='button'>Submit your notes!</button>
-      </form>
-    </section>
+      <h4>Notes</h4>
+      {editMode ? (
+        <form onSubmit={handleSubmit} className='notesSection'>
+          <textarea cols="50" rows="15" style={{ resize: 'none', display: 'block' }} name='notesDescription' id='notesDescription' placeholder='Type your notes here!' onChange={handleChange} value={submission.notesDescription}></textarea>
+          <button className='button'>Save</button>
+        </form>
+      )
+        :
+        (
+          <>
+            <div>
+              <textarea className='viewText' cols="50" rows="15" readOnly name='notesDescription' id='notesDescription' placeholder="Click 'Edit' to add a note!" onChange={handleChange} value={submission.notesDescription}></textarea>
+              <button className='button' onClick={handleEditClick}>Edit</button>
+            </div>
+          </>
+        )
+      }
+    </section >
   )
-
 }
 
 export default NotesSubmission
