@@ -48,9 +48,10 @@ const Progress = ({ progress, demoAccount }) => {
             </Form>
           </div>
           <div className='progress-value'>
-            Confidence Rating:
+            Confidence:
             <Form>
               <Form.Select
+                classname={'progress-confidence'}
                 value={progress[0] && progress[0].confidenceRating}
                 onChange={(e) => handleProgressChange('confidenceRating', e.target.value)}
               >
@@ -58,8 +59,8 @@ const Progress = ({ progress, demoAccount }) => {
                 <option value="1">1 - Very Low</option>
                 <option value="2">2 - Low</option>
                 <option value="3">3 - Medium</option>
-                <option value="3">4 - High</option>
-                <option value="3">5 - Very High</option>
+                <option value="4">4 - High</option>
+                <option value="5">5 - Very High</option>
               </Form.Select>
             </Form>
           </div>
@@ -67,7 +68,7 @@ const Progress = ({ progress, demoAccount }) => {
             Bookmarked:
             <Form>
               <Form.Check
-                className='--bs-red'
+                className='progress-bookmarked'
                 type='switch'
                 id='bookmarked-switch'
                 checked={progress[0] && progress[0].bookmarked}

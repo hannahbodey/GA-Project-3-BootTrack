@@ -6,7 +6,6 @@ import Error from '../common/Error'
 
 import { userTokenFunction } from '../../helpers/auth'
 
-import HomeworkSubmission from '../common/HomeworkSubmission'
 import HomeworkUpload from '../common/HomeworkUpload'
 import Progress from '../common/Progress'
 
@@ -88,7 +87,7 @@ const SingleDay = () => {
                     <p>{day.homeworkDescription}</p>
                   </>
                 }
-                <HomeworkSubmission />
+                {/* <HomeworkSubmission /> */}
                 <NotesSubmission notes={day.classworkNotes} demoAccount={demoAccount}/>
               </Col>
             </>
