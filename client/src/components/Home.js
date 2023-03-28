@@ -16,9 +16,9 @@ const Home = () => {
           <h4>Your Dashboard Overview</h4>
         </div>
         <div className="hero">Call to action! <span>Sign Up to Join</span>
-          <Button to="/register" as={Link} className='btn-register'>Register</Button>
+          <button onClick= '/register' className='btn-register'>Register</button>
           <h5>If you are already registered</h5>
-          <Button to="/login" as={Link} className='btn-login'>Login</Button>
+          <button onClick='/login' className='btn-login'>Login</button>
         </div>
         <div className="overView">
           <img src={test} alt="All days overview" />
