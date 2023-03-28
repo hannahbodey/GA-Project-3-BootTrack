@@ -52,7 +52,7 @@ const Progress = ({ progress, demoAccount }) => {
             Confidence:
             <Form>
               <Form.Select
-                classname={'progress-confidence'}
+                className={'progress-confidence'}
                 value={progress[0] && progress[0].confidenceRating}
                 onChange={(e) => handleProgressChange('confidenceRating', e.target.value)}
                 disabled={demoAccount}
