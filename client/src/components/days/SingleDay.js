@@ -36,6 +36,15 @@ const SingleDay = () => {
         setError(error.response.data.message)
       }
     }
+    const checkDemo = async () => {
+      try {
+        const userToken = userTokenFunction()
+        const { data } = await axios.get('/api/user', userToken)
+        setDemoAccount(data.isDemo)
+      } catch (error) {
+        console.log(error)
+      }
+    }
     getDay()
     checkDemo()
   }, [dayId])
