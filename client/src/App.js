@@ -1,6 +1,3 @@
-import { useEffect } from 'react'
-import axios from 'axios'
-
 //Components in Use
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './components/Home'
@@ -10,6 +7,7 @@ import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import PageNotFound from './components/common/PageNotFound'
 import PageNavBar from './components/common/PageNavBar'
+import ProfileView from './components/days/ProfileView'
 
 const App = () => {
   return (
@@ -22,6 +20,7 @@ const App = () => {
           <Route path='/days/:dayId' element={<SingleDay />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/profile' element={<ProfileView />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
