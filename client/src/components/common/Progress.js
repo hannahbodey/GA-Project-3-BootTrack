@@ -17,6 +17,7 @@ const Progress = ({ progress, demoAccount }) => {
   const [progressValues, setProgressValues] = useState(progress)
 
   const handleProgressChange = async (field, value) => {
+    console.log('value', value)
     const updatedProgressValues = [...progressValues]
     updatedProgressValues[0][field] = value
     setProgressValues(updatedProgressValues)
@@ -47,7 +48,20 @@ const Progress = ({ progress, demoAccount }) => {
             </Form>
           </div>
           <div className='progress-value'>
-            Confidence Rating: {progress[0] && progress[0].confidenceRating}
+            Confidence Rating:
+            <Form>
+              <Form.Select
+                value={progress[0] && progress[0].confidenceRating}
+                onChange={(e) => handleProgressChange('confidenceRating', e.target.value)}
+              >
+                <option value="0">Select a rating</option>
+                <option value="1">1 - Very Low</option>
+                <option value="2">2 - Low</option>
+                <option value="3">3 - Medium</option>
+                <option value="3">4 - High</option>
+                <option value="3">5 - Very High</option>
+              </Form.Select>
+            </Form>
           </div>
           <div className='progress-value'>
             Bookmarked:
