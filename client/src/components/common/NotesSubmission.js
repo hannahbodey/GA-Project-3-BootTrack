@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 
 import { userTokenFunction } from '../../helpers/auth'
 
-const NotesSubmission = ({ notes }) => {
+const NotesSubmission = ({ notes, demoAccount }) => {
 
   const [submission, setSubmission] = useState({
     notesDescription: '',
@@ -19,7 +19,7 @@ const NotesSubmission = ({ notes }) => {
     }
   }, [notes])
 
-
+  console.log(demoAccount)
   const { dayId } = useParams()
 
   const handleChange = (e) => {
@@ -50,7 +50,7 @@ const NotesSubmission = ({ notes }) => {
       {editMode ? (
         <form onSubmit={handleSubmit} className='notesSection'>
           <textarea cols="50" rows="15" style={{ resize: 'none', display: 'block' }} name='notesDescription' id='notesDescription' placeholder='Type your notes here!' onChange={handleChange} value={submission.notesDescription}></textarea>
-          <button className='button'>Save</button>
+          <button className='button' disabled={demoAccount}>Save</button>
         </form>
       )
         :
@@ -58,7 +58,7 @@ const NotesSubmission = ({ notes }) => {
           <>
             <div>
               <textarea className='viewText' cols="50" rows="15" readOnly name='notesDescription' id='notesDescription' placeholder="Click 'Edit' to add a note!" onChange={handleChange} value={submission.notesDescription}></textarea>
-              <button className='button' onClick={handleEditClick}>Edit</button>
+              <button className='button' onClick={handleEditClick} disabled={demoAccount}>Edit</button>
             </div>
           </>
         )

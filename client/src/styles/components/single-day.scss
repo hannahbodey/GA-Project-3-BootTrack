@@ -9,3 +9,28 @@
   overflow: auto;
   display: block;
 }
+
+.progress-value {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.form-check-input:checked {
+  background-color: red !important;
+  border-color: red !important;
+}
+
+.form-check-input:focus {
+  border-color: red !important;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(149, 149, 146, 0.25) !important;
+}
+
+.form-switch .form-check-input:not(:checked):focus {
+  --bs-form-switch-bg: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%27-4 -4 8 8%27%3e%3ccircle r=%273%27 fill=%27rgba%280, 0, 0, 0.25%29%27/%3e%3c/svg%3e') !important;
+}
+
+.form-switch .form-check-input:checked:focus {
+  --bs-form-switch-bg: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%27-4 -4 8 8%27%3e%3ccircle r=%273%27 fill=%27%23ffffff%27/%3e%3c/svg%3e') !important;
+}

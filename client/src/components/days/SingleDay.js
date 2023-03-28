@@ -8,6 +8,7 @@ import { userTokenFunction } from '../../helpers/auth'
 
 import HomeworkSubmission from '../common/HomeworkSubmission'
 import HomeworkUpload from '../common/HomeworkUpload'
+import Progress from '../common/Progress'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -19,6 +20,7 @@ const SingleDay = () => {
 
   const [day, setDay] = useState(null)
   const [error, setError] = useState('')
+  const [demoAccount, setDemoAccount] = useState(false)
 
   const { dayId } = useParams()
   console.log(dayId)
@@ -35,6 +37,7 @@ const SingleDay = () => {
       }
     }
     getDay()
+    checkDemo()
   }, [dayId])
 
   return (
@@ -116,7 +119,7 @@ const SingleDay = () => {
                   })
                   : <p>Please submit your notes!</p>
                 } */}
-                <NotesSubmission notes={day.classworkNotes} />
+                <NotesSubmission notes={day.classworkNotes} demoAccount={demoAccount}/>
               </Col>
             </>
             :

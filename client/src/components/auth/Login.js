@@ -70,6 +70,7 @@ const Login = () => {
         <input type='password' name='password' placeholder='Password' onChange={handleChange} value={formFields.password} />
         <button className='red-button'>Login</button>
         {error && <p className='text-danger text-center'>{error}</p>}
+        {/*  ! Demo Button would need to sit outside the form, to prevent it being caught within the form submit */}
         <button className='red-button' onClick={loginDemo}>Try Demo Account!</button>
         <button className='red-button' onClick={loginJane}>Log in as Jane</button>
       </form>
