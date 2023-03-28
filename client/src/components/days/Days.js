@@ -55,7 +55,6 @@ const Days = () => {
                         <Card.Text>Week: {week} - Day: {day}</Card.Text>
                         <Card.Text>Topic: {topicTitle}</Card.Text>
                         {progress && progress.length > 0 && progress[0].completed === false ? <Card.Text>🔴</Card.Text> : <Card.Text>🟢</Card.Text>}
-                        {/* {progress[0].completed === true && } */}
                       </Card.Body>
                     </Card>
                   </Link>
