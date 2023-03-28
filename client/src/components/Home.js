@@ -1,8 +1,8 @@
 import Container from 'react-bootstrap/Container'
-import { Stack } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 
+import test from '../images/test.png'
 
 
 
@@ -12,17 +12,20 @@ const Home = () => {
 
     <main className="home">
       <Container>
-        <div className="hero">
-          <h1 className='display-4'>🏠Home page</h1>
+        <div className="title">
+          <h4>Your Dashboard Overview</h4>
         </div>
-        <Container className= "hero">
-          <div className= "vstack gap-2">
-            <div className="bg-light border">Call to action - Sign Up to Join</div>
-            <Button to="#" as={Link} className='btn-register'>Register</Button>
-          </div>
-        </Container>
+        <div className="hero">Call to action! <span>Sign Up to Join</span>
+          <Button to="/register" as={Link} className='btn-register'>Register</Button>
+          <h5>If you are already registered</h5>
+          <Button to="/login" as={Link} className='btn-login'>Login</Button>
+        </div>
+        <div className="overView">
+          <img src={test} alt="All days overview" />
+        </div>
       </Container>
-    </main>
+
+    </main >
 
  
   )

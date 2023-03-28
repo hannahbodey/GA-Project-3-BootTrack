@@ -1,15 +1,37 @@
 .home {
-  /*@extend %flex-center;*/
-  background-color: white;
-  .hero {
-    text-align: center;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-  }
+  @extend %flex-center;
+  background-color: $background;
 }
+.title{
+  margin: 0;
+  color: $button;
+}
+  .hero {
+    
+      float: right;
+      display: flex;
+      flex-direction: column;
+      text-align:center;
+      padding: 20px;
+      background-color: $overlay;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      max-width: 60%;
+     /* max-height: 50%;*/
+  
+  }
 
-.btn-register{
+span{
+  color: $button;
+}
+.call-to-action{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.btn-register, .btn-login{
+  width: 70%;
   background-color: red;
   color: #fff;
   border-radius: 5px;
@@ -18,4 +40,12 @@
     background-color: darken(grey, 8%) !important;
     color: red;
   }
+}
+.overView{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 50%;
+  border-color: $button;
+
 }
