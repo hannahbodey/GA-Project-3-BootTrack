@@ -61,24 +61,7 @@ const SingleDay = () => {
               </Col>
               <Col lg='6' md='6' sm='12'>
                 <HomeworkUpload />
-                {day.progress &&
-                  day.progress.map((p, index) => {
-                    const { completed, confidenceRating, bookmarked } = p
-                    return (
-                      <div key={index}>
-                        <h4>Progress:</h4>
-                        <div>
-                          Completed: {completed.toString()}
-                        </div>
-                        <div>
-                          Confidence Rating: {confidenceRating}
-                        </div>
-                        <div>
-                          Bookmarked: {bookmarked.toString()}
-                        </div>
-                      </div>
-                    )
-                  })}
+                <Progress progress={day.progress} demoAccount={demoAccount}/>
               </Col>
               <Col lg='6' md= '6' sm='12'>
                 <h4>Class Notes</h4>
