@@ -24,15 +24,6 @@
       background-color: lighten($overlay, 10%);
       transform: scale(1);
       transition: transform 2s;
-      // &:active {
-      //   animation-name: zoom;
-      //   animation-duration: 0.2s;
-      //   // position: absolute;
-      //   @keyframes zoom {
-      //     from {transform:scale(1)}
-      //     to {transform:scale(3)}
-      //   }
-      // }
     }
     .focus {
       transform: scale(1.8);
@@ -45,15 +36,6 @@
       justify-content: baseline;
       text-overflow: ellipsis;
       overflow: hidden;
-      //white-space: nowrap;
     }
-    // .scroll {
-    //   overflow-y: scroll;
-    //   height: 300px;
-    //   scroll-behavior: auto;
-    //   scrollbar-color: auto;
-    //   scroll-snap-type: y mandatory;
-    //   scroll-snap-align: start;
-    // }
     }
   }
