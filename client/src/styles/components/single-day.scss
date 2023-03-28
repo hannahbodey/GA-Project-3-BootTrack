@@ -6,6 +6,7 @@
   img {
     max-width: 30vw;
   }
+
   .image-input {
     padding: 10px 5px;
 
@@ -31,6 +32,12 @@
 .form-check-input:checked {
   background-color: $button !important;
   border-color: $button !important;
+}
+
+.homework-image {
+  width: 500px;
+  height: 300px;
+  display: block;
 }
 
 .form-check-input:focus {

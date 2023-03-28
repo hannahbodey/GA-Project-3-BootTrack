@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { userTokenFunction } from '../../helpers/auth'
@@ -11,6 +11,12 @@ const HomeworkUpload = ({ day, demoAccount }) => {
     homeworkLink: '',
   })
   const [error, setError] = useState('')
+  const [showRemoveButton, setShowRemoveButton] = useState(!!day.homeworkUploads[0])
+  const [isDeleted, setIsDeleted] = useState(false)
+
+  useEffect(() => {
+    setIsDeleted(false)
+  }, [day])
 
   const handleUpload = async (e) => {
     const image = e.target.files[0]
@@ -34,17 +40,32 @@ const HomeworkUpload = ({ day, demoAccount }) => {
     try {
       const userToken = userTokenFunction()
       const { data } = await axios.put(`/api/days/${dayId}/homework`, homeworkForm, userToken)
+      setShowRemoveButton(true)
     } catch (error) {
       console.log(error)
       setError(error.response.data.message)
     }
   }
+
+  const handleDelete = async () => {
+    try {
+      const userToken = userTokenFunction()
+      await axios.delete(`/api/days/${dayId}/homework`, userToken)
+      setHomeworkForm({ homeworkLink: '' })
+      setShowRemoveButton(false)
+      setIsDeleted(true)
+    } catch (error) {
+      console.log(error)
+      setError(error.response.data.message)
+    }
+  }
+
   return (
     <form className='image-field' onSubmit={handleSubmit}>
       <h4>Homework Uploads:</h4>
-      {/* { homeworkForm.homeworkLink ? <img src={homeworkForm.homeworkLink} /> : <input type="file" onChange={handleUpload}/> } */}
-      {homeworkForm.homeworkLink ? <img src={homeworkForm.homeworkLink} /> : (day.homeworkUploads[0] ? <img src={day.homeworkUploads[0].homeworkLink} /> : <input className='image-input' type="file" onChange={handleUpload} disabled={demoAccount} />)}
-      {homeworkForm.homeworkLink && <button className='red-button'>Submit Homework</button>}
+      {homeworkForm.homeworkLink ? <img src={homeworkForm.homeworkLink} className={'homework-image'} /> : !isDeleted && day.homeworkUploads[0] ? <img src={day.homeworkUploads[0].homeworkLink} /> : <input className='image-input' type="file" onChange={handleUpload} disabled={demoAccount} />}
+      {homeworkForm.homeworkLink && !showRemoveButton && <button className='orange-button'>Submit Homework</button>}
+      {showRemoveButton && <button className='red-button' onClick={handleDelete} type="button">Remove</button>}
     </form>
   )
 }
