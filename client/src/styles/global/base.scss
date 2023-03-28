@@ -66,3 +66,16 @@ main {
     cursor: pointer;
   }
 }
+
+.green-button {
+  background-color: rgb(14, 150, 14);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 8px 15px;
+  &:hover, &:active {
+    background-color: lighten(rgb(14, 150, 14), 8%);
+    color: #fff;
+    cursor: pointer;
+  }
+}

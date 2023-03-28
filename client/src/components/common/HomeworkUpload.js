@@ -47,6 +47,10 @@ const HomeworkUpload = ({ day, demoAccount }) => {
     }
   }
 
+  const handleClear = async () => {
+    setHomeworkForm({ homeworkLink: '' })
+  }
+
   const handleDelete = async () => {
     try {
       const userToken = userTokenFunction()
@@ -63,9 +67,14 @@ const HomeworkUpload = ({ day, demoAccount }) => {
   return (
     <form className='image-field' onSubmit={handleSubmit}>
       <h4>Homework Uploads:</h4>
-      {homeworkForm.homeworkLink ? <img src={homeworkForm.homeworkLink} className={'homework-image'} /> : !isDeleted && day.homeworkUploads[0] ? <img src={day.homeworkUploads[0].homeworkLink} /> : <input className='image-input' type="file" onChange={handleUpload} disabled={demoAccount} />}
-      {homeworkForm.homeworkLink && !showRemoveButton && <button className='orange-button'>Submit Homework</button>}
-      {showRemoveButton && <button className='red-button' onClick={handleDelete} type="button">Remove</button>}
+      {homeworkForm.homeworkLink ? <img src={homeworkForm.homeworkLink} className={'homework-image'} /> : !isDeleted && day.homeworkUploads[0] ? <img src={day.homeworkUploads[0].homeworkLink} className={'homework-image'} /> : <input className='image-input' type="file" onChange={handleUpload} disabled={demoAccount} />}
+      {homeworkForm.homeworkLink && !showRemoveButton && (
+        <>
+          <button className='green-button'>Upload Image</button>
+          <button className='orange-button' onClick={handleClear} type="button">Discard Image</button>
+        </>
+      )}
+      {showRemoveButton && <button className='red-button' onClick={handleDelete} type="button">Remove Image</button>}
     </form>
   )
 }
