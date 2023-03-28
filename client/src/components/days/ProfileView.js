@@ -43,7 +43,7 @@ const ProfileView = () => {
             // {/* <Card.Body> */}
             <>
               {day.homeworkUploads.length > 0 && <img key={index} src={day.homeworkUploads[0].homeworkLink} className='homework-image' onClick={handleFocus}/>}
-              {day.classworkNotes.length > 0 && <p key={index} className='homework-image text-box' onClick={handleFocus} onScroll={handleScroll}>{day.classworkNotes[0].notesDescription}</p>}
+              {day.classworkNotes.length > 0 && <p key={index} className='homework-image text-box overflow-auto' onClick={handleFocus} onScroll={handleScroll}>{day.classworkNotes[0].notesDescription}</p>}
             </>
             
           // {/* </Card.Body> */}

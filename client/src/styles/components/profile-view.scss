@@ -46,15 +46,14 @@
       text-overflow: ellipsis;
       overflow: hidden;
       //white-space: nowrap;
-      text-overflow: ellipsis;
     }
-    .scroll {
-      overflow-y: scroll;
-      height: 300px;
-      scroll-behavior: auto;
-      scrollbar-color: auto;
-      scroll-snap-type: y mandatory;
-      scroll-snap-align: start;
-    }
+    // .scroll {
+    //   overflow-y: scroll;
+    //   height: 300px;
+    //   scroll-behavior: auto;
+    //   scrollbar-color: auto;
+    //   scroll-snap-type: y mandatory;
+    //   scroll-snap-align: start;
+    // }
     }
   }
