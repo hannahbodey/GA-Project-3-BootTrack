@@ -9,7 +9,7 @@ export const modifyProgress = async (req, res) => {
     }
     const stringLoggedInUserId = req.loggedInUser._id.toString()
     const { dayId } = req.params
-    const { completed, confidenceRating, bookmarked } = req.body
+    const { completed, confidenceRating, bookmarked } = req.body[0]
     const day = await Day.findById(dayId)
     if (!day) {
       throw new NotFound('Day not found')
@@ -33,6 +33,7 @@ export const modifyProgress = async (req, res) => {
     const filteredDay = filterDayByUser(day, req.loggedInUser._id)
     return res.status(200).json(filteredDay)
   } catch (err) {
+    console.log(err)
     return assessError(err, res)
   }
 }

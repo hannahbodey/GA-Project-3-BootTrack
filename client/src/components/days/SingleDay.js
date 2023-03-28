@@ -105,29 +105,7 @@ const SingleDay = () => {
                     <p>{day.homeworkDescription}</p>
                   </>
                 }
-                {day.homeworkUploads ?
-                  day.homeworkUploads.map(homework => {
-                    return (
-                      <>
-                        <p>Homework Image:</p>
-                        <p key={homework.homeworkLink}>{homework.homeworkLink}</p>
-                      </>
-                    )
-                  })
-                  : <p>Please submit your homework!</p>
-                }
                 <HomeworkSubmission />
-                {/* {day.classworkNotes ?
-                  day.classworkNotes.map(note => {
-                    return (
-                      <>
-                        <p>Notes:</p>
-                        <p key={note}>{note.notesDescription}</p>
-                      </>
-                    )
-                  })
-                  : <p>Please submit your notes!</p>
-                } */}
                 <NotesSubmission notes={day.classworkNotes} demoAccount={demoAccount}/>
               </Col>
             </>
