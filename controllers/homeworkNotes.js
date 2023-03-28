@@ -24,7 +24,6 @@ export const modifyHomework = async (req, res) => {
       }
       day.homeworkUploads.push(newUserHomework)
     } else {
-      userHomework.homeworkTitle = homeworkTitle || userHomework.homeworkTitle
       userHomework.homeworkLink = homeworkLink || userHomework.homeworkLink
     }
     await day.save()

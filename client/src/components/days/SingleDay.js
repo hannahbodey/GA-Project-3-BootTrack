@@ -48,7 +48,7 @@ const SingleDay = () => {
     }
     getDay()
     checkDemo()
-  }, [dayId])
+  }, [dayId ])
 
   const handleUpload = async (e) => {
     const image = e.target.files[0]
@@ -91,7 +91,8 @@ const SingleDay = () => {
               <Col lg='6' md='6' sm='12'>
                 <form className='image-field' onSubmit={handleSubmit}>
                   <label>Homework Uploads</label>
-                  { homeworkForm.homeworkLink ? <img src={homeworkForm.homeworkLink} /> : <input type="file" onChange={handleUpload}/> }
+                  {/* { homeworkForm.homeworkLink ? <img src={homeworkForm.homeworkLink} /> : <input type="file" onChange={handleUpload}/> } */}
+                  { homeworkForm.homeworkLink ? <img src={homeworkForm.homeworkLink} /> : (day.homeworkUploads[0] ? <img src={day.homeworkUploads[0].homeworkLink} /> : <input type="file" onChange={handleUpload}/>) }
                   <button className='red-button'>Submit Homework</button>
                 </form>
                 <Progress progress={day.progress} demoAccount={demoAccount}/>
@@ -121,29 +122,7 @@ const SingleDay = () => {
                     <p>{day.homeworkDescription}</p>
                   </>
                 }
-                {day.homeworkUploads ?
-                  day.homeworkUploads.map(homework => {
-                    return (
-                      <>
-                        <p>Homework Image:</p>
-                        <p key={homework.homeworkLink}>{homework.homeworkLink}</p>
-                      </>
-                    )
-                  })
-                  : <p>Please submit your homework!</p>
-                }
                 <HomeworkSubmission />
-                {/* {day.classworkNotes ?
-                  day.classworkNotes.map(note => {
-                    return (
-                      <>
-                        <p>Notes:</p>
-                        <p key={note}>{note.notesDescription}</p>
-                      </>
-                    )
-                  })
-                  : <p>Please submit your notes!</p>
-                } */}
                 <NotesSubmission notes={day.classworkNotes} demoAccount={demoAccount}/>
               </Col>
             </>

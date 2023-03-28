@@ -38,7 +38,7 @@ const seedDatabase = async () => {
       }
       if (day.progress) {
         day = {
-          ...day, progress: [{ ...day.progress[0], owner: createdUsers[0]._id }]
+          ...day, progress: [{ ...day.progress[0], owner: createdUsers[0]._id }, { ...day.progress[1], completed: false, confidenceRating: 0, bookmarked: false, owner: createdUsers[1]._id }]
         }
       }
       return { ...day }
