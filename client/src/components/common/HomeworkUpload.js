@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { userTokenFunction } from '../../helpers/auth'
 
-const HomeworkUpload = () => {
+const HomeworkUpload = ({ day }) => {
 
   const { dayId } = useParams()
 
@@ -42,7 +42,8 @@ const HomeworkUpload = () => {
   return (
     <form className='image-field' onSubmit={handleSubmit}>
       <label>Homework Uploads</label>
-      { homeworkForm.homeworkLink ? <img src={homeworkForm.homeworkLink} /> : <input type="file" onChange={handleUpload}/> }
+      {/* { homeworkForm.homeworkLink ? <img src={homeworkForm.homeworkLink} /> : <input type="file" onChange={handleUpload}/> } */}
+      { homeworkForm.homeworkLink ? <img src={homeworkForm.homeworkLink} /> : (day.homeworkUploads[0] ? <img src={day.homeworkUploads[0].homeworkLink} /> : <input type="file" onChange={handleUpload}/>) }
       { homeworkForm.homeworkLink && <button className='red-button'>Submit Homework</button> }
     </form>
   )
