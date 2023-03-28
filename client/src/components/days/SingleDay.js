@@ -59,7 +59,7 @@ const SingleDay = () => {
                 <h2>{day.topicTitle}</h2>
               </Col>
               <Col lg='6' md='6' sm='12'>
-                <HomeworkUpload day={day}/>
+                <HomeworkUpload day={day} demoAccount={demoAccount}/>
                 <Progress progress={day.progress} demoAccount={demoAccount}/>
               </Col>
               <Col lg='6' md= '6' sm='12'>
