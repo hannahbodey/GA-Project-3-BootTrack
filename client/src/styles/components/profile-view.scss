@@ -50,9 +50,11 @@
     }
     .scroll {
       overflow-y: scroll;
+      height: 300px;
       scroll-behavior: auto;
       scrollbar-color: auto;
-      scroll-snap-type: mandatory;
+      scroll-snap-type: y mandatory;
+      scroll-snap-align: start;
     }
     }
   }
