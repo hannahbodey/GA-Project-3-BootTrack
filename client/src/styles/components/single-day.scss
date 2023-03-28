@@ -2,6 +2,16 @@
   display: block;
 }
 
+.image-field {
+  img {
+    max-width: 30vw;
+  }
+  .image-input {
+    padding: 10px 5px;
+
+  }
+}
+
 .viewText {
   background: transparent;
   outline: none;
@@ -17,12 +27,12 @@
 }
 
 .form-check-input:checked {
-  background-color: red !important;
-  border-color: red !important;
+  background-color: $button !important;
+  border-color: $button !important;
 }
 
 .form-check-input:focus {
-  border-color: red !important;
+  border-color: $button !important;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(149, 149, 146, 0.25) !important;
 }

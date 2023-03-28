@@ -39,35 +39,37 @@ const Days = () => {
 
   return (
     <main className='main-container'>
-      <Container>
+      {/* <Container>
         <Row columns='3'>
-          <Col xs='12'>
-            <h1>Welcome to Days</h1>
-          </Col>
-          {days.length > 0 ?
-            days.map(item => {
-              const { _id, day, week, topicTitle, progress } = item
-              return (
-                <Col key={_id} lg={2} md={2} sm={12} className='day'>
-                  <Link to={`/days/${_id}`}>
-                    <Card>
-                      <Card.Body>
-                        <Card.Text>Week: {week} - Day: {day}</Card.Text>
-                        <Card.Text>Topic: {topicTitle}</Card.Text>
-                        {progress && progress.length > 0 && progress[0].completed === false ? <Card.Text>🔴</Card.Text> : <Card.Text>🟢</Card.Text>}
-                      </Card.Body>
-                    </Card>
-                  </Link>
-                </Col>
-              )
-            })
-            :
-            <>
-              <Error error={error} />
-            </>
-          }
-        </Row>
-      </Container>
+          <Col xs='12'> */}
+      <h1>Welcome to Days</h1>
+      {/* </Col> */}
+      <div className='days-container'>
+        {days.length > 0 ?
+          days.map(item => {
+            const { _id, day, week, topicTitle, progress } = item
+            return (
+              <div key={_id} className='day'>
+                <Link to={`/days/${_id}`}>
+                  <Card>
+                    <Card.Body>
+                      <Card.Text>Week: {week} - Day: {day}</Card.Text>
+                      <Card.Text>Topic: {topicTitle}</Card.Text>
+                      {progress && progress.length > 0 && progress[0].completed === false ? <Card.Text>🔴</Card.Text> : <Card.Text>🟢</Card.Text>}
+                    </Card.Body>
+                  </Card>
+                </Link>
+              </div>
+            )
+          })
+          :
+          <>
+            <Error error={error} />
+          </>
+        }
+      </div>
+      {/* </Row>
+      </Container> */}
     </main>
   )
 }

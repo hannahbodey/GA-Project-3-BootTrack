@@ -1,0 +1,58 @@
+@media (max-width: 768px) {
+  .homework-image {   
+    width: 80vw;
+    margin: 1vh 10vw;
+    margin-bottom: 3vh;
+  }
+}
+
+@media (min-width: 769px) {
+  .cards-container {
+    margin: 3vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .homework-image {
+      width: calc(90vw / 5);
+      height: 25vh;
+      border: 3px solid #fff;
+      border-radius: 8px;
+      &:hover {
+        background-color: lighten($overlay, 5%);
+        cursor: pointer;
+      }
+      background-color: lighten($overlay, 10%);
+      transform: scale(1);
+      transition: transform 2s;
+      // &:active {
+      //   animation-name: zoom;
+      //   animation-duration: 0.2s;
+      //   // position: absolute;
+      //   @keyframes zoom {
+      //     from {transform:scale(1)}
+      //     to {transform:scale(3)}
+      //   }
+      // }
+    }
+    .focus {
+      transform: scale(1.8);
+      z-index: 1;
+    }
+    .text-box {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: baseline;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      //white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .scroll {
+      overflow-y: scroll;
+      scroll-behavior: auto;
+      scrollbar-color: auto;
+      scroll-snap-type: mandatory;
+    }
+    }
+  }

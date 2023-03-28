@@ -41,9 +41,9 @@ const HomeworkUpload = ({ day }) => {
   }
   return (
     <form className='image-field' onSubmit={handleSubmit}>
-      <label>Homework Uploads</label>
+      <h4>Homework Uploads:</h4>
       {/* { homeworkForm.homeworkLink ? <img src={homeworkForm.homeworkLink} /> : <input type="file" onChange={handleUpload}/> } */}
-      { homeworkForm.homeworkLink ? <img src={homeworkForm.homeworkLink} /> : (day.homeworkUploads[0] ? <img src={day.homeworkUploads[0].homeworkLink} /> : <input type="file" onChange={handleUpload}/>) }
+      { homeworkForm.homeworkLink ? <img src={homeworkForm.homeworkLink}/> : (day.homeworkUploads[0] ? <img src={day.homeworkUploads[0].homeworkLink} /> : <input className='image-input' type="file" onChange={handleUpload}/>) }
       { homeworkForm.homeworkLink && <button className='red-button'>Submit Homework</button> }
     </form>
   )

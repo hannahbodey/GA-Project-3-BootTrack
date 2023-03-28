@@ -1,4 +1,28 @@
+@media (max-width: 768px) {
+  .day {   
+    width: 80vw;
+    margin: 1vh 10vw;
+    margin-bottom: 3vh;
+    .card {
+      height: 18vh;
+    }
+  }
+}
 
+@media (min-width: 769px) {
+  .days-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .day {
+    width: calc(90vw / 5);
+    height: 25vh;
+  }
+  .card-body {
+    height: 25vh;
+  }
+}
 
 .day {
   margin-bottom: 1.5rem;
@@ -14,7 +38,7 @@
     }
     .card-body {
       background-color: $overlay;
-      height: 300px;
+      //height: 300px;
       box-shadow: 30px 3px #000;
       &:hover {
         background-color: lighten($overlay, 8%);
