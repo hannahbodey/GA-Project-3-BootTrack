@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
+
 import Error from '../common/Error'
 
 import { userTokenFunction } from '../../helpers/auth'
@@ -55,10 +58,13 @@ const Days = () => {
               <div key={_id} className='day'>
                 <Link to={`/days/${_id}`}>
                   <Card>
-                    <Card.Body>
-                      <Card.Text>Week: {week} - Day: {day}</Card.Text>
-                      <Card.Text>{topicTitle}</Card.Text>
-                      {progress && progress.length > 0 && progress[0].completed === false ? <Card.Text>🔴</Card.Text> : <Card.Text>🟢</Card.Text>}
+                    {progress[0].bookmarked ? (
+                      <FontAwesomeIcon icon={icon({ name: 'bookmark' })} className='bookmark-icon' />
+                    ) : null}
+                    <Card.Body >
+                      <Card.Text className='day-week'>WEEK {week} - DAY {day}</Card.Text>
+                      <Card.Text className='topic'>{topicTitle}</Card.Text>
+                      {progress && progress.length > 0 && progress[0].completed === false ? <Card.Text><FontAwesomeIcon icon={icon({ name: 'circle-xmark' })} className='red-circle' /></Card.Text> : <Card.Text><FontAwesomeIcon icon={icon({ name: 'circle-check' })} className='green-circle' /></Card.Text>}
                     </Card.Body>
                   </Card>
                 </Link>
