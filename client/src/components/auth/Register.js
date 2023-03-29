@@ -11,7 +11,7 @@ const Register = () => {
   const navigate = useNavigate()
 
   //*State
-  const [ teacher, setTeacher ] = useState(true)
+  const [ teacher, setTeacher ] = useState(false)
   const [ formFields, setFormFields ] = useState({
     username: '',
     email: '',
@@ -30,7 +30,7 @@ const Register = () => {
 
   const teacherChange = (e) => {
     setTeacher(current => !current)
-    console.log(teacher)
+    console.log('current teacher value', teacher)
     setFormFields({ ...formFields, [e.target.name]: teacher })
     setError('')
   }

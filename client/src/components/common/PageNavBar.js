@@ -36,13 +36,13 @@ const PageNavBar = () => {
             ) : (
               authenticatedUser() ? (
                 <>
+                  <Link to='/days' className={location.pathname === '/days' ? 'active' : ''}>Course Overview</Link>
                   <Link to='/profile' className={location.pathname === '/profile' ? 'active' : ''}>My Dashboard</Link>
                   <span className='nav-link' onClick={handleLogOut}>Log Out</span>
                 </>
               ) : (
                 <>
                   <Link to='/' className={location.pathname === '/' ? 'active' : ''}>Home</Link>
-                  <Link to='/days' className={location.pathname === '/days' ? 'active' : ''}>Course Overview</Link>
                   <Link to='/register' className={location.pathname === '/register' ? 'active' : ''}>Register</Link>
                   <Link to='/login' className={location.pathname === '/login' ? 'active' : ''}>Login</Link>
                 </>
