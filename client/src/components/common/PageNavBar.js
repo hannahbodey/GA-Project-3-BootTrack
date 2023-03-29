@@ -21,7 +21,7 @@ const PageNavBar = () => {
   return (
     <Navbar expand='md' className='w-100'>
       <Container id='navbarcontainer' fluid>
-        <Navbar.Brand className='brand' to='/' as={Link}><FontAwesomeIcon icon={icon({ name: 'house-user' })} /></Navbar.Brand>
+        <Navbar.Brand className='brand' to={authenticatedUser() || teacherCheck() ? '/days' : '/'} as={Link}><FontAwesomeIcon icon={icon({ name: 'house-user' })} /></Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className='justify-content-end'>
           <Nav>
