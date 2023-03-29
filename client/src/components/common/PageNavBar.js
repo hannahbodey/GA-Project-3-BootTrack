@@ -1,6 +1,9 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
-import { authenticatedUser, removeToken, teacherCheck } from '../../helpers/auth'
+import { authenticatedUser, removeToken } from '../../helpers/auth'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
@@ -18,7 +21,7 @@ const PageNavBar = () => {
   return (
     <Navbar expand='md' className='w-100'>
       <Container id='navbarcontainer' fluid>
-        <Navbar.Brand className='brand' to='/' as={Link}>🖲️</Navbar.Brand>
+        <Navbar.Brand className='brand' to='/' as={Link}><FontAwesomeIcon icon={icon({ name: 'house-user' })} /></Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className='justify-content-end'>
           <Nav>

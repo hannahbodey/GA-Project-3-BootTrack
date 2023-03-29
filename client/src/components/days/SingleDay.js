@@ -62,10 +62,6 @@ const SingleDay = () => {
                 <h1 className={(location.pathname === '/days' || location.pathname === '/profile') ? 'main-header' : 'single-day-header'}>Week {day.week} Day {day.day}</h1>
                 <h2>{day.topicTitle}</h2>
               </Col>
-              <Col lg='6' md='6' sm='12'>
-                <HomeworkUpload day={day} demoAccount={demoAccount}/>
-                <Progress progress={day.progress} demoAccount={demoAccount}/>
-              </Col>
               <Col lg='6' md= '6' sm='12'>
                 <h4>Classwork Instructions:</h4>
                 {day.classworkDescription.length > 1 ?
@@ -93,6 +89,10 @@ const SingleDay = () => {
                 }
                 {/* <HomeworkSubmission /> */}
                 <NotesSubmission notes={day.classworkNotes} demoAccount={demoAccount}/>
+              </Col>
+              <Col lg='6' md='6' sm='12'>
+                <HomeworkUpload day={day} demoAccount={demoAccount}/>
+                <Progress progress={day.progress} demoAccount={demoAccount}/>
               </Col>
             </>
             :
