@@ -13,12 +13,12 @@ const homeworkSchema = new mongoose.Schema({
 const notesSchema = new mongoose.Schema({
   // notesTitle: { type: String, required: true, maxlength: 30 },
   notesDescription: {
-    type: String,
+    type: String
     // default: null
   },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 },
-  { timestamps: true }
+{ timestamps: true }
 )
 
 //? Progress Schema - embedded in daysSchema
