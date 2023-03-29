@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
@@ -28,10 +28,10 @@ const Register = () => {
     setError('')
   }
 
-  const teacherChange = (e) => {
-    setTeacher(current => !current)
-    console.log('current teacher value', teacher)
-    setFormFields({ ...formFields, [e.target.name]: teacher })
+  const teacherChange = () => {
+    const updatedTeacher = !teacher
+    setTeacher(updatedTeacher)
+    setFormFields({ ...formFields, teacher: updatedTeacher })
     setError('')
   }
 
@@ -66,11 +66,6 @@ const Register = () => {
         {/* Teacher Option */}
         <label htmlFor='teacher'>Are you a teacher?</label>
         <input type='checkbox' name='teacher' id='teacher' value={formFields.teacher} onChange={teacherChange}/>
-        {/* <select name='teacher' onChange={teacherChange} value={formFields.teacher}>
-          <option defaultValue={true} >~please select~</option>
-          <option value='yes'>Yes</option>
-          <option value='no'>No</option>
-        </select> */}
         <button className='red-button'>Register</button>
         {error && <p className='text-danger text-center'>{error}</p>}
       </form>
