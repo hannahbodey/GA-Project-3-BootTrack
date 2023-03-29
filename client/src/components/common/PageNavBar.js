@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import { authenticatedUser, removeToken } from '../../helpers/auth'
@@ -8,7 +7,6 @@ import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 
 const PageNavBar = () => {
-  //*Location Variables
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -25,11 +23,11 @@ const PageNavBar = () => {
         <Navbar.Collapse className='justify-content-end'>
           <Nav>
             <Link to='/' className={location.pathname === '/' ? 'active' : ''}>Home</Link>
-            <Link to='/days' className={location.pathname === '/days' ? 'active' : ''}>All Days</Link>
+            <Link to='/days' className={location.pathname === '/days' ? 'active' : ''}>Course Overview</Link>
             {/* <Link to='/days/:dayId'>Single Day</Link> */}
             {authenticatedUser() ?
               <>
-                <Link to='/profile' className={location.pathname === '/profile' ? 'active' : ''}>My Uploads</Link>
+                <Link to='/profile' className={location.pathname === '/profile' ? 'active' : ''}>My Dashboard</Link>
                 <span className='nav-link' onClick={handleLogOut}>Log Out</span>
               </>
               :

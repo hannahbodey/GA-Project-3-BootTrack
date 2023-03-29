@@ -67,7 +67,7 @@ const SingleDay = () => {
                 <Progress progress={day.progress} demoAccount={demoAccount}/>
               </Col>
               <Col lg='6' md= '6' sm='12'>
-                <h4>Class Notes:</h4>
+                <h4>Classwork Instructions:</h4>
                 {day.classworkDescription.length > 1 ?
                   day.classworkDescription.map(day => {
                     return (

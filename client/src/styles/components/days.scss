@@ -26,6 +26,8 @@
 
 .day {
   margin-bottom: 1.5rem;
+  box-shadow: 0px 2px 10px rgb(0 0 0 / 40%);
+  border-radius: 8px;
   a {
     color: #000;
     text-decoration: none;
@@ -33,15 +35,16 @@
   }
   .card {
     overflow: hidden;
+    border-radius: 8px;
     &:hover {
-      background-color: lighten($overlay, 8%);
+      background-color: darken($overlay, 30%);
     }
     .card-body {
       background-color: $overlay;
       //height: 300px;
       box-shadow: 30px 3px #000;
       &:hover {
-        background-color: lighten($overlay, 8%);
+        background-color: darken($overlay, 5%);
       }
     }
   }

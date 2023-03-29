@@ -45,7 +45,7 @@ const Days = () => {
       {/* <Container>
         <Row columns='3'>
           <Col xs='12'> */}
-      <h1 className={location.pathname !== '/days/:dayID' ? 'main-header' : ''}>Welcome to Days</h1>
+      <h1 className={location.pathname !== '/days/:dayID' ? 'main-header' : ''}>Course Overview</h1>
       {/* </Col> */}
       <div className='days-container'>
         {days.length > 0 ?
@@ -57,7 +57,7 @@ const Days = () => {
                   <Card>
                     <Card.Body>
                       <Card.Text>Week: {week} - Day: {day}</Card.Text>
-                      <Card.Text>Topic: {topicTitle}</Card.Text>
+                      <Card.Text>{topicTitle}</Card.Text>
                       {progress && progress.length > 0 && progress[0].completed === false ? <Card.Text>🔴</Card.Text> : <Card.Text>🟢</Card.Text>}
                     </Card.Body>
                   </Card>

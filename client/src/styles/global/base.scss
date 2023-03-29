@@ -111,7 +111,7 @@ main {
   padding: 2px 8px;
   &:hover,
   &:active {
-    background-color: lighten($button, 8%);
+    background-color: lighten($button, 1%);
     color: #fff;
     cursor: pointer;
   }
