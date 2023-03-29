@@ -4,12 +4,14 @@ export default [
     email: 'demo@demo.com',
     password: 'demo123', 
     passwordConfirmation: 'demo123',
-    isDemo: true
+    isDemo: true,
+    teacher: false
   },
   {
     username: 'janeDoe',
     email: 'jane@example.com',
     password: 'pass', 
-    passwordConfirmation: 'pass'
+    passwordConfirmation: 'pass',
+    teacher: true
   }
 ]

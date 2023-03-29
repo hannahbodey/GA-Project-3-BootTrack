@@ -14,6 +14,7 @@ export const secureRoute = async (req, res, next) => {
     const payload = jwt.verify(token, secret)
     const loggedInUser = await User.findById(payload.sub)
     req.loggedInUser = loggedInUser
+    console.log('req.body', req.loggedInUser)
     if (!loggedInUser) throw new Unauthorized()
   } catch (error) {
     console.log(error)

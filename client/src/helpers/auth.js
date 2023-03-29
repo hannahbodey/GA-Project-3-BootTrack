@@ -11,11 +11,8 @@ export const getPayload = () => {
 
 export const authenticatedUser = () => {
   const payload = getPayload()
-  console.log('payload', payload)
   if (!payload) return false
   const currentTime = Date.now()
-  console.log('current ->', currentTime)
-  console.log('payload ->', payload.exp * 1000)
   if (currentTime < payload.exp * 1000) {
     return true
   }
@@ -33,4 +30,14 @@ export const userTokenFunction = () => {
 
 export const removeToken = () => {
   localStorage.removeItem(tokenName)
+}
+
+export const teacherCheck = () => {
+  const token = getPayload()
+  if (!token) return
+  console.log('token', token)
+  console.log(token)
+  const teacherStatus = token.teacherStatus
+  console.log(teacherStatus)
+  return teacherStatus
 }

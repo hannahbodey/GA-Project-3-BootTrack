@@ -11,17 +11,27 @@ const Register = () => {
   const navigate = useNavigate()
 
   //*State
+  const [ teacher, setTeacher ] = useState(false)
   const [ formFields, setFormFields ] = useState({
     username: '',
     email: '',
     password: '',
     passwordConfirmation: '',
+    teacher: teacher,
   })
   const [ error, setError ] = useState('')
+
 
   //*Executions
   const handleChange = (e) => {
     setFormFields({ ...formFields, [e.target.name]: e.target.value })
+    setError('')
+  }
+
+  const teacherChange = (e) => {
+    setTeacher(current => !current)
+    console.log('current teacher value', teacher)
+    setFormFields({ ...formFields, [e.target.name]: teacher })
     setError('')
   }
 
@@ -53,6 +63,14 @@ const Register = () => {
         {/* Password Confirmation */}
         <label htmlFor='passwordConfirmation'>Password Confirmation</label>
         <input type='password' name='passwordConfirmation' placeholder='Password Confirmation' onChange={handleChange} value={formFields.passwordConfirmation}/>
+        {/* Teacher Option */}
+        <label htmlFor='teacher'>Are you a teacher?</label>
+        <input type='checkbox' name='teacher' id='teacher' value={formFields.teacher} onChange={teacherChange}/>
+        {/* <select name='teacher' onChange={teacherChange} value={formFields.teacher}>
+          <option defaultValue={true} >~please select~</option>
+          <option value='yes'>Yes</option>
+          <option value='no'>No</option>
+        </select> */}
         <button className='red-button'>Register</button>
         {error && <p className='text-danger text-center'>{error}</p>}
       </form>

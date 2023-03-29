@@ -44,7 +44,7 @@ export const loginUser = async (req, res) =>{
     if (!userIsValidated) {
       throw new Unauthorized('Invalid credentials')
     }
-    const token = jwt.sign({ sub: userToLogin._id }, secret, { expiresIn: '7d' })
+    const token = jwt.sign({ sub: userToLogin._id, teacherStatus: userToLogin.teacher  }, secret, { expiresIn: '7d' })
     return res.json({ message: `Welcome, ${userToLogin.username}`, token: token })
   } catch (err) {
     return assessError(err, res)
@@ -57,7 +57,7 @@ export const loginDemo = async (req, res) => {
     if (!demoUser) {
       throw new NotFound('Demo user not found')
     }
-    const token = jwt.sign({ sub: demoUser._id }, secret, { expiresIn: '7d' })
+    const token = jwt.sign({ sub: demoUser._id, teacherStatus: demoUser.teacher }, secret, { expiresIn: '7d' })
     return res.json({ message: `Welcome, ${demoUser.username}`, token: token })
   } catch (err) {
     return assessError(err, res)

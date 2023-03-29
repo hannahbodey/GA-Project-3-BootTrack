@@ -8,7 +8,6 @@ import { registerUser, loginUser, loginDemo, getUser } from '../controllers/auth
 import { modifyProgress } from '../controllers/progress.js'
 import { secureRoute } from '../config/secureRoute.js'
 
-
 const router = express.Router()
 
 router.route('/api/register')

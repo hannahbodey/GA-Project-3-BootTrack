@@ -4,7 +4,16 @@ import Day from '../models/days.js'
 
 export const getAllDays = async (req, res) => {
   try {
-    const days = await Day.find().lean()
+    const days = await Day.find().lean()//.populate('progress.owner')
+    // const daysPopulated = days.map(day => {
+    //   dayOwner = await Day.populate()
+    //   return day.populate('owner')
+    // })
+    if (req.loggedInUser.teacher === true){
+      console.log('new account made, is it teacher?')
+      console.log(req.loggedInUser.teacher)
+      return res.json(days)
+    }
 
     const filteredDays = days.map(day => {
       day.progress = day.progress.filter(progress => progress.owner?.toString() === req.loggedInUser._id.toString())
@@ -12,6 +21,7 @@ export const getAllDays = async (req, res) => {
       day.classworkNotes = day.classworkNotes.filter(notes => notes.owner?.toString() === req.loggedInUser._id.toString())
       return day
     })
+
     return res.json(filteredDays)
   } catch (err) {
     return assessError(err, res)
