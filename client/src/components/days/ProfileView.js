@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { userTokenFunction } from '../../helpers/auth'
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
+import BackButton from '../common/BackButton'
 
 const ProfileView = () => {
 
@@ -33,6 +34,7 @@ const ProfileView = () => {
 
   return (
     <main className='main-container'>
+      <BackButton />
       <h1>My Uploads</h1>
       <div className='cards-container'>
         {studentWork.map((day, index) => {

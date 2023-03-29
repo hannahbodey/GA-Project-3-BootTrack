@@ -8,6 +8,7 @@ import { userTokenFunction } from '../../helpers/auth'
 
 import HomeworkUpload from '../common/HomeworkUpload'
 import Progress from '../common/Progress'
+import BackButton from '../common/BackButton'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -51,6 +52,7 @@ const SingleDay = () => {
   return (
     <main className='main-container'>
       <Container>
+        <BackButton />
         <Row>
           {day ?
             <>
