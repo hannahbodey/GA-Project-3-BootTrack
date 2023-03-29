@@ -6,6 +6,7 @@ import { Unauthorized, assessError } from './errors.js'
 const secret = process.env.SECRET 
 
 export const secureRoute = async (req, res, next) => {
+  console.log('Hitting')
   try {
     const authHeader = req.headers.authorization
     if (!authHeader) throw new Unauthorized()
