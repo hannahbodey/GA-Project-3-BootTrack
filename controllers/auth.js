@@ -44,7 +44,7 @@ export const loginUser = async (req, res) =>{
     if (!userIsValidated) {
       throw new Unauthorized('Invalid credentials')
     }
-    const token = jwt.sign({ sub: userToLogin._id }, secret, { expiresIn: '7d' })
+    const token = jwt.sign({ sub: userToLogin._id, teacherStatus: userToLogin.teacher  }, secret, { expiresIn: '7d' })
     return res.json({ message: `Welcome, ${userToLogin.username}`, token: token })
   } catch (err) {
     return assessError(err, res)
