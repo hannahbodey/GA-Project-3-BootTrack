@@ -1,0 +1,63 @@
+.home {
+  @extend %flex-center;
+  background-color: $background;
+}
+.title{
+  margin: 0;
+  color: $button;
+}
+  .hero {
+    @extend %flex-center;
+    font-size: 20px;
+    /*font-weight:bold;*/
+      float: right;
+      display: flex;
+      flex-direction: column;
+      text-align:center;
+      padding: 20px;
+      background-color: $overlay;
+      border-radius: 8px;
+      width: 45%;
+      &:hover, &:active {
+        background-color: darken($overlay, 8%) !important;
+        color: $primary;
+        box-shadow: 0px 2px 10px rgb(0 0 0 / 20%);
+        a {
+          color: #000;
+          text-decoration: none;
+          text-align: center;
+        }
+      }
+  
+  }
+ 
+
+span{
+  color: $button;
+  font-weight:bold;
+}
+.call-to-action{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.btn-register, .btn-login{
+  margin: 15px 0 20px 0;
+  width: 60%;
+  background-color: $button;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  &:hover, &:active {
+    background-color: darken(grey, 8%) !important;
+    color: $button;
+  }
+}
+.overView{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 50%;
+  box-shadow: 0px 2px 10px rgb(0 0 0 / 20%);
+}
+
