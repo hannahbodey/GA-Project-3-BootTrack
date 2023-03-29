@@ -50,3 +50,24 @@
   transform: scale(1.8);
   z-index: 1;
 }
+
+.profile-headers {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #808080;
+  margin-bottom: 20px;
+}
+
+
+.main-header {
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
+}
+
+.main-header.active {
+  text-decoration: underline;
+  color: black;
+}

@@ -10,6 +10,8 @@ import BackButton from '../common/BackButton'
 const ProfileView = () => {
 
   const [studentWork, setStudentWork] = useState([])
+  const [activeTitle, setActiveTitle] = useState('weeklyPulse')
+
   const location = useLocation()
 
   useEffect(() => {
@@ -37,34 +39,41 @@ const ProfileView = () => {
     e.target.classList.toggle('scroll')
   }
 
+  const handleClickWeeklyPulse = () => {
+    setActiveTitle('weeklyPulse')
+  }
+
+  const handleClickMyStats = () => {
+    setActiveTitle('myStats')
+  }
+
+  const handleClickMyUploads = () => {
+    setActiveTitle('myUploads')
+  }
+
   return (
     <main className='main-container'>
       <BackButton />
-      <h1 className={location.pathname !== '/days/:dayID' ? 'main-header' : ''}>Weekly Pulse</h1>
-      <h1 className={location.pathname !== '/days/:dayID' ? 'main-header' : ''}>My Stats</h1>
-      <h1 className={location.pathname !== '/days/:dayID' ? 'main-header' : ''}>My Uploads</h1>
+      <div className='profile-headers'>
+        <h1 onClick={handleClickWeeklyPulse} className={activeTitle === 'weeklyPulse' ? 'main-header active' : 'main-header'}>Weekly Pulse</h1>
+        <h1 onClick={handleClickMyStats} className={activeTitle === 'myStats' ? 'main-header active' : 'main-header'}>My Stats</h1>
+        <h1 onClick={handleClickMyUploads} className={activeTitle === 'myUploads' ? 'main-header active' : 'main-header'}>My Uploads</h1>
+      </div>
       <div className='cards-container'>
-        {studentWork.map((day, index) => {
-          console.log(day)
-          return (
-            // <div key={index} className='card-div'>
-            // <Card key={index} className='uploads-card'>
-            // {/* <Card.Body> */}
-            <>
-              {day.homeworkUploads.length > 0 && <img key={index} src={day.homeworkUploads[0].homeworkLink} className='homework-image' onClick={handleFocus}/>}
-              {day.classworkNotes.length > 0 && <p key={index} className='homework-image text-box overflow-auto' onClick={handleFocus} onTouchEnd={handleTouch} onScroll={handleScroll}>{day.classworkNotes[0].notesDescription}</p>}
-            </>
-            
-          // {/* </Card.Body> */}
-          // {/* <Card.Text> */}
-          // {/* {day.classworkNotes && <p>{day.classworkNotes}</p>} */}
-          // {/* </Card.Text> */}
-          // </Card>
-          // {/* </div> */}
-          )
+        {activeTitle === 'weeklyPulse' && (
+          <h1>Testing Pulse</h1>
+        )}
 
+        {activeTitle === 'myStats' && (
+          <h1>Testing Stats</h1>
+        )}
 
-        })}
+        {activeTitle === 'myUploads' && studentWork.map((day, index) => (
+          <>
+            {day.homeworkUploads.length > 0 && <img key={index} src={day.homeworkUploads[0].homeworkLink} className='homework-image' onClick={handleFocus} />}
+            {day.classworkNotes.length > 0 && <p key={index} className='homework-image text-box overflow-auto' onClick={handleFocus} onTouchEnd={handleTouch} onScroll={handleScroll}>{day.classworkNotes[0].notesDescription}</p>}
+          </>
+        ))}
       </div>
     </main>
   )
