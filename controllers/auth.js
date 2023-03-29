@@ -18,7 +18,7 @@ export const registerUser = async (req,res) =>{
         completed: false,
         confidenceRating: 0,
         bookmarked: false,
-        owner: newUser._id,
+        owner: newUser._id
       }
 
       day.progress.push(progressData)

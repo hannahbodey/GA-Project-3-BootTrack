@@ -1,12 +1,15 @@
 * {
   box-sizing: border-box;
+  font-family: 'Mukta', sans-serif;
 }
 
 
 @media (max-width: 768px) {
   .main-container {
     padding-top: 78px;
+    margin: 0 5px;
   }
+
   span {
     padding: 0 !important;
   }
@@ -16,6 +19,15 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+.main-container {
+  .main-header {
+    margin: 0 25px;
+  }
+  .back-button-profile {
+    margin-left: 30px;
+  }
 }
 
 main {
@@ -39,8 +51,67 @@ main {
   border: none;
   border-radius: 3px;
   padding: 8px 15px;
-  &:hover, &:active {
+  &:hover,
+  &:active {
     background-color: lighten($button, 8%);
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+.orange-button {
+  background-color: orange;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 8px 15px;
+
+  &:hover,
+  &:active {
+    background-color: lighten(orange, 8%);
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+.green-button {
+  background-color: rgb(14, 150, 14);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 8px 15px;
+
+  &:hover,
+  &:active {
+    background-color: lighten(rgb(14, 150, 14), 8%);
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+.red-button {
+  &:disabled {
+    background-color: darken($button, 8%);
+    cursor: default;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  &:disabled:hover,
+  &:disabled:active {
+    background-color: darken($button, 8%);
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.back-button {
+  background-color: darken($button, 20%);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 2px 8px;
+  &:hover,
+  &:active {
+    background-color: lighten($button, 1%);
     color: #fff;
     cursor: pointer;
   }

@@ -20,7 +20,10 @@ export default [
       completed: true,
       confidenceRating: 4,
       bookmarked: false
-    }]
+    }],
+    homeworkUploads: [{
+        homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680042331/Project-3/bwkuvrjpo2l9lv0xk9rq.webp',
+      }],
   },
   {
     courseName: "Software Engineering Immersive Bootcamp",

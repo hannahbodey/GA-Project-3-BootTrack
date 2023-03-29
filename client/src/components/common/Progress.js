@@ -44,6 +44,7 @@ const Progress = ({ progress, demoAccount }) => {
                 id='completed-switch'
                 checked={progress[0] && progress[0].completed}
                 onChange={(e) => handleProgressChange('completed', e.target.checked)}
+                disabled={demoAccount}
               />
             </Form>
           </div>
@@ -51,9 +52,10 @@ const Progress = ({ progress, demoAccount }) => {
             Confidence:
             <Form>
               <Form.Select
-                classname={'progress-confidence'}
+                className={'progress-confidence'}
                 value={progress[0] && progress[0].confidenceRating}
                 onChange={(e) => handleProgressChange('confidenceRating', e.target.value)}
+                disabled={demoAccount}
               >
                 <option value="0">Select a rating</option>
                 <option value="1">1 - Very Low</option>
@@ -73,6 +75,7 @@ const Progress = ({ progress, demoAccount }) => {
                 id='bookmarked-switch'
                 checked={progress[0] && progress[0].bookmarked}
                 onChange={(e) => handleProgressChange('bookmarked', e.target.checked)}
+                disabled={demoAccount}
               />
             </Form>
           </div>

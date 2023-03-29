@@ -1,6 +1,6 @@
 $primary: #fff;
-$background: #e8e8e8;
-$overlay: #c5c5c5;
+$background: #fff;// #FAFAFA; //e8e8e8;
+$overlay: #fff;// #F1EEEE; // #F8F6F6; // #c5c5c5;
 $button: #e41a23;
 
 %flex-center {
@@ -8,3 +8,5 @@ $button: #e41a23;
   justify-content: center;
   align-items: center;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;700&display=swap');

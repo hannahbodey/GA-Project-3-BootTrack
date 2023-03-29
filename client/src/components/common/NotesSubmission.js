@@ -46,7 +46,7 @@ const NotesSubmission = ({ notes, demoAccount }) => {
 
   return (
     <section>
-      <h4>Notes</h4>
+      <h4>Notes:</h4>
       {editMode ? (
         <form onSubmit={handleSubmit} className='notesSection'>
           <textarea cols="50" rows="10" style={{ resize: 'none', display: 'block' }} name='notesDescription' id='notesDescription' placeholder='Type your notes here!' onChange={handleChange} value={submission.notesDescription}></textarea>

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 
 import Error from '../common/Error'
 
@@ -8,6 +8,7 @@ import { userTokenFunction } from '../../helpers/auth'
 
 import HomeworkUpload from '../common/HomeworkUpload'
 import Progress from '../common/Progress'
+import BackButton from '../common/BackButton'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -20,6 +21,8 @@ const SingleDay = () => {
   const [day, setDay] = useState(null)
   const [error, setError] = useState('')
   const [demoAccount, setDemoAccount] = useState(false)
+
+  const location = useLocation()
 
   const { dayId } = useParams()
   console.log(dayId)
@@ -51,19 +54,20 @@ const SingleDay = () => {
   return (
     <main className='main-container'>
       <Container>
+        <BackButton />
         <Row>
           {day ?
             <>
               <Col xs='12'>
-                <h1>Week {day.week} Day {day.day}</h1>
+                <h1 className={(location.pathname === '/days' || location.pathname === '/profile') ? 'main-header' : 'single-day-header'}>Week {day.week} Day {day.day}</h1>
                 <h2>{day.topicTitle}</h2>
               </Col>
               <Col lg='6' md='6' sm='12'>
-                <HomeworkUpload day={day}/>
+                <HomeworkUpload day={day} demoAccount={demoAccount}/>
                 <Progress progress={day.progress} demoAccount={demoAccount}/>
               </Col>
               <Col lg='6' md= '6' sm='12'>
-                <h4>Class Notes</h4>
+                <h4>Classwork Instructions:</h4>
                 {day.classworkDescription.length > 1 ?
                   day.classworkDescription.map(day => {
                     return (
@@ -75,7 +79,7 @@ const SingleDay = () => {
                     <p>{day.classworkDescription}</p>
                   </>
                 }
-                <h4>Homework Instructions</h4>
+                <h4>Homework Instructions:</h4>
                 {day.homeworkDescription.length > 1 ?
                   day.homeworkDescription.map(day => {
                     return (

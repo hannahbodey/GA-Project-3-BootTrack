@@ -9,7 +9,7 @@ export const modifyHomework = async (req, res) => {
     }
     const stringLoggedInUserId = req.loggedInUser._id.toString()
     const { dayId } = req.params
-    const { homeworkLink } = req.body
+    const { homeworkTitle, homeworkLink } = req.body
     const day = await Day.findById(dayId)
     if (!day) {
       throw new NotFound('Day not found')
@@ -24,6 +24,7 @@ export const modifyHomework = async (req, res) => {
       }
       day.homeworkUploads.push(newUserHomework)
     } else {
+      userHomework.homeworkTitle = homeworkTitle || userHomework.homeworkTitle
       userHomework.homeworkLink = homeworkLink || userHomework.homeworkLink
     }
     await day.save()
