@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 
 import Error from '../common/Error'
 
@@ -21,6 +21,8 @@ const SingleDay = () => {
   const [day, setDay] = useState(null)
   const [error, setError] = useState('')
   const [demoAccount, setDemoAccount] = useState(false)
+
+  const location = useLocation()
 
   const { dayId } = useParams()
   console.log(dayId)
@@ -57,7 +59,7 @@ const SingleDay = () => {
           {day ?
             <>
               <Col xs='12'>
-                <h1>Week {day.week} Day {day.day}</h1>
+                <h1 className={(location.pathname === '/days' || location.pathname === '/profile') ? 'main-header' : 'single-day-header'}>Week {day.week} Day {day.day}</h1>
                 <h2>{day.topicTitle}</h2>
               </Col>
               <Col lg='6' md='6' sm='12'>

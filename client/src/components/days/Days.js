@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 import Error from '../common/Error'
 
@@ -16,6 +17,8 @@ const Days = () => {
 
   const [days, setDays] = useState([])
   const [error, setError] = useState('')
+
+  const location = useLocation()
 
   useEffect(() => {
     const getDays = async () => {
@@ -42,7 +45,7 @@ const Days = () => {
       {/* <Container>
         <Row columns='3'>
           <Col xs='12'> */}
-      <h1>Welcome to Days</h1>
+      <h1 className={location.pathname !== '/days/:dayID' ? 'main-header' : ''}>Welcome to Days</h1>
       {/* </Col> */}
       <div className='days-container'>
         {days.length > 0 ?

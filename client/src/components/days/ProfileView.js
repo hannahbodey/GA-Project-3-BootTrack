@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { userTokenFunction } from '../../helpers/auth'
+import { useLocation } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
 import BackButton from '../common/BackButton'
@@ -9,7 +10,7 @@ import BackButton from '../common/BackButton'
 const ProfileView = () => {
 
   const [studentWork, setStudentWork] = useState([])
-  const [isActive, setIsActive] = useState(false)
+  const location = useLocation()
 
   useEffect(() => {
     const getWork = async () => {
@@ -35,7 +36,7 @@ const ProfileView = () => {
   return (
     <main className='main-container'>
       <BackButton />
-      <h1>My Uploads</h1>
+      <h1 className={location.pathname !== '/days/:dayID' ? 'main-header' : ''}>My Uploads</h1>
       <div className='cards-container'>
         {studentWork.map((day, index) => {
           console.log(day)
