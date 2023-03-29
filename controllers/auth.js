@@ -57,7 +57,7 @@ export const loginDemo = async (req, res) => {
     if (!demoUser) {
       throw new NotFound('Demo user not found')
     }
-    const token = jwt.sign({ sub: demoUser._id }, secret, { expiresIn: '7d' })
+    const token = jwt.sign({ sub: demoUser._id, teacherStatus: demoUser.teacher }, secret, { expiresIn: '7d' })
     return res.json({ message: `Welcome, ${demoUser.username}`, token: token })
   } catch (err) {
     return assessError(err, res)

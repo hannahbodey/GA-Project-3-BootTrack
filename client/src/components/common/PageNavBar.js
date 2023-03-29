@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
-import { authenticatedUser, removeToken } from '../../helpers/auth'
+import { authenticatedUser, removeToken, teacherCheck } from '../../helpers/auth'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
@@ -25,8 +25,8 @@ const PageNavBar = () => {
         <Navbar.Toggle />
         <Navbar.Collapse className='justify-content-end'>
           <Nav>
-            <Link to='/' className={location.pathname === '/' ? 'active' : ''}>Home</Link>
-            <Link to='/days' className={location.pathname === '/days' ? 'active' : ''}>Course Overview</Link>
+            
+            
             {/* <Link to='/days/:dayId'>Single Day</Link> */}
             {teacherCheck() ? (
               <>
@@ -41,6 +41,8 @@ const PageNavBar = () => {
                 </>
               ) : (
                 <>
+                  <Link to='/' className={location.pathname === '/' ? 'active' : ''}>Home</Link>
+                  <Link to='/days' className={location.pathname === '/days' ? 'active' : ''}>Course Overview</Link>
                   <Link to='/register' className={location.pathname === '/register' ? 'active' : ''}>Register</Link>
                   <Link to='/login' className={location.pathname === '/login' ? 'active' : ''}>Login</Link>
                 </>
