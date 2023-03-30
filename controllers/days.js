@@ -4,14 +4,13 @@ import Day from '../models/days.js'
 
 export const getAllDays = async (req, res) => {
   try {
-    const days = await Day.find().lean()//.populate('progress.owner')
+    const days = await Day.find().lean().populate('progress.owner')
     // const daysPopulated = days.map(day => {
     //   dayOwner = await Day.populate()
     //   return day.populate('owner')
     // })
     if (req.loggedInUser.teacher === true){
-      console.log('new account made, is it teacher?')
-      console.log(req.loggedInUser.teacher)
+      console.log('days', days[0].progress)
       return res.json(days)
     }
 
