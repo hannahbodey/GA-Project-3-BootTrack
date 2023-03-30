@@ -31,6 +31,7 @@ const Teacher = () => {
           }
           return a.day - b.day
         })
+        console.log(sortedDays)
         setStudentWork(sortedDays)
       } catch (error) {
         console.log(error)
@@ -71,7 +72,7 @@ const Teacher = () => {
   }, [filters, studentWork])
 
   const identifyStudent = () => {
-    const newList = [...new Set(studentWork?.map(day => day.progress[0].owner.username))].sort()
+    const newList = [...new Set(studentWork?.map(day => day.progress.map(progress => progress.owner.username)))].sort()
     console.log('new list', newList)
     setStudentList(newList)
   }
