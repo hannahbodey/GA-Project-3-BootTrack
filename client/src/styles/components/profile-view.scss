@@ -103,7 +103,7 @@
   margin-top: 20px;
 }
 
-.report-form input[type='text'],
+.report-form input[type='text'][type='email'],
 .report-form textarea {
   width: 100%;
   padding: 10px;

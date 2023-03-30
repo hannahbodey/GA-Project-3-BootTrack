@@ -11,15 +11,15 @@ const Register = () => {
   const navigate = useNavigate()
 
   //*State
-  const [ teacher, setTeacher ] = useState(false)
-  const [ formFields, setFormFields ] = useState({
+  const [teacher, setTeacher] = useState(false)
+  const [formFields, setFormFields] = useState({
     username: '',
     email: '',
     password: '',
     passwordConfirmation: '',
     teacher: teacher,
   })
-  const [ error, setError ] = useState('')
+  const [error, setError] = useState('')
 
 
   //*Executions
@@ -47,25 +47,27 @@ const Register = () => {
   }
 
   return (
-    <main className='form-page main-container'>
+    <main className='register-form-container'>
       {/* <Col as='form' onSubmit={handleSubmit}> */}
-      <form className='form-submission' onSubmit={handleSubmit}>
-        <h1>Register below!</h1>
+      <form className='register-form' onSubmit={handleSubmit}>
+        <h1>Register Below!</h1>
         {/* Username */}
-        <label htmlFor='username'>Username</label>
-        <input type='text' name='username' placeholder='Username' onChange={handleChange} value={formFields.username}/>
+        {/* <label htmlFor='username'>Username</label> */}
+        <input type='text' name='username' placeholder='Username' onChange={handleChange} value={formFields.username} />
         {/* Email */}
-        <label htmlFor='email'>Email</label>
-        <input type='email' name='email' placeholder='Email' onChange={handleChange} value={formFields.email}/>
+        {/* <label htmlFor='email'>Email</label> */}
+        <input type='email' name='email' placeholder='Email' onChange={handleChange} value={formFields.email} />
         {/* Password */}
-        <label htmlFor='password'>Password</label>
-        <input type='password' name='password' placeholder='Password' onChange={handleChange} value={formFields.password}/>
+        {/* <label htmlFor='password'>Password</label> */}
+        <input type='password' name='password' placeholder='Password' onChange={handleChange} value={formFields.password} />
         {/* Password Confirmation */}
-        <label htmlFor='passwordConfirmation'>Password Confirmation</label>
-        <input type='password' name='passwordConfirmation' placeholder='Password Confirmation' onChange={handleChange} value={formFields.passwordConfirmation}/>
+        {/* <label htmlFor='passwordConfirmation'>Password Confirmation</label> */}
+        <input type='password' name='passwordConfirmation' placeholder='Password Confirmation' onChange={handleChange} value={formFields.passwordConfirmation} />
         {/* Teacher Option */}
-        <label htmlFor='teacher'>Are you a teacher?</label>
-        <input type='checkbox' name='teacher' id='teacher' value={formFields.teacher} onChange={teacherChange}/>
+        <div className="teacher-container">
+          <label htmlFor='teacher'>Are you a teacher?</label>
+          <input type='checkbox' name='teacher' id='teacher' value={formFields.teacher} onChange={teacherChange} />
+        </div>
         <button className='red-button'>Register</button>
         {error && <p className='text-danger text-center'>{error}</p>}
       </form>
