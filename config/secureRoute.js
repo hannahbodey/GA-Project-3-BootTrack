@@ -6,7 +6,6 @@ import { Unauthorized, assessError } from './errors.js'
 const secret = process.env.SECRET 
 
 export const secureRoute = async (req, res, next) => {
-  console.log('Hitting')
   try {
     const authHeader = req.headers.authorization
     if (!authHeader) throw new Unauthorized()
@@ -14,7 +13,6 @@ export const secureRoute = async (req, res, next) => {
     const payload = jwt.verify(token, secret)
     const loggedInUser = await User.findById(payload.sub)
     req.loggedInUser = loggedInUser
-    console.log('req.body', req.loggedInUser)
     if (!loggedInUser) throw new Unauthorized()
   } catch (error) {
     console.log(error)

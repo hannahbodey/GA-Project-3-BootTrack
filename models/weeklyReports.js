@@ -10,11 +10,12 @@ const responseSchema = new mongoose.Schema({
   supportRating: { type: Number, required: true, min: 1, max: 3 },
   supportAdvice: { type: String, required: true },
   contactPerson: { type: [String] },
-  contactRequest: { type: String }
+  contactRequest: { type: String },
+  completed: { type: Boolean, default: false }
 })
 
 const weeklyReportSchema = new mongoose.Schema({
-  week: { type: Number, required: true, min: 1, max: 12 },
+  week: { type: Number, required: true, min: 1, max: 12, unique: true },
   responses: [responseSchema]
 })
 

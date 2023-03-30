@@ -1,18 +1,24 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { userTokenFunction } from '../../helpers/auth'
+import { userTokenFunction, getPayload } from '../../helpers/auth'
 import { useLocation } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
 import BackButton from '../common/BackButton'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
+
 
 const ProfileView = () => {
 
   const [studentWork, setStudentWork] = useState([])
   const [activeTitle, setActiveTitle] = useState('weeklyPulse')
+  const [weeklyReports, setWeeklyReports] = useState([])
 
   const location = useLocation()
+  const loggedInUserId = getPayload().sub
+
 
   useEffect(() => {
     const getWork = async () => {
@@ -20,6 +26,8 @@ const ProfileView = () => {
         const userToken = userTokenFunction()
         const { data } = await axios.get('api/days', userToken)
         setStudentWork(data)
+        const { data: reportsData } = await axios.get('api/reports', userToken)
+        setWeeklyReports(reportsData)
       } catch (error) {
         console.log(error)
       }
@@ -51,6 +59,41 @@ const ProfileView = () => {
     setActiveTitle('myUploads')
   }
 
+  const isWeekCompleted = (week) => {
+    const weekDays = studentWork.filter(day => day.week === week)
+    return weekDays.every(day => day.progress.some(progress => progress.completed))
+  }
+
+  const isReportSubmitted = (week) => {
+    const report = weeklyReports.find(report => report.week === week)
+    return report && report.responses.some(response => response.owner === loggedInUserId)
+  }
+
+  const renderWeekCard = (week) => {
+    const weekCompleted = isWeekCompleted(week)
+    const reportSubmitted = isReportSubmitted(week)
+
+    const cardContent = (
+      <Card key={week} className='day'>
+        <Card.Body>
+          <Card.Text className='day-week'>Week {week}</Card.Text>
+          {reportSubmitted && <Card.Text className='topic'>Report submitted</Card.Text>}
+          {weekCompleted && !reportSubmitted && <Card.Text className='topic'>Ready to submit</Card.Text>}
+          {!weekCompleted && !reportSubmitted && <Card.Text className='topic'>Week Incomplete</Card.Text>}
+          {reportSubmitted && <Card.Text><FontAwesomeIcon icon={icon({ name: 'circle-check' })} className='green-circle' /></Card.Text>}
+          {weekCompleted && !reportSubmitted && <Card.Text className='topic'><FontAwesomeIcon icon={icon({ name: 'circle-question' })} /></Card.Text>}
+          {!weekCompleted && !reportSubmitted && <Card.Text className='topic'><FontAwesomeIcon icon={icon({ name: 'lock' })} /></Card.Text>}
+        </Card.Body>
+      </Card>
+    )
+
+    if (weekCompleted && !reportSubmitted) {
+      return <Link to={`/report/${week}`}>{cardContent}</Link>
+    } else {
+      return cardContent
+    }
+  }
+
   return (
     <main className='main-container'>
       <BackButton />
@@ -61,7 +104,9 @@ const ProfileView = () => {
       </div>
       <div className='cards-container'>
         {activeTitle === 'weeklyPulse' && (
-          <h1>Testing Pulse</h1>
+          <Container>
+            {Array.from({ length: 12 }, (_, i) => i + 1).map(week => renderWeekCard(week))}
+          </Container>
         )}
 
         {activeTitle === 'myStats' && (
