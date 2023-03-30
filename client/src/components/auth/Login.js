@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import Container from 'react-bootstrap/esm/Container'
 import Row from 'react-bootstrap/esm/Row'
 import Col from 'react-bootstrap/esm/Col'
+import { teacherCheck } from '../../helpers/auth'
 
 const Login = () => {
   //*Location Variable
@@ -28,7 +29,7 @@ const Login = () => {
     try {
       const { data } = await axios.post('/api/login', formFields)
       localStorage.setItem('PROJECT-3-TOKEN', data.token)
-      navigate('/days')
+      {teacherCheck() ? navigate('/teacher') : navigate('/days')}
     } catch (error) {
       console.log(error)
       setError(error.response.data.message)

@@ -25,7 +25,13 @@ const ProfileView = () => {
       try {
         const userToken = userTokenFunction()
         const { data } = await axios.get('api/days', userToken)
-        setStudentWork(data)
+        const sortedDays = data.sort((a, b) => {
+          if (a.week !== b.week) {
+            return a.week - b.week
+          }
+          return a.day - b.day
+        })
+        setStudentWork(sortedDays)
         const { data: reportsData } = await axios.get('api/reports', userToken)
         setWeeklyReports(reportsData)
       } catch (error) {

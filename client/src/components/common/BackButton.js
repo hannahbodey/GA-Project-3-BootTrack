@@ -9,7 +9,7 @@ const BackButton = () => {
   }
 
   return (
-    <button className={location.pathname === '/profile' ? 'back-button back-button-profile' : 'back-button'} onClick={handleClick}>⬅Back</button>
+    <button className={(location.pathname === '/profile' || location.pathname === '/teacher') ? 'back-button back-button-profile' : 'back-button'} onClick={handleClick}>⬅Back</button>
   )
 }
 
