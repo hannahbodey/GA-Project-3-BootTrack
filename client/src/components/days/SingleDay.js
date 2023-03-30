@@ -63,30 +63,32 @@ const SingleDay = () => {
                 <h2>{day.topicTitle}</h2>
               </Col>
               <Col lg='6' md='6' sm='12'>
-                <h4>Classwork Instructions:</h4>
-                {day.classworkDescription.length > 1 ?
-                  day.classworkDescription.map(day => {
-                    return (
-                      <p key={day}>{day}</p>
-                    )
-                  })
-                  :
-                  <>
-                    <p>{day.classworkDescription}</p>
-                  </>
-                }
-                <h4>Homework Instructions:</h4>
-                {day.homeworkDescription.length > 1 ?
-                  day.homeworkDescription.map(day => {
-                    return (
-                      <p key={day}>{day}</p>
-                    )
-                  })
-                  :
-                  <>
-                    <p>{day.homeworkDescription}</p>
-                  </>
-                }
+                <section>
+                  <h4>Classwork Instructions:</h4>
+                  {day.classworkDescription.length > 1 ?
+                    day.classworkDescription.map(day => {
+                      return (
+                        <p key={day}>{day}</p>
+                      )
+                    })
+                    :
+                    <>
+                      <p>{day.classworkDescription}</p>
+                    </>
+                  }
+                  <h4>Homework Instructions:</h4>
+                  {day.homeworkDescription.length > 1 ?
+                    day.homeworkDescription.map(day => {
+                      return (
+                        <p key={day}>{day}</p>
+                      )
+                    })
+                    :
+                    <>
+                      <p>{day.homeworkDescription}</p>
+                    </>
+                  }
+                </section>
                 {/* <HomeworkSubmission /> */}
                 <NotesSubmission notes={day.classworkNotes} demoAccount={demoAccount} />
               </Col>

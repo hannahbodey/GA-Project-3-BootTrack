@@ -50,7 +50,7 @@ const NotesSubmission = ({ notes, demoAccount }) => {
       {editMode ? (
         <form onSubmit={handleSubmit} className='notesSection'>
           <textarea cols="50" rows="10" style={{ resize: 'none', display: 'block' }} name='notesDescription' id='notesDescription' placeholder='Type your notes here!' onChange={handleChange} value={submission.notesDescription}></textarea>
-          <button className='button' disabled={demoAccount}>Save</button>
+          <button className='save-button green-button' disabled={demoAccount}>Save</button>
         </form>
       )
         :
@@ -58,7 +58,7 @@ const NotesSubmission = ({ notes, demoAccount }) => {
           <>
             <div>
               <textarea className='viewText' cols="50" rows="10" readOnly name='notesDescription' id='notesDescription' placeholder="Click 'Edit' to add a note!" onChange={handleChange} value={submission.notesDescription}></textarea>
-              <button className='button' onClick={handleEditClick} disabled={demoAccount}>Edit</button>
+              <button className='edit-button orange-button' onClick={handleEditClick} disabled={demoAccount}>Edit</button>
             </div>
           </>
         )

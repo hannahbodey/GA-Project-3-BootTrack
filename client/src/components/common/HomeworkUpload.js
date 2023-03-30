@@ -65,17 +65,19 @@ const HomeworkUpload = ({ day, demoAccount }) => {
   }
 
   return (
-    <form className='image-field' onSubmit={handleSubmit}>
-      <h4>Homework Uploads:</h4>
-      {homeworkForm.homeworkLink ? <img src={homeworkForm.homeworkLink} className={'homework-image'} /> : !isDeleted && day.homeworkUploads[0] ? <img src={day.homeworkUploads[0].homeworkLink} className={'homework-image'} /> : <input className='image-input' type="file" onChange={handleUpload} disabled={demoAccount} />}
-      {homeworkForm.homeworkLink && !showRemoveButton && (
-        <>
-          <button className='green-button'>Upload Image</button>
-          <button className='orange-button' onClick={handleClear} type="button">Discard Image</button>
-        </>
-      )}
-      {showRemoveButton && <button className='red-button' onClick={handleDelete} type="button" disabled={demoAccount}>Remove Image</button>}
-    </form>
+    <section>
+      <form className='image-field' onSubmit={handleSubmit}>
+        <h4>Homework Uploads:</h4>
+        {homeworkForm.homeworkLink ? <img src={homeworkForm.homeworkLink} className={'homework-image'} /> : !isDeleted && day.homeworkUploads[0] ? <img src={day.homeworkUploads[0].homeworkLink} className={'homework-image'} /> : <input className='image-input' type="file" onChange={handleUpload} disabled={demoAccount} />}
+        {homeworkForm.homeworkLink && !showRemoveButton && (
+          <>
+            <button className='green-button save-button'>Upload Image</button>
+            <button className='orange-button edit-button' onClick={handleClear} type="button">Discard Image</button>
+          </>
+        )}
+        {showRemoveButton && <button className='red-button delete-button' onClick={handleDelete} type="button" disabled={demoAccount}>Remove Image</button>}
+      </form>
+    </section>
   )
 }
 
