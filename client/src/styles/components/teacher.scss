@@ -16,14 +16,16 @@
     flex-wrap: wrap;
     justify-content: space-around;
   }
-
   .day {
     width: calc(90vw / 5);
     height: 245px;
   }
-
   .card-body {
     height: 240px;
+  }
+  .progress-card {
+    width: calc(90vw / 6);
+    height: 245px;
   }
 }
 

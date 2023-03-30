@@ -1,12 +1,10 @@
 import axios from 'axios'
-import { v4 as uuid } from 'uuid'
 import { useEffect, useState } from 'react'
 import { userTokenFunction, teacherCheck } from '../../helpers/auth'
 import { useLocation } from 'react-router-dom'
 import BackButton from '../common/BackButton'
-import Card from 'react-bootstrap/Card'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
+import TeacherProgressView from '../common/TeacherProgressView'
+import TeacherReportView from '../common/TeacherReportView'
 
 const Teacher = () => {
   const [studentWork, setStudentWork] = useState([])
@@ -45,7 +43,6 @@ const Teacher = () => {
       try {
         const userToken = userTokenFunction()
         const { data } = await axios.get('api/reports', userToken)
-        console.log('reports data', data)
         const sortedDays = data.sort((a, b) => {
           if (a.week !== b.week) {
             return a.week - b.week
@@ -71,8 +68,9 @@ const Teacher = () => {
   }, [filters, studentWork])
 
   const identifyStudent = () => {
-    const newList = [...new Set(studentWork?.map(day => day.progress[0].owner.username))].sort()
-    console.log('new list', newList)
+    const newList = [...new Set(studentWork.reduce((acc, day) => {
+      return [ ...acc, ...day.progress.map(day => day.owner.username)]
+    }, []))]
     setStudentList(newList)
   }
 
@@ -89,6 +87,7 @@ const Teacher = () => {
   const handleClickWeeklyReport = () => {
     setActiveTitle('weeklyProgress')
   }
+
   return (
     <main className='main-container'>
       <BackButton />
@@ -115,48 +114,12 @@ const Teacher = () => {
           <div className='cards-container'>
             {activeTitle === 'dailyProgress' &&
               <>
-                <div className='days-container'>
-                  {filteredWork.length > 0 && filteredWork.map((day) => {
-                    return (
-                      <div key={day._id} className='day'>
-                        <Card>
-                          <Card.Body >
-                            {/* {day.progress && <Card.Text className='owner'>{day.progress[0].owner.username}</Card.Text>} */}
-                            {day.progress && <Card.Text className='owner'>Week: {day.week} Day: {day.day}</Card.Text>}
-                            {day.progress && day.progress.length > 0 && day.progress[0].completed === false ? <Card.Text>Work completed? <FontAwesomeIcon icon={icon({ name: 'circle-xmark' })} className='red-circle' /></Card.Text> : <Card.Text>Work completed? <FontAwesomeIcon icon={icon({ name: 'circle-check' })} className='green-circle' /></Card.Text>}
-                            {day.progress && <Card.Text className='progress-class'>Confidence rating: {day.progress[0].confidenceRating}</Card.Text>}
-                            {day.progress && day.progress.length > 0 && day.progress[0].bookmarked === false ? <Card.Text>Needs help? <FontAwesomeIcon icon={icon({ name: 'circle-xmark' })} className='red-circle' /></Card.Text> : <Card.Text>Needs help? <FontAwesomeIcon icon={icon({ name: 'circle-check' })} className='green-circle' /></Card.Text>}
-                          </Card.Body>
-                        </Card>
-                      </div>
-                    )
-                  })}
-                  {!filteredWork.length > 0 && <p>Student has not yet completed work.</p>}
-                </div>
+                <TeacherProgressView filteredWork={filteredWork} />
               </>
             }
             {activeTitle === 'weeklyProgress' &&
               <>
-
-                <div className='days-container'>
-                  {weeklyData.length ?
-                    weeklyData.map((day) => {
-                      const weekIndex = uuid()
-                      const index = uuid()
-                      return (
-                        <div key={index} className='day'>
-                          <Card>
-                            <Card.Body >
-                              {day.week && <Card.Text className='owner' key={weekIndex}>{day.week}</Card.Text>}
-                            </Card.Body>
-                          </Card>
-                        </div>
-                      )
-                    })
-                    :
-                    <p>No student data.</p>
-                  }
-                </div>
+                <TeacherReportView weeklyData={weeklyData} />
               </>
             }
           </div>
