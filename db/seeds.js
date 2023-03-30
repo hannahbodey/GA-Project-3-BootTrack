@@ -3,9 +3,11 @@ import 'dotenv/config'
 
 import Day from '../models/days.js'
 import User from '../models/users.js'
+import Report from '../models/weeklyReports.js'
 
 import userData from './data/user.js'
 import dayData from './data/days.js'
+import reportData from './data/reports.js'
 
 // Declaring a variable to contain the URI within the .env file
 const mongoURI = process.env.MONGO_URI
@@ -48,6 +50,9 @@ const seedDatabase = async () => {
     // Create course content (days)
     const createDays = await Day.create(daysWithUser)
     console.log(`${createDays.length} days worth of data added 📆`)
+
+    const createdReports = await Report.create(reportData)
+    console.log(`${createdReports.length} reports added 📑`)
 
     // Close connection
     await mongoose.connection.close()

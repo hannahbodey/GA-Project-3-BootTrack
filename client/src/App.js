@@ -9,6 +9,7 @@ import PageNotFound from './components/common/PageNotFound'
 import PageNavBar from './components/common/PageNavBar'
 import ProfileView from './components/days/ProfileView'
 import Teacher from './components/days/Teacher'
+import ReportForm from './components/common/ReportForm'
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/profile' element={<ProfileView />} />
+          <Route path='/report/:week' element={<ReportForm />} />
           <Route path='/teacher' element={<Teacher />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>

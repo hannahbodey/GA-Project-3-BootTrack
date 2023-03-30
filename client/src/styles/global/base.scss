@@ -25,7 +25,9 @@
 .main-container {
   .main-header {
     margin: 0 25px;
+    margin-bottom: 2rem;
   }
+
   .back-button-profile {
     margin-left: 30px;
   }
@@ -35,7 +37,7 @@ main {
   flex-grow: 1;
   padding: 2em 0;
   background-color: $background;
-}
+ }
 
 // .button {
 //   background-color: $button;
@@ -52,6 +54,7 @@ main {
   border: none;
   border-radius: 3px;
   padding: 8px 15px;
+
   &:hover,
   &:active {
     background-color: lighten($button, 8%);
@@ -110,6 +113,7 @@ main {
   border: none;
   border-radius: 3px;
   padding: 2px 8px;
+
   &:hover,
   &:active {
     background-color: lighten($button, 1%);
