@@ -63,6 +63,7 @@ const Teacher = () => {
     if (studentWork.length) {
       identifyStudent()
       setFilteredWork(studentWork.filter(work => {
+        console.log(work)
         return filters.student === work.progress[0].owner.username || filters.work === 'All'
       }))
     }
@@ -104,7 +105,7 @@ const Teacher = () => {
               <option key='Lucy' value='Lucy'>Lucy</option>
               {studentList.length > 0 ?
                 studentList.map((student) => {
-                  console.log('student', student)
+                  // console.log('student', student)
                   return <option key={student} value={student}>{student}</option>
                 })
                 :

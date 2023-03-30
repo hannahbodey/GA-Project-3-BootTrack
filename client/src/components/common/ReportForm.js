@@ -103,7 +103,7 @@ const ReportForm = () => {
             required
           />
 
-          <label htmlFor="overallComfort" className="form-label">How comfortable do you feel with this week&apos;s material? (1 being the lowest - 3 being the highest)<span className='asterisk'>*</span></label>
+          <label htmlFor="overallComfort" className="form-label">How comfortable do you feel with this week&apos;s material? (1 being the lowest - 5 being the highest)<span className='asterisk'>*</span></label>
           <input
             type="number"
             id="overallComfort"
@@ -111,7 +111,7 @@ const ReportForm = () => {
             value={formData.overallComfort}
             onChange={handleChange}
             min="1"
-            max="3"
+            max="5"
             className="form-input"
             required
           />
@@ -126,7 +126,7 @@ const ReportForm = () => {
             required
           />
 
-          <label htmlFor="supportRating" className="form-label">Do you feel supported by all members of the instructional team? (1 being &apos;No&apos; -  3 being &apos;Yes&apos;)<span className='asterisk'>*</span></label>
+          <label htmlFor="supportRating" className="form-label">Do you feel supported by all members of the instructional team? (1 being &apos;Very Low&apos; -  5 being &apos;Very High&apos;)<span className='asterisk'>*</span></label>
           <input
             type="number"
             id="supportRating"
@@ -134,7 +134,7 @@ const ReportForm = () => {
             value={formData.supportRating}
             onChange={handleChange}
             min="1"
-            max="3"
+            max="5"
             className="form-input"
             required
           />
