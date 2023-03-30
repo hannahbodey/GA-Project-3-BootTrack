@@ -72,7 +72,7 @@ const ProfileView = () => {
 
   const isReportSubmitted = (week) => {
     const report = weeklyReports.find(report => report.week === week)
-    return report && report.responses.some(response => response.owner === loggedInUserId)
+    return report && report.responses.some(response => response.owner._id === loggedInUserId)
   }
 
   const renderWeekCard = (week) => {
