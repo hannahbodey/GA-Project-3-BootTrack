@@ -37,16 +37,7 @@ main {
   flex-grow: 1;
   padding: 2em 0;
   background-color: $background;
- }
-
-// .button {
-//   background-color: $button;
-//   color: #000;
-//   border: none;
-//   &:hover, &:active {
-//     color: #fff;
-//   }
-// }
+}
 
 .red-button {
   background-color: $button;
@@ -54,7 +45,7 @@ main {
   border: none;
   border-radius: 3px;
   padding: 8px 15px;
-
+  margin-bottom: 3px;
   &:hover,
   &:active {
     background-color: lighten($button, 8%);

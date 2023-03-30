@@ -1,34 +1,95 @@
-import Container from 'react-bootstrap/Container'
-import test from '../images/test.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
+import completedDay from '../pictures/completed-day.png'
+import dayOneOverview from '../pictures/day-1-overview.png'
+import dailyProgressViewOne from '../pictures/demo-daily-progress-teacher-view.png'
+import dailyProgressViewTwo from '../pictures/newuser-daily-progress-teacher-view.png'
+import studentInitialView from '../pictures/student-initial-view.png'
 
 const Home = () => {
 
+  const [isActive, setIsActive] = useState('completed-view')
+  const [error, setError] = useState('')
+  const navigate = useNavigate()
+  const delay = 5000
+  let i = 0
+
+  useEffect(() => {
+    console.log('timeout hit')
+    const interval = setInterval(() => {
+      { i < 4 ? i++ : (i === 4 ? i = i - 4 : i) }
+      setClass()
+    }, delay)
+    return () => clearInterval(interval)
+  }, [])
+
+  const setClass = () => {
+    const classArray = ['completed-view', 'upload-view', 'progress-one-view', 'progress-two-view', 'student-view']
+    const activeClass = classArray[i]
+    setIsActive(activeClass)
+  }
+
+  const loginDemo = async () => {
+    try {
+      const { data } = await axios.post('/api/demo-login')
+      localStorage.setItem('PROJECT-3-TOKEN', data.token)
+      navigate('/days')
+    } catch (error) {
+      console.log(error)
+      setError(error.response.data.message)
+    }
+  }
+
+  const loginJane = async () => {
+    try {
+      const { data } = await axios.post('/api/login', { email: 'jane@example.com', password: 'pass' })
+      localStorage.setItem('PROJECT-3-TOKEN', data.token)
+      navigate('/teacher')
+    } catch (error) {
+      console.log(error)
+      setError(error.response.data.message)
+    }
+  }
+
   return (
-
-    <main className="home">
-      <Container>
-        <div className="title">
-          <h4>Your Dashboard Overview</h4>
+    <main className='home'>
+      <div className='overall-container'>
+        <div className='slideshow'>
+          <h4>Choose BootTrack for all your student support services:</h4>
+          <div className={isActive === 'completed-view' ? 'image-display fade completed-view' : 'no-display'}>
+            <img src={completedDay} className='home-image' />
+            <h6 className='banner'>Allow students to mark days as completed</h6>
+          </div>
+          <div className={isActive === 'upload-view' ? 'image-display fade upload-view' : 'no-display'}>
+            <img src={dayOneOverview} className='home-image' />
+            <h6 className='banner'>Students can upload their work and notes, and mark their progress on any day</h6>
+          </div>
+          <div className={isActive === 'progress-one-view' ? 'image-display fade progress-one-view' : 'no-display'}>
+            <img src={dailyProgressViewOne} className='home-image' />
+            <h6 className='banner'>Teachers can view student progress and weekly updates</h6>
+          </div>
+          <div className={isActive === 'progress-two-view' ? 'image-display fade progress-two-view' : 'no-display'}>
+            <img src={dailyProgressViewTwo} className='home-image' />
+            <h6 className='banner'>Teachers can view student progress and weekly updates</h6>
+          </div>
+          <div className={isActive === 'student-view' ? 'image-display fade student-view' : 'no-display'}>
+            <img src={studentInitialView} className='home-image' />
+            <h6 className='banner'>Students can view and access all days on their course, ready for interaction</h6>
+          </div>
         </div>
-        <div className="hero">Call to action! <span>Sign Up to Join</span>
-          <>
-          
-            <Link to='/register' className={location.pathname === '/register' ? 'active btn-register' : 'btn-register'}>Register</Link>
-            <h5>If you are already registered</h5>
-            <Link to='/login' className={location.pathname === '/login' ? 'active btn-login' : 'btn-login'}>Login</Link>
-        
-          </>
+        <div className='hero'>
+          <h2>Sign up now!</h2>
+          <Link to='/register' className={location.pathname === '/register' ? 'active red-button' : 'red-button'}>Register</Link>
+          <Link to='/login' className={location.pathname === '/login' ? 'active red-button' : 'red-button'}>Login</Link>
+          <h3>Trial teacher mode!</h3>
+          <button className='red-button' onClick={loginJane}>Teacher Demo</button>
+          <h3>Check out student view:</h3>
+          <button className='red-button' onClick={loginDemo}>Student Demo</button>
         </div>
-        <div className="overView">
-          <img src={test} alt="All days overview" />
-        </div>
-      </Container >
-
+      </div >
     </main >
-
-
   )
 }
 
