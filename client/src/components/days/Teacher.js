@@ -13,6 +13,7 @@ const Teacher = () => {
     student: '',
   })
   const [filteredWork, setFilteredWork] = useState([])
+  const [filteredReports, setFilteredReports] = useState([])
   const location = useLocation()
   const [weeklyData, setWeeklyData] = useState([])
   const [error, setError] = useState('')
@@ -62,15 +63,28 @@ const Teacher = () => {
   useEffect(() => {
     if (studentWork.length) {
       identifyStudent()
-      setFilteredWork(studentWork.filter(work => {
-        return filters.student === work.progress[0].owner.username || filters.work === 'All'
-      }))
+      const newWork = studentWork.map((day) => {
+        return { ...day, progress: day.progress.filter(item => item.owner.username === filters.student) }
+      })
+      console.log('new work', newWork)
+      setFilteredWork(newWork)
+    }
+  }, [filters, studentWork])
+
+  useEffect(() => {
+    if (weeklyData.length) {
+      identifyStudent()
+      const newReports = weeklyData.map((data) => {
+        return { ...data, responses: data.responses.filter(item => item.owner.username === filters.student) }
+      })
+      console.log('new work', newReports)
+      setFilteredReports(newReports)
     }
   }, [filters, studentWork])
 
   const identifyStudent = () => {
     const newList = [...new Set(studentWork.reduce((acc, day) => {
-      return [ ...acc, ...day.progress.map(day => day.owner.username)]
+      return [...acc, ...day.progress.map(day => day.owner.username)]
     }, []))]
     setStudentList(newList)
   }
@@ -101,7 +115,6 @@ const Teacher = () => {
           <div className='filter'>
             <select name='filter-daily' id='filter-daily' value={filters.student} onChange={handleChange}>
               <option key='selectstudent' value='selectstudent'>Select a student</option>
-              <option key='Lucy' value='Lucy'>Lucy</option>
               {studentList.length > 0 ?
                 studentList.map((student) => {
                   console.log('student', student)
@@ -120,7 +133,7 @@ const Teacher = () => {
             }
             {activeTitle === 'weeklyProgress' &&
               <>
-                <TeacherReportView weeklyData={weeklyData} />
+                <TeacherReportView weeklyData={filteredReports} />
               </>
             }
           </div>
