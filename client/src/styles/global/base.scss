@@ -107,6 +107,20 @@ main {
   }
 }
 
+.green-button {
+  &:disabled {
+    background-color: darken(rgb(14, 150, 14), 8%);
+    cursor: default;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  &:disabled:hover,
+  &:disabled:active {
+    background-color: darken(rgb(14, 150, 14), 8%);
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
+
 .back-button {
   background-color: darken($button, 20%);
   color: #fff;
