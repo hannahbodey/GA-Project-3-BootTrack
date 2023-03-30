@@ -5,11 +5,16 @@ const BackButton = () => {
   const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate('/days')
+    if (location.pathname === '/report/:week'){
+      navigate('/profile')
+    } else {
+      navigate('/days')
+    }
+
   }
 
   return (
-    <button className={(location.pathname === '/profile' || location.pathname === '/teacher') ? 'back-button back-button-profile' : 'back-button'} onClick={handleClick}>⬅Back</button>
+    <button className={(location.pathname === '/profile' || location.pathname === '/teacher' || location.pathname === '/report/:week') ? 'back-button back-button-profile' : 'back-button'} onClick={handleClick}>⬅Back</button>
   )
 }
 

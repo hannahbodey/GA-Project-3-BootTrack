@@ -111,9 +111,9 @@ const ProfileView = () => {
       </div>
       <div className='cards-container'>
         {activeTitle === 'weeklyPulse' && (
-          <Container>
+          <div className='progress-card'>
             {Array.from({ length: 12 }, (_, i) => i + 1).map(week => renderWeekCard(week))}
-          </Container>
+          </div>
         )}
 
         {activeTitle === 'myStats' && (
