@@ -3,19 +3,19 @@ import WeeklyReport from '../models/weeklyReports.js'
 
 export const getReports = async (req, res) => {
   try {
-    const reports = await WeeklyReport.find().lean()
+    const reports = await WeeklyReport.find().lean().populate('responses.owner')
     // const daysPopulated = days.map(day => {
     //   dayOwner = await Day.populate()
     //   return day.populate('owner')
     // })
-    // if (req.loggedInUser.teacher === true){
-    //   console.log('new account made, is it teacher?')
-    //   console.log(req.loggedInUser.teacher)
-    //   return res.json(days)
-    // }
+    if (req.loggedInUser.teacher === true){
+      console.log('new account made, is it teacher?')
+      console.log(req.loggedInUser.teacher)
+      return res.json(reports)
+    }
 
     const filteredReports = reports.map(report => {
-      report.responses = report.responses.filter(response => response.owner?.toString() === req.loggedInUser._id.toString())
+      report.responses = report.responses.filter(response => response.owner._id.toString() === req.loggedInUser._id.toString())
       return report
     })
 
