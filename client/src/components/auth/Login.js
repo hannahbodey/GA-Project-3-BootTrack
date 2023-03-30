@@ -62,14 +62,14 @@ const Login = () => {
   return (
     <main className='register-form-container'>
       <form className='register-form' onSubmit={handleSubmit}>
-        <h1>Login In Now!</h1>
+        <h1>Log In Now!</h1>
         {/* Email */}
         {/* <label htmlFor='email'>Email</label> */}
         <input type='email' name='email' placeholder='Email' onChange={handleChange} value={formFields.email} />
         {/* Password */}
         {/* <label htmlFor='password'>Password</label> */}
         <input type='password' name='password' placeholder='Password' onChange={handleChange} value={formFields.password} />
-        <button className='red-button'>Login</button>
+        <button className='red-button'>Log In</button>
         {error && <p className='text-danger text-center'>{error}</p>}
         {/*  ! Demo Button would need to sit outside the form, to prevent it being caught within the form submit */}
         {/* <button className='red-button' onClick={loginDemo}>Try Demo Account!</button> */}
