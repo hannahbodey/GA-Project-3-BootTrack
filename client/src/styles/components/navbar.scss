@@ -1,40 +1,101 @@
 .navbar {
   box-shadow: 0px 2px 10px rgb(0 0 0 / 20%);
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
-#navbarcontainer {
-  height: 45px;
-  #navbar-nav {
-    @media (min-width: 769px){
+.navbarcontainer {
+
+  .navbar-nav {
+    @media (min-width: 768px) {
       text-align: center;
       justify-content: center;
+      margin-right: 30px;
     }
-  }  
+
+    margin-right: 0px;
+    align-items: center;
+  }
+
+  .brand {
+    margin-left: 30px;
+    color: white;
+
+    &:focus {
+      color: white;
+    }
+
+    &:hover {
+      background-color: white;
+      border-radius: 3px;
+      color: #000;
+    }
+  }
+
+
+
   a {
     text-decoration: none;
     color: #fff;
-    @media (min-width: 769px) {
-      padding: 8px;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+    padding: 12px;
+
+    @media (min-width: 768px) {
+      padding: 12px;
     }
+
     &:hover {
-      &:not(.brand){
-        background-color: $overlay;
-        border-radius: 3px;
-        color: #000;
-      }
+      // &:not(.brand) {
+      background-color: white;
+      border-radius: 3px;
+      color: #000;
+      // }
     }
+
     &:active {
       color: #000;
     }
   }
+
   span {
     cursor: pointer;
     color: #fff;
+
     &:hover {
-      background-color: $overlay;
+      background-color: white;
       border-radius: 3px;
       color: #000;
     }
+  }
+
+  .nav-link {
+    padding: 12px;
+  }
+
+  .narrow-menu {
+    background-color: rgb(133, 133, 133);
+    margin-right: 30px;
+    // color: white;
+
+    &:hover {
+      &:not(.brand) {
+        background-color: white;
+        border-radius: 6px;
+        color: #000;
+      }
+    }
+  }
+
+}
+
+.navbar-toggler {
+  background-color: rgba(0, 0, 0, 0.8);
+  &:focus{
+    box-shadow: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  span {
+    padding: 12px !important;
   }
 }
