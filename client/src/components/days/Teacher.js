@@ -29,6 +29,7 @@ const Teacher = () => {
           }
           return a.day - b.day
         })
+        console.log(sortedDays)
         setStudentWork(sortedDays)
       } catch (error) {
         console.log(error)

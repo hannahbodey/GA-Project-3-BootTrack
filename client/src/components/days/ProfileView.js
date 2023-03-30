@@ -78,9 +78,10 @@ const ProfileView = () => {
   const renderWeekCard = (week) => {
     const weekCompleted = isWeekCompleted(week)
     const reportSubmitted = isReportSubmitted(week)
+    const clickable = weekCompleted && !reportSubmitted
 
     const cardContent = (
-      <Card key={week} className='day'>
+      <Card key={week} className={`day ${clickable ? '' : 'non-clickable'}`}>
         <Card.Body>
           <Card.Text className='day-week'>Week {week}</Card.Text>
           {reportSubmitted && <Card.Text className='topic'>Report submitted</Card.Text>}
@@ -93,7 +94,7 @@ const ProfileView = () => {
       </Card>
     )
 
-    if (weekCompleted && !reportSubmitted) {
+    if (clickable) {
       return <Link to={`/report/${week}`}>{cardContent}</Link>
     } else {
       return cardContent

@@ -34,6 +34,7 @@ const Days = () => {
           }
           return a.day - b.day
         })
+        console.log(sortedDays)
         setDays(sortedDays)
       } catch (error) {
         console.log(error)

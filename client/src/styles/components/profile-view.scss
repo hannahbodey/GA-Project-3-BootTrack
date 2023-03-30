@@ -150,7 +150,6 @@
     background-color: darken($overlay, 30%);
   }
 
-
   a {
     color: #000;
     text-decoration: none;
@@ -179,6 +178,19 @@
 
     .day-week {
       font-size: 1rem;
+    }
+  }
+}
+
+.card.non-clickable {
+  &:hover {
+    background-color: unset;
+    border: 1px solid #d3d3d3;
+  }
+
+  .card-body {
+    &:hover {
+      background-color: $overlay;
     }
   }
 }

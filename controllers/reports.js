@@ -27,9 +27,9 @@ export const getReports = async (req, res) => {
 
 export const submitReport = async (req, res) => {
   try {
-    // if (req.loggedInUser.isDemo === true) {
-    //   throw new DemoCaught()
-    // }
+    if (req.loggedInUser.isDemo === true) {
+      throw new DemoCaught()
+    }
     const { weekId } = req.params
     const stringLoggedInUserId = req.loggedInUser._id.toString()
     const existingReport = await WeeklyReport.findOne({ week: weekId })

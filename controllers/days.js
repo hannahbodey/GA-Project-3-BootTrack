@@ -9,19 +9,29 @@ export const getAllDays = async (req, res) => {
     //   dayOwner = await Day.populate()
     //   return day.populate('owner')
     // })
-    if (req.loggedInUser.teacher === true){
+    if (req.loggedInUser.teacher === true) {
       console.log('days', days[0].progress)
       return res.json(days)
     }
 
     const filteredDays = days.map(day => {
-      day.progress = day.progress.filter(progress => progress.owner?.toString() === req.loggedInUser._id.toString())
-      day.homeworkUploads = day.homeworkUploads.filter(homework => homework.owner?.toString() === req.loggedInUser._id.toString())
-      day.classworkNotes = day.classworkNotes.filter(notes => notes.owner?.toString() === req.loggedInUser._id.toString())
+      day.progress = day.progress.filter(progress => progress.owner._id?.toString() === req.loggedInUser._id.toString())
+      day.homeworkUploads = day.homeworkUploads.filter(homework => homework.owner._id?.toString() === req.loggedInUser._id.toString())
+      day.classworkNotes = day.classworkNotes.filter(notes => notes.owner._id?.toString() === req.loggedInUser._id.toString())
       return day
     })
 
     return res.json(filteredDays)
+  } catch (err) {
+    return assessError(err, res)
+  }
+}
+
+export const getTeacherDays = async (req, res) => {
+  try {
+    const days = await Day.find().lean().populate('progress.owner')
+    return res.json(days)
+
   } catch (err) {
     return assessError(err, res)
   }
