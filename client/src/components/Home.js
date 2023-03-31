@@ -12,9 +12,31 @@ const Home = () => {
 
   const [isActive, setIsActive] = useState('completed-view')
   const [error, setError] = useState('')
+  const [formFields, setFormFields] = useState({
+    email: '',
+    password: '',
+  })
   const navigate = useNavigate()
   const delay = 5000
   let i = 0
+
+  const handleChange = (e) => {
+    console.log(e.target.name)
+    setFormFields({ ...formFields, [e.target.name]: e.target.value })
+    setError('')
+  }
+
+  const handleLogin = async (event) => {
+    event.preventDefault()
+    try {
+      const { data } = await axios.post('/api/login', formFields)
+      localStorage.setItem('PROJECT-3-TOKEN', data.token)
+      navigate('/days')
+    } catch (error) {
+      console.log(error)
+      setError(error.response.data.message)
+    }
+  }
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -57,7 +79,7 @@ const Home = () => {
       <div className='overall-container'>
         <div className='slideshow'>
           <div className='home-title'>
-            <h4>Choose BootTrack for all your student support services:</h4>
+            <h3>Choose BootTrack for all your student support services:</h3>
           </div>
           <div className={isActive === 'completed-view' ? 'image-display fade completed-view' : 'no-display'}>
             <div className='pic-container'>
@@ -65,7 +87,7 @@ const Home = () => {
               <h6 className='banner'>Allow students to mark days as completed</h6>
             </div>
           </div>
-          <div className={isActive === 'upload-view' ? 'image-display fade upload-view' : 'no-display'}>
+          <div className={isActive === 'upload-view' ? 'image-display fade upload-view pic-overall' : 'no-display'}>
             <div className='pic-container'>
               <img src={dayOneOverview} className='home-image' />
               <h6 className='banner'>Students can upload their work and notes, and mark their progress on any day</h6>
@@ -97,13 +119,38 @@ const Home = () => {
           </div>
         </div>
         <div className='hero home-form-container'>
-          <h2>Sign up now!</h2>
-          <Link to='/register' className={location.pathname === '/register' ? 'active red-button' : 'red-button'}>Register</Link>
-          <Link to='/login' className={location.pathname === '/login' ? 'active red-button' : 'red-button'}>Login</Link>
-          <h3>Trial teacher mode!</h3>
-          <button className='red-button' onClick={loginTeacherDemo}>Teacher Demo</button>
-          <h3>Check out student view!</h3>
-          <button className='red-button' onClick={loginDemo}>Student Demo</button>
+          <h2>Log In</h2>
+          <form onSubmit={handleLogin} className='home-form'>
+            <input
+              type='email'
+              name='email'
+              placeholder='Email'
+              onChange={handleChange}
+              value={formFields.email}
+              required
+            />
+            <input
+              type='password'
+              name='password'
+              placeholder='Password'
+              onChange={handleChange}
+              value={formFields.password}
+              required
+            />
+            <button type='submit' className='red-button'>
+              Log In
+            </button>
+          </form>
+          <p>
+            Don&apos;t have an account? <Link to='/register'><span className='register-text'>Register</span></Link>
+          </p>
+          <h3>Try our demos</h3>
+          <button className='red-button demo-button' onClick={loginTeacherDemo}>
+            Teacher Demo
+          </button>
+          <button className='red-button demo-button' onClick={loginDemo}>
+            Student Demo
+          </button>
         </div>
       </div >
     </main >
