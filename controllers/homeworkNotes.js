@@ -18,7 +18,6 @@ export const modifyHomework = async (req, res) => {
     if (!userHomework) {
       if (!homeworkLink) throw new Error('Missing field')
       const newUserHomework = {
-        //homeworkTitle,
         homeworkLink,
         owner: stringLoggedInUserId
       }
@@ -42,20 +41,15 @@ export const deleteHomework = async (req, res) => {
     }
     const { dayId } = req.params
     const stringLoggedInUserId = req.loggedInUser._id.toString()
-
     const day = await Day.findById(dayId)
     if (!day) throw new NotFound('Day not found')
-
     const homeworkToDelete = day.homeworkUploads.find(hw => hw.owner.toString() === stringLoggedInUserId)
     if (!homeworkToDelete) throw new NotFound('Homework not found')
-
     await homeworkToDelete.deleteOne()
-
     await day.save()
     return res.sendStatus(204)
   } catch (err) {
     console.log(err)
-    // if (err.kind === 'ObjectId') return res.status(422).json(err)
     return assessError(err, res)
   }
 }

@@ -9,24 +9,17 @@ const secret = process.env.SECRET
 export const registerUser = async (req,res) =>{
   try {
     const newUser = await User.create(req.body)
-
     const days = await Day.find()
-
     for (const day of days) {
-
       const progressData = {
         completed: false,
         confidenceRating: 0,
         bookmarked: false,
         owner: newUser._id
       }
-
       day.progress.push(progressData)
-
       await day.save()
-
     }
-
     return res.status(201).json({ message: `Welcome ${newUser.username}` })
   } catch (err) {
     return assessError(err, res)

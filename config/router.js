@@ -1,6 +1,5 @@
 import express from 'express'
-
-import { getAllDays, getSingleDay, getTeacherDays } from '../controllers/days.js'
+import { getAllDays, getSingleDay } from '../controllers/days.js'
 import { getReports, submitReport } from '../controllers/reports.js'
 import { modifyHomework, deleteHomework } from '../controllers/homeworkNotes.js'
 import { modifyClassNotes, deleteClassNotes } from '../controllers/classworkNotes.js'
@@ -44,8 +43,5 @@ router.route('/api/reports')
 
 router.route('/api/reports/:weekId')
   .put(secureRoute, submitReport)
-
-// router.route('/api/teacherDays')
-//   .get(secureRoute, getTeacherDays)
 
 export default router 
