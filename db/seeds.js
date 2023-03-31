@@ -46,12 +46,19 @@ const seedDatabase = async () => {
       return { ...day }
     })
 
+    const reportsWithUser = reportData.map(report => {
+      report = {
+        ...report, responses: [{ ...report.responses[0], owner: createdUsers[0]._id }]
+      }
+      return { ...report }
+    })
+
 
     // Create course content (days)
     const createDays = await Day.create(daysWithUser)
     console.log(`${createDays.length} days worth of data added 📆`)
 
-    const createdReports = await Report.create(reportData)
+    const createdReports = await Report.create(reportsWithUser)
     console.log(`${createdReports.length} reports added 📑`)
 
     // Close connection

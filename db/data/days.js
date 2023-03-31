@@ -340,9 +340,6 @@ export default [
       completed: true,
       confidenceRating: 5,
       bookmarked: false
-    }],
-    homeworkUploads: [{
-      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680228931/Project-3/zt6oqyhfiwzz157nyrxt.png'
     }]
   },
   {
