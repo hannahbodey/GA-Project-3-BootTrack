@@ -1,32 +1,25 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { userTokenFunction } from '../../helpers/auth'
-
-
-import 'bootstrap/dist/css/bootstrap.min.css'
 import Form from 'react-bootstrap/Form'
 
 
 const Progress = ({ progress, demoAccount }) => {
-
-  console.log(progress)
-
   const { dayId } = useParams()
-
   const [progressValues, setProgressValues] = useState(progress)
+  const [error, setError] = useState('')
 
   const handleProgressChange = async (field, value) => {
-    console.log('value', value)
     const updatedProgressValues = [...progressValues]
     updatedProgressValues[0][field] = value
     setProgressValues(updatedProgressValues)
     try {
-      console.log('progress ->', progress)
       const userToken = userTokenFunction()
       const { data } = await axios.put(`/api/days/${dayId}/progress`, progress, userToken)
     } catch (error) {
       console.log(error)
+      setError(error)
     }
   }
 

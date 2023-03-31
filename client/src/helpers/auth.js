@@ -1,4 +1,5 @@
 import { Buffer } from 'buffer'
+
 const tokenName = 'PROJECT-3-TOKEN'
 
 export const getPayload = () => {
@@ -35,9 +36,6 @@ export const removeToken = () => {
 export const teacherCheck = () => {
   const token = getPayload()
   if (!token) return
-  console.log('token', token)
-  console.log(token)
   const teacherStatus = token.teacherStatus
-  console.log(teacherStatus)
   return teacherStatus
 }

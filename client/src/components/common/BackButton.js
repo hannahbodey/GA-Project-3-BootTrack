@@ -10,7 +10,6 @@ const BackButton = () => {
     } else {
       navigate('/days')
     }
-
   }
 
   return (

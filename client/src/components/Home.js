@@ -1,7 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-
 import completedDay from '../pictures/completed-day.png'
 import dayOneOverview from '../pictures/day-3-overview.png'
 import dailyProgressViewOne from '../pictures/demo-daily-progress-teacher-view.png'
@@ -18,7 +17,6 @@ const Home = () => {
   let i = 0
 
   useEffect(() => {
-    console.log('timeout hit')
     const interval = setInterval(() => {
       { i < 5 ? i++ : (i === 5 ? i = i - 5 : i) }
       setClass()
@@ -43,7 +41,7 @@ const Home = () => {
     }
   }
 
-  const loginJane = async () => {
+  const loginTeacherDemo = async () => {
     try {
       const { data } = await axios.post('/api/login', { email: 'jane@example.com', password: 'pass' })
       localStorage.setItem('PROJECT-3-TOKEN', data.token)
@@ -103,7 +101,7 @@ const Home = () => {
           <Link to='/register' className={location.pathname === '/register' ? 'active red-button' : 'red-button'}>Register</Link>
           <Link to='/login' className={location.pathname === '/login' ? 'active red-button' : 'red-button'}>Login</Link>
           <h3>Trial teacher mode!</h3>
-          <button className='red-button' onClick={loginJane}>Teacher Demo</button>
+          <button className='red-button' onClick={loginTeacherDemo}>Teacher Demo</button>
           <h3>Check out student view!</h3>
           <button className='red-button' onClick={loginDemo}>Student Demo</button>
         </div>

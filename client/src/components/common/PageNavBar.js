@@ -1,12 +1,8 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-
 import { authenticatedUser, removeToken, teacherCheck } from '../../helpers/auth'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
-
 import Navbar from 'react-bootstrap/Navbar'
-import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 
 const PageNavBar = () => {
@@ -24,7 +20,6 @@ const PageNavBar = () => {
       <Navbar.Toggle className='narrow-menu' />
       <Navbar.Collapse className='justify-content-end narrow-style'>
         <Nav>
-          {/* <Link to='/days/:dayId'>Single Day</Link> */}
           {teacherCheck() ? (
             <>
               <Link to='/teacher' className={location.pathname === '/teacher' ? 'active' : ''}>Student Overview</Link>

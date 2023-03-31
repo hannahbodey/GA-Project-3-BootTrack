@@ -8,7 +8,6 @@ import BackButton from '../common/BackButton'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
-
 const ProfileView = () => {
 
   const [studentWork, setStudentWork] = useState([])
@@ -17,7 +16,6 @@ const ProfileView = () => {
 
   const location = useLocation()
   const loggedInUserId = getPayload().sub
-
 
   useEffect(() => {
     const getWork = async () => {

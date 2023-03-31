@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { userTokenFunction, teacherCheck } from '../../helpers/auth'
-import { useLocation } from 'react-router-dom'
 import BackButton from '../common/BackButton'
 import TeacherProgressView from '../common/TeacherProgressView'
 import TeacherReportView from '../common/TeacherReportView'
@@ -14,7 +13,6 @@ const Teacher = () => {
   })
   const [filteredWork, setFilteredWork] = useState([])
   const [filteredReports, setFilteredReports] = useState([])
-  const location = useLocation()
   const [weeklyData, setWeeklyData] = useState([])
   const [error, setError] = useState('')
   const [activeTitle, setActiveTitle] = useState('weeklyProgress')
@@ -30,7 +28,6 @@ const Teacher = () => {
           }
           return a.day - b.day
         })
-        console.log(sortedDays)
         setStudentWork(sortedDays)
       } catch (error) {
         console.log(error)
@@ -66,7 +63,6 @@ const Teacher = () => {
       const newWork = studentWork.map((day) => {
         return { ...day, progress: day.progress.filter(item => item.owner.username === filters.student) }
       })
-      console.log('new work', newWork)
       setFilteredWork(newWork)
     }
   }, [filters, studentWork])
@@ -77,7 +73,6 @@ const Teacher = () => {
       const newReports = weeklyData.map((data) => {
         return { ...data, responses: data.responses.filter(item => item.owner.username === filters.student) }
       })
-      console.log('new work', newReports)
       setFilteredReports(newReports)
     }
   }, [filters, studentWork])
@@ -117,7 +112,6 @@ const Teacher = () => {
               <option key='selectstudent' value='selectstudent'>Select a student</option>
               {studentList.length > 0 ?
                 studentList.map((student) => {
-                  // console.log('student', student)
                   return <option key={student} value={student}>{student}</option>
                 })
                 :

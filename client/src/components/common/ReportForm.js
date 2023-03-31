@@ -8,25 +8,9 @@ import BackButton from './BackButton'
 const ReportForm = () => {
 
   const [demoAccount, setDemoAccount] = useState(false)
-
-  useEffect(() => {
-    const checkDemo = async () => {
-      try {
-        const userToken = userTokenFunction()
-        const { data } = await axios.get('/api/user', userToken)
-        setDemoAccount(data.isDemo)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    checkDemo()
-  }, [])
-
+  const [error, setError] = useState('')
   const navigate = useNavigate()
-
-
   const { week } = useParams()
-
   const [formData, setFormData] = useState({
     highlights: '',
     challenges: '',
@@ -39,6 +23,20 @@ const ReportForm = () => {
     contactRequest: '',
     completed: false,
   })
+
+  useEffect(() => {
+    const checkDemo = async () => {
+      try {
+        const userToken = userTokenFunction()
+        const { data } = await axios.get('/api/user', userToken)
+        setDemoAccount(data.isDemo)
+      } catch (error) {
+        console.log(error)
+        setError(error)
+      }
+    }
+    checkDemo()
+  }, [])
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -72,7 +70,6 @@ const ReportForm = () => {
       <div className="report-form-container">
         <h1>Weekly Report for Week {week}</h1>
         <form onSubmit={handleSubmit} className="report-form">
-
           <label htmlFor="highlights" className="form-label">What went well this week?<span className='asterisk'>*</span></label>
           <textarea
             id="highlights"
@@ -82,7 +79,6 @@ const ReportForm = () => {
             className="form-input"
             required
           />
-
           <label htmlFor="challenges" className="form-label">What didn&apos;t go so well this week?<span className='asterisk'>*</span></label>
           <textarea
             id="challenges"
@@ -92,7 +88,6 @@ const ReportForm = () => {
             className="form-input"
             required
           />
-
           <label htmlFor="goals" className="form-label">What&apos;s your goal for next week?<span className='asterisk'>*</span></label>
           <textarea
             id="goals"
@@ -102,7 +97,6 @@ const ReportForm = () => {
             className="form-input"
             required
           />
-
           <label htmlFor="overallComfort" className="form-label">How comfortable do you feel with this week&apos;s material? (1 being the lowest - 5 being the highest)<span className='asterisk'>*</span></label>
           <input
             type="number"
@@ -115,7 +109,6 @@ const ReportForm = () => {
             className="form-input"
             required
           />
-
           <label htmlFor="questions" className="form-label">What questions do you still have after this week&apos;s lessons?<span className='asterisk'>*</span></label>
           <textarea
             id="questions"
@@ -125,7 +118,6 @@ const ReportForm = () => {
             className="form-input"
             required
           />
-
           <label htmlFor="supportRating" className="form-label">Do you feel supported by all members of the instructional team? (1 being &apos;Very Low&apos; -  5 being &apos;Very High&apos;)<span className='asterisk'>*</span></label>
           <input
             type="number"
@@ -138,7 +130,6 @@ const ReportForm = () => {
             className="form-input"
             required
           />
-
           <label htmlFor="supportAdvice" className="form-label">How can the instructional team better support you?<span className='asterisk'>*</span></label>
           <textarea
             id="supportAdvice"
@@ -148,7 +139,6 @@ const ReportForm = () => {
             className="form-input"
             required
           />
-
           <label className="form-label">OPTIONAL: Would you like to speak about anything with a member of the team? If yes, please select the person and please leave your name on your survey.</label>
           <div >
             {['Lead Instructor', 'Instructional Associate', 'Student Success', 'Career Coach'].map((person) => (
@@ -158,7 +148,6 @@ const ReportForm = () => {
               </div>
             ))}
           </div>
-
           <label htmlFor="contactRequest" className="form-label">What would you like to chat about?</label>
           <textarea
             id="contactRequest"
@@ -167,11 +156,9 @@ const ReportForm = () => {
             onChange={handleChange}
             className="form-input"
           />
-
           <div className="button-container">
             <button type="submit" className="green-button" disabled={demoAccount}>Submit Report</button>
           </div>
-
         </form>
       </div>
     </>

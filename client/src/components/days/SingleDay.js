@@ -1,20 +1,15 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
-
 import Error from '../common/Error'
-
 import { userTokenFunction } from '../../helpers/auth'
-
 import HomeworkUpload from '../common/HomeworkUpload'
 import Progress from '../common/Progress'
 import BackButton from '../common/BackButton'
-
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import NotesSubmission from '../common/NotesSubmission'
-
 
 const SingleDay = () => {
 
@@ -23,9 +18,7 @@ const SingleDay = () => {
   const [demoAccount, setDemoAccount] = useState(false)
 
   const location = useLocation()
-
   const { dayId } = useParams()
-  console.log(dayId)
 
   useEffect(() => {
     const getDay = async () => {
@@ -45,6 +38,7 @@ const SingleDay = () => {
         setDemoAccount(data.isDemo)
       } catch (error) {
         console.log(error)
+        setError(error.response.data.message)
       }
     }
     getDay()
@@ -89,7 +83,6 @@ const SingleDay = () => {
                     </>
                   }
                 </section>
-                {/* <HomeworkSubmission /> */}
                 <NotesSubmission notes={day.classworkNotes} demoAccount={demoAccount} />
               </Col>
               <Col lg='6' md='6' sm='12'>
