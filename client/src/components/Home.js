@@ -146,11 +146,11 @@ const Home = () => {
             Don&apos;t have an account? <Link to='/register'><span className='register-text'>Register</span></Link>
           </p>
           <h3>Try our demos</h3>
-          <button className='red-button demo-button' onClick={loginTeacherDemo}>
-            Teacher Demo
-          </button>
           <button className='red-button demo-button' onClick={loginDemo}>
             Student Demo
+          </button>
+          <button className='red-button demo-button' onClick={loginTeacherDemo}>
+            Teacher Demo
           </button>
         </div>
       </div >
