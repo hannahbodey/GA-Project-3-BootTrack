@@ -75,7 +75,7 @@ const HomeworkUpload = ({ day, demoAccount }) => {
             <button className='orange-button edit-button' onClick={handleClear} type="button">Discard Image</button>
           </>
         )}
-        {showRemoveButton && <button className='red-button delete-button' onClick={handleDelete} type="button" disabled={demoAccount}>Remove Image</button>}
+        {showRemoveButton && <button className='red-button-homework delete-button' onClick={handleDelete} type="button" disabled={demoAccount}>Remove Image</button>}
       </form>
     </section>
   )

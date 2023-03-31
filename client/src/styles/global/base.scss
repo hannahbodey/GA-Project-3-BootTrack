@@ -43,9 +43,14 @@ main {
   background-color: $button;
   color: #fff;
   border: none;
-  border-radius: 3px;
-  padding: 8px 15px;
-  margin-bottom: 3px;
+  border-radius: 4px;
+  padding: 15px 20px;
+  margin: 20px 0;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  width: 100%;
   &:hover,
   &:active {
     background-color: lighten($button, 8%);

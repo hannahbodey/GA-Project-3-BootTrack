@@ -57,7 +57,9 @@ const Home = () => {
     <main className='home'>
       <div className='overall-container'>
         <div className='slideshow'>
-          <h4>Choose BootTrack for all your student support services:</h4>
+          <div className="home-title">
+            <h4>Choose BootTrack for all your student support services:</h4>
+          </div>
           <div className={isActive === 'completed-view' ? 'image-display fade completed-view' : 'no-display'}>
             <img src={completedDay} className='home-image' />
             <h6 className='banner'>Allow students to mark days as completed</h6>
@@ -79,13 +81,13 @@ const Home = () => {
             <h6 className='banner'>Students can view and access all days on their course, ready for interaction</h6>
           </div>
         </div>
-        <div className='hero'>
+        <div className='hero home-form-container'>
           <h2>Sign up now!</h2>
           <Link to='/register' className={location.pathname === '/register' ? 'active red-button' : 'red-button'}>Register</Link>
           <Link to='/login' className={location.pathname === '/login' ? 'active red-button' : 'red-button'}>Login</Link>
           <h3>Trial teacher mode!</h3>
           <button className='red-button' onClick={loginJane}>Teacher Demo</button>
-          <h3>Check out student view:</h3>
+          <h3>Check out student view!</h3>
           <button className='red-button' onClick={loginDemo}>Student Demo</button>
         </div>
       </div >

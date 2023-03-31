@@ -88,8 +88,8 @@ const ProfileView = () => {
           {weekCompleted && !reportSubmitted && <Card.Text className='topic'>Ready to submit</Card.Text>}
           {!weekCompleted && !reportSubmitted && <Card.Text className='topic'>Week Incomplete</Card.Text>}
           {reportSubmitted && <Card.Text><FontAwesomeIcon icon={icon({ name: 'circle-check' })} className='green-circle' /></Card.Text>}
-          {weekCompleted && !reportSubmitted && <Card.Text className='topic'><FontAwesomeIcon icon={icon({ name: 'circle-question' })} /></Card.Text>}
-          {!weekCompleted && !reportSubmitted && <Card.Text className='topic'><FontAwesomeIcon icon={icon({ name: 'lock' })} /></Card.Text>}
+          {weekCompleted && !reportSubmitted && <Card.Text className='topic'><FontAwesomeIcon icon={icon({ name: 'circle-question' })} className='question-circle'/></Card.Text>}
+          {!weekCompleted && !reportSubmitted && <Card.Text className='topic'><FontAwesomeIcon icon={icon({ name: 'lock' })} className='lock-icon'/></Card.Text>}
         </Card.Body>
       </Card>
     )
@@ -107,7 +107,7 @@ const ProfileView = () => {
       <div className='profile-headers'>
         <h1 onClick={handleClickWeeklyPulse} className={activeTitle === 'weeklyPulse' ? 'main-header active' : 'main-header'}>Weekly Pulse</h1>
         <h1 onClick={handleClickMyStats} className={activeTitle === 'myStats' ? 'main-header active' : 'main-header'}>My Stats</h1>
-        <h1 onClick={handleClickMyUploads} className={activeTitle === 'myUploads' ? 'main-header active' : 'main-header'}>My Uploads</h1>
+        <h1 onClick={handleClickMyUploads} className={activeTitle === 'myUploads' ? 'main-header active' : 'main-header'}>My Content</h1>
       </div>
       <div className='cards-container'>
         {activeTitle === 'weeklyPulse' && (
