@@ -70,7 +70,9 @@ textarea {
   width: 100%;
 }
 
-.edit-button, .save-button, .delete-button {
+.edit-button,
+.save-button,
+.delete-button {
   margin-top: 10px;
 }
 
@@ -85,10 +87,24 @@ textarea {
   cursor: pointer;
   display: inline-block;
   font-size: 16px;
+
   &:hover,
   &:active {
     background-color: lighten($button, 8%);
     color: #fff;
     cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: darken($button, 8%);
+    cursor: default;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  &:disabled:hover,
+  &:disabled:active {
+    background-color: darken($button, 8%);
+    color: rgba(255, 255, 255, 0.5);
+    cursor: default;
   }
 }
