@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { userTokenFunction, getPayload } from '../../helpers/auth'
 import { useLocation } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
-import Container from 'react-bootstrap/Container'
 import BackButton from '../common/BackButton'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
@@ -57,10 +56,6 @@ const ProfileView = () => {
     setActiveTitle('weeklyPulse')
   }
 
-  const handleClickMyStats = () => {
-    setActiveTitle('myStats')
-  }
-
   const handleClickMyUploads = () => {
     setActiveTitle('myUploads')
   }
@@ -81,7 +76,7 @@ const ProfileView = () => {
     const clickable = weekCompleted && !reportSubmitted
 
     const cardContent = (
-      <Card key={week} className={`day ${clickable ? '' : 'non-clickable'}`}>
+      <Card key={week} className={`day ${clickable ? '' : 'non-clickable'} `}>
         <Card.Body>
           <Card.Text className='day-week'>Week {week}</Card.Text>
           {reportSubmitted && <Card.Text className='topic'>Report submitted</Card.Text>}
@@ -106,7 +101,6 @@ const ProfileView = () => {
       <BackButton />
       <div className='profile-headers'>
         <h1 onClick={handleClickWeeklyPulse} className={activeTitle === 'weeklyPulse' ? 'main-header active' : 'main-header'}>Weekly Pulse</h1>
-        <h1 onClick={handleClickMyStats} className={activeTitle === 'myStats' ? 'main-header active' : 'main-header'}>My Stats</h1>
         <h1 onClick={handleClickMyUploads} className={activeTitle === 'myUploads' ? 'main-header active' : 'main-header'}>My Content</h1>
       </div>
       <div className='cards-container'>
@@ -115,11 +109,6 @@ const ProfileView = () => {
             {Array.from({ length: 12 }, (_, i) => i + 1).map(week => renderWeekCard(week))}
           </div>
         )}
-
-        {activeTitle === 'myStats' && (
-          <h1>Testing Stats</h1>
-        )}
-
         {activeTitle === 'myUploads' && studentWork.map((day, index) => (
           <>
             {day.homeworkUploads.length > 0 && <img key={index} src={day.homeworkUploads[0].homeworkLink} className='homework-image' onClick={handleFocus} />}
