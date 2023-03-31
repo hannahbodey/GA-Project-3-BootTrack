@@ -24,13 +24,15 @@ const PageNavBar = () => {
   }
 
   const checkDemo = async () => {
-    try {
-      const userToken = userTokenFunction()
-      const { data } = await axios.get('/api/user', userToken)
-      setDemoAccount(data.isDemo)
-    } catch (error) {
-      console.log(error)
-      setError(error.response.data.message)
+    if (authenticatedUser()){
+      try {
+        const userToken = userTokenFunction()
+        const { data } = await axios.get('/api/user', userToken)
+        setDemoAccount(data.isDemo)
+      } catch (error) {
+        console.log(error)
+        setError(error.response.data.message)
+      }
     }
   }
   checkDemo()

@@ -140,6 +140,7 @@ const Home = () => {
             <button type='submit' className='red-button'>
               Log In
             </button>
+            {error && <p className='text-danger text-center'>{error}</p>}
           </form>
           <p>
             Don&apos;t have an account? <Link to='/register'><span className='register-text'>Register</span></Link>
