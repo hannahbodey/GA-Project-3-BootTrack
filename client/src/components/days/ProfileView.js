@@ -110,7 +110,7 @@ const ProfileView = () => {
         {activeTitle === 'myUploads' && studentWork.map((day, index) => (
           <>
             {day.homeworkUploads.length > 0 && <img key={index} src={day.homeworkUploads[0].homeworkLink} className='homework-image' onClick={handleFocus} />}
-            {day.classworkNotes.length > 0 && <p key={index} className='homework-image text-box overflow-auto' onClick={handleFocus} onTouchEnd={handleTouch} onScroll={handleScroll}>{day.classworkNotes[0].notesDescription}</p>}
+            {day.classworkNotes.length > 0 && <p key={index} className='homework-image text-box overflow-auto notes-image' onClick={handleFocus} onTouchEnd={handleTouch} onScroll={handleScroll}>{day.classworkNotes[0].notesDescription}</p>}
           </>
         ))}
       </div>
