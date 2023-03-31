@@ -15,7 +15,7 @@ const Teacher = () => {
   const [filteredReports, setFilteredReports] = useState([])
   const [weeklyData, setWeeklyData] = useState([])
   const [error, setError] = useState('')
-  const [activeTitle, setActiveTitle] = useState('weeklyProgress')
+  const [activeTitle, setActiveTitle] = useState('dailyProgress')
 
   useEffect(() => {
     const getWork = async () => {

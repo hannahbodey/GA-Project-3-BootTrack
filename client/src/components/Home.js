@@ -99,7 +99,7 @@ const Home = () => {
         <div className='hero home-form-container'>
           <h2>Sign up now!</h2>
           <Link to='/register' className={location.pathname === '/register' ? 'active red-button' : 'red-button'}>Register</Link>
-          <Link to='/login' className={location.pathname === '/login' ? 'active red-button' : 'red-button'}>Login</Link>
+          <Link to='/login' className={location.pathname === '/login' ? 'active red-button' : 'red-button'}>Log In</Link>
           <h3>Trial teacher mode!</h3>
           <button className='red-button' onClick={loginTeacherDemo}>Teacher Demo</button>
           <h3>Check out student view!</h3>

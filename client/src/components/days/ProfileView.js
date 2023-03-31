@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { v4 as uuid } from 'uuid'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { userTokenFunction, getPayload } from '../../helpers/auth'
@@ -81,8 +82,8 @@ const ProfileView = () => {
           {weekCompleted && !reportSubmitted && <Card.Text className='topic'>Ready to submit</Card.Text>}
           {!weekCompleted && !reportSubmitted && <Card.Text className='topic'>Week Incomplete</Card.Text>}
           {reportSubmitted && <Card.Text><FontAwesomeIcon icon={icon({ name: 'circle-check' })} className='green-circle' /></Card.Text>}
-          {weekCompleted && !reportSubmitted && <Card.Text className='topic'><FontAwesomeIcon icon={icon({ name: 'circle-question' })} className='question-circle'/></Card.Text>}
-          {!weekCompleted && !reportSubmitted && <Card.Text className='topic'><FontAwesomeIcon icon={icon({ name: 'lock' })} className='lock-icon'/></Card.Text>}
+          {weekCompleted && !reportSubmitted && <Card.Text className='topic'><FontAwesomeIcon icon={icon({ name: 'circle-question' })} className='question-circle' /></Card.Text>}
+          {!weekCompleted && !reportSubmitted && <Card.Text className='topic'><FontAwesomeIcon icon={icon({ name: 'lock' })} className='lock-icon' /></Card.Text>}
         </Card.Body>
       </Card>
     )
@@ -107,12 +108,16 @@ const ProfileView = () => {
             {Array.from({ length: 12 }, (_, i) => i + 1).map(week => renderWeekCard(week))}
           </div>
         )}
-        {activeTitle === 'myUploads' && studentWork.map((day, index) => (
-          <>
-            {day.homeworkUploads.length > 0 && <img key={index} src={day.homeworkUploads[0].homeworkLink} className='homework-image' onClick={handleFocus} />}
-            {day.classworkNotes.length > 0 && <p key={index} className='homework-image text-box overflow-auto' onClick={handleFocus} onTouchEnd={handleTouch} onScroll={handleScroll}>{day.classworkNotes[0].notesDescription}</p>}
-          </>
-        ))}
+        {activeTitle === 'myUploads' && studentWork.map((day) => {
+          const notesIndex = uuid()
+          const homeworkIndex = uuid()
+          return (
+            <>
+              {day.homeworkUploads.length > 0 && <img key={notesIndex} src={day.homeworkUploads[0].homeworkLink} className='homework-image' onClick={handleFocus} />}
+              {day.classworkNotes.length > 0 && <p key={homeworkIndex} className='homework-image text-box overflow-auto notes-image' onClick={handleFocus} onTouchEnd={handleTouch} onScroll={handleScroll}>{day.classworkNotes[0].notesDescription}</p>}
+            </>
+          )
+        })}
       </div>
     </main>
   )
