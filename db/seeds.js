@@ -43,8 +43,10 @@ const seedDatabase = async () => {
     })
 
     const reportsWithUser = reportData.map(report => {
-      report = {
-        ...report, responses: [{ ...report.responses[0], owner: createdUsers[0]._id }]
+      if (report.responses) {
+        report = {
+          ...report, responses: [{ ...report.responses[0], owner: createdUsers[0]._id }]
+        }
       }
       return { ...report }
     })
