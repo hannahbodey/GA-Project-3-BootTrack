@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { userTokenFunction, teacherCheck } from '../../helpers/auth'
-import BackButton from '../common/BackButton'
 import TeacherProgressView from '../common/TeacherProgressView'
 import TeacherReportView from '../common/TeacherReportView'
 
@@ -100,7 +99,6 @@ const Teacher = () => {
 
   return (
     <main className='main-container'>
-      <BackButton />
       {teacherCheck() ?
         <>
           <div className='profile-headers'>
