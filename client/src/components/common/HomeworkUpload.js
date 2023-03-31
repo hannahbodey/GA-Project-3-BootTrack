@@ -6,7 +6,6 @@ import { userTokenFunction } from '../../helpers/auth'
 const HomeworkUpload = ({ day, demoAccount }) => {
 
   const { dayId } = useParams()
-
   const [homeworkForm, setHomeworkForm] = useState({
     homeworkLink: '',
   })
@@ -20,18 +19,15 @@ const HomeworkUpload = ({ day, demoAccount }) => {
 
   const handleUpload = async (e) => {
     const image = e.target.files[0]
-    console.log(image)
     const dataPic = new FormData()
     dataPic.append('file', image)
-    console.log('file', dataPic)
     dataPic.append('upload_preset', process.env.REACT_APP_UPLOAD_PRESET)
-    console.log(dataPic)
     try {
       const { data } = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDNAME}/image/upload`, dataPic)
-      console.log('secure URL for cloud', data.secure_url)
       setHomeworkForm({ ...homeworkForm, homeworkLink: data.secure_url })
     } catch (error) {
       console.log(error)
+      setError(error)
     }
   }
 

@@ -3,13 +3,11 @@
   font-family: 'Mukta', sans-serif;
 }
 
-
 @media (max-width: 768px) {
   .main-container {
     padding-top: 78px;
     margin: 0 5px;
   }
-
   span {
     padding: 0 !important;
   }
@@ -27,7 +25,6 @@
     margin: 0 25px;
     margin-bottom: 2rem;
   }
-
   .back-button-profile {
     margin-left: 30px;
   }
@@ -65,7 +62,6 @@ main {
   border: none;
   border-radius: 3px;
   padding: 8px 15px;
-
   &:hover,
   &:active {
     background-color: lighten(orange, 8%);
@@ -80,7 +76,6 @@ main {
   border: none;
   border-radius: 3px;
   padding: 8px 15px;
-
   &:hover,
   &:active {
     background-color: lighten(rgb(14, 150, 14), 8%);
@@ -95,7 +90,6 @@ main {
     cursor: default;
     color: rgba(255, 255, 255, 0.5);
   }
-
   &:disabled:hover,
   &:disabled:active {
     background-color: darken($button, 8%);
@@ -109,7 +103,6 @@ main {
     cursor: default;
     color: rgba(255, 255, 255, 0.5);
   }
-
   &:disabled:hover,
   &:disabled:active {
     background-color: darken(rgb(14, 150, 14), 8%);
@@ -123,7 +116,6 @@ main {
     cursor: default;
     color: rgba(255, 255, 255, 0.5);
   }
-
   &:disabled:hover,
   &:disabled:active {
     background-color: darken(orange, 8%);
@@ -137,7 +129,6 @@ main {
   border: none;
   border-radius: 3px;
   padding: 2px 8px;
-
   &:hover,
   &:active {
     background-color: lighten($button, 1%);

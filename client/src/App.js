@@ -1,4 +1,3 @@
-//Components in Use
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './components/Home'
 import Days from './components/days/Days'

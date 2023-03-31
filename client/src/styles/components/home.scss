@@ -8,6 +8,9 @@
     .slideshow {
       display: none;
     }
+    .home-form-container {
+      width: 65vw;
+    }
   }
 }
 
@@ -18,15 +21,12 @@
       height: 250px;
       text-align: center;
     }
-
     img {
       max-height: 400px;
     }
-
     .no-display {
       display: none;
     }
-
     .banner {
       color: #fff;
       padding: 3px;
@@ -34,7 +34,6 @@
       border-radius: 3px;
       background-color: darken($background, 80%);
     }
-
     .overall-container {
       display: flex;
       justify-content: space-between;
@@ -49,7 +48,6 @@
         }
       }
     }
-
     .image-display,
     .hero {
       margin: 0 5vw;
@@ -78,18 +76,10 @@
   padding: 20px;
   background-color: $overlay;
   border-radius: 8px;
-
-  // width: 45%;
   a {
     text-decoration: none;
     text-align: center;
   }
-
-  // &:hover,
-  // &:active {
-  //   background-color: darken($overlay, 8%) !important;
-  //   box-shadow: 0px 2px 10px rgb(0 0 0 / 20%);    
-  // }
 }
 
 .slideshow {
@@ -98,12 +88,7 @@
   padding: 20px;
   text-align: center;
   background-color: #f8f8f8;
-
-  // display: flex;
-  // direction: column;
-  // align-items: center;
 }
-
 
 .home-form-container {
   display: flex;

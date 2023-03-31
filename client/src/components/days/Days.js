@@ -2,19 +2,11 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
-
 import Error from '../common/Error'
-
 import { userTokenFunction } from '../../helpers/auth'
-
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
-import { trusted } from 'mongoose'
 
 const Days = () => {
 
@@ -34,7 +26,6 @@ const Days = () => {
           }
           return a.day - b.day
         })
-        console.log(sortedDays)
         setDays(sortedDays)
       } catch (error) {
         console.log(error)
@@ -46,11 +37,7 @@ const Days = () => {
 
   return (
     <main className='main-container'>
-      {/* <Container>
-        <Row columns='3'>
-          <Col xs='12'> */}
       <h1 className={location.pathname !== '/days/:dayID' ? 'main-header' : ''}>Course Overview</h1>
-      {/* </Col> */}
       <div className='days-container'>
         {days.length > 0 ?
           days.map(item => {
@@ -78,8 +65,6 @@ const Days = () => {
           </>
         }
       </div>
-      {/* </Row>
-      </Container> */}
     </main>
   )
 }

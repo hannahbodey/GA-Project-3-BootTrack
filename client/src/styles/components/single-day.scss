@@ -6,10 +6,8 @@
   img {
     max-width: 30vw;
   }
-
   .image-input {
     padding: 10px 5px;
-
   }
 }
 
@@ -87,20 +85,17 @@ textarea {
   cursor: pointer;
   display: inline-block;
   font-size: 16px;
-
   &:hover,
   &:active {
     background-color: lighten($button, 8%);
     color: #fff;
     cursor: pointer;
   }
-
   &:disabled {
     background-color: darken($button, 8%);
     cursor: default;
     color: rgba(255, 255, 255, 0.5);
   }
-
   &:disabled:hover,
   &:disabled:active {
     background-color: darken($button, 8%);

@@ -1,41 +1,29 @@
 .form-submission {
   @extend %flex-center;
   flex-direction: column;
-  //align-content: center;
   background-color: $overlay;
-
-  //max-width: 40vh;
   @media (max-width: 768px) {
     margin: 5vh 10vw;
     border-radius: 3vh;
     width: 80vw;
   }
-
   @media (min-width: 769px) {
     margin: 5vh 25vw;
     border-radius: 3vh;
     height: 70vh;
     width: 50vw;
   }
-
   input {
     margin-bottom: 3vh;
     border-radius: 3px;
     height: 5vh;
   }
-
   button {
     margin-bottom: 3vh;
   }
-
   p.text-danger {
     color: $button;
-
   }
-
-  // label {
-  //   margin: 0 auto;
-  // }
 }
 
 .register-form-container {
@@ -43,8 +31,6 @@
   justify-content: center;
   align-items: center;
   background-color: #f8f8f8;
-
-
   .register-form {
     background-color: white;
     padding: 40px;
@@ -53,13 +39,11 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
   }
-
   h1 {
     font-size: 28px;
     margin-bottom: 30px;
     text-align: center;
   }
-
   input[type='text'],
   input[type='email'],
   input[type='password'] {
@@ -71,34 +55,28 @@
     border-radius: 4px;
     box-sizing: border-box;
   }
-
   input[type='checkbox'] {
     margin-top: 15px;
   }
-
   label {
     display: block;
     margin-bottom: 5px;
   }
-
   .text-danger {
     color: #f44336;
     font-size: 14px;
     margin-top: 5px;
   }
-
   .teacher-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin-top: 15px;
-
     label,
     input[type='checkbox'] {
       margin: 0;
     }
   }
-
   input[type='checkbox'] {
     width: 20px;
     height: 20px;

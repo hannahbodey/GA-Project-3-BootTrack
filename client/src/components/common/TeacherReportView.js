@@ -6,8 +6,6 @@ const TeacherReportView = ({ weeklyData }) => {
     <div className='days-container'>
       {weeklyData.length ?
         weeklyData.map((day) => {
-          console.log(day)
-          const weekIndex = uuid()
           const index = uuid()
           return (
             <div key={index} className='progress-card'>

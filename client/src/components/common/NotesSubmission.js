@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-
 import { userTokenFunction } from '../../helpers/auth'
 
 const NotesSubmission = ({ notes, demoAccount }) => {
 
+  const { dayId } = useParams()
   const [submission, setSubmission] = useState({
     notesDescription: '',
   })
@@ -13,14 +13,10 @@ const NotesSubmission = ({ notes, demoAccount }) => {
   const [editMode, setEditMode] = useState(false)
 
   useEffect(() => {
-    console.log(notes[0])
     if (notes && notes.length > 0) {
       setSubmission(notes[0])
     }
   }, [notes])
-
-  console.log(demoAccount)
-  const { dayId } = useParams()
 
   const handleChange = (e) => {
     const newNotes = { ...submission, [e.target.name]: e.target.value }
