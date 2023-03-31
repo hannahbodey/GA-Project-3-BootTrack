@@ -65,6 +65,23 @@
   }
 }
 
+.days-container {
+  .progress-card {
+    margin-bottom: 0.5rem;
+    .card {
+      border-bottom: 0.25rem solid #808080;
+      .owner {
+        font-size: 1.25rem;
+        font-weight: bold;
+      }
+      .progress-class {
+        font-size: 1rem;
+      }
+    }
+    
+  }
+}
+
 .bookmark-icon {
   position: absolute;
   top: -0.1rem;
