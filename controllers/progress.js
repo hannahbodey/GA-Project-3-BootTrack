@@ -21,7 +21,7 @@ export const modifyProgress = async (req, res) => {
         completed,
         confidenceRating,
         bookmarked,
-        owner: stringLoggedInUserId,
+        owner: stringLoggedInUserId
       }
       day.progress.push(newUserProgress)
     } else {

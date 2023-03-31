@@ -2,7 +2,6 @@ import mongoose from 'mongoose'
 
 //? Homework Schema - embedded in daysSchema
 const homeworkSchema = new mongoose.Schema({
-  // homeworkTitle: { type: String, required: true, maxlength: 30 },
   homeworkLink: { type: String, required: true },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 },
@@ -11,10 +10,8 @@ const homeworkSchema = new mongoose.Schema({
 
 //? Classwork Schema - embedded in daysSchema
 const notesSchema = new mongoose.Schema({
-  // notesTitle: { type: String, required: true, maxlength: 30 },
   notesDescription: {
     type: String
-    // default: null
   },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 },

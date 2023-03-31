@@ -43,7 +43,7 @@ const Home = () => {
 
   const loginTeacherDemo = async () => {
     try {
-      const { data } = await axios.post('/api/login', { email: 'jane@example.com', password: 'pass' })
+      const { data } = await axios.post('/api/login', { email: 'demo2@demo.com', password: 'demo456' })
       localStorage.setItem('PROJECT-3-TOKEN', data.token)
       navigate('/teacher')
     } catch (error) {

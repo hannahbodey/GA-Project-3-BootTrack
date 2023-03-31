@@ -15,18 +15,14 @@ const mongoURI = process.env.MONGO_URI
 const seedDatabase = async () => {
 
   try {
-
     // Initial database connection
     await mongoose.connect(mongoURI)
     console.log('Database connected ✅')
-
     // Drop database
     await mongoose.connection.db.dropDatabase()
     console.log('Database dropped 🫳')
-
     //Create users
     const createdUsers = await User.create(userData)
-
     const daysWithUser = dayData.map(day => {
       if (day.classworkNotes) {
         day = {
@@ -45,25 +41,17 @@ const seedDatabase = async () => {
       }
       return { ...day }
     })
-
-
     // Create course content (days)
     const createDays = await Day.create(daysWithUser)
     console.log(`${createDays.length} days worth of data added 📆`)
-
     const createdReports = await Report.create(reportData)
     console.log(`${createdReports.length} reports added 📑`)
-
     // Close connection
     await mongoose.connection.close()
     console.log('Connection closed 👋')
-
   } catch (error) {
-
     console.log(error)
-
   }
-
 }
 
 seedDatabase()

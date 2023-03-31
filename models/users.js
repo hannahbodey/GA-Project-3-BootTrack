@@ -1,21 +1,17 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
 
-
 //? User Schema for all user profiles
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true, maxlength: 15 },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   isDemo: { type: Boolean, default: false },
-  //! These may be added as an extra once MVP is completed.
   teacher: { type: Boolean, required: true }
-  // course: { type: String, required: true, maxlength: 3 }
 })
 
 //? Virtual fields for the user: homework, notes, progress + password confirmation
 //? homework, notes, progress all brought in on relationship from daysSchema
-
 userSchema.virtual('homework', {
   ref: 'Day',
   localField: '_id',

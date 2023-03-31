@@ -1,6 +1,6 @@
 export default [
   {
-    username: 'curious mind',
+    username: 'student demo',
     email: 'demo@demo.com',
     password: 'demo123', 
     passwordConfirmation: 'demo123',
@@ -8,10 +8,10 @@ export default [
     teacher: false
   },
   {
-    username: 'janeDoe',
-    email: 'jane@example.com',
-    password: 'pass', 
-    passwordConfirmation: 'pass',
+    username: 'teacher demo',
+    email: 'demo2@demo.com',
+    password: 'demo456', 
+    passwordConfirmation: 'demo456',
     teacher: true
   }
 ]
