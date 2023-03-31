@@ -75,17 +75,19 @@ const ProfileView = () => {
     const clickable = weekCompleted && !reportSubmitted
 
     const cardContent = (
-      <Card key={week} className={`day ${clickable ? '' : 'non-clickable'} `}>
-        <Card.Body>
-          <Card.Text className='day-week'>Week {week}</Card.Text>
-          {reportSubmitted && <Card.Text className='topic'>Report submitted</Card.Text>}
-          {weekCompleted && !reportSubmitted && <Card.Text className='topic'>Ready to submit</Card.Text>}
-          {!weekCompleted && !reportSubmitted && <Card.Text className='topic'>Week Incomplete</Card.Text>}
-          {reportSubmitted && <Card.Text><FontAwesomeIcon icon={icon({ name: 'circle-check' })} className='green-circle' /></Card.Text>}
-          {weekCompleted && !reportSubmitted && <Card.Text className='topic'><FontAwesomeIcon icon={icon({ name: 'circle-question' })} className='question-circle' /></Card.Text>}
-          {!weekCompleted && !reportSubmitted && <Card.Text className='topic'><FontAwesomeIcon icon={icon({ name: 'lock' })} className='lock-icon' /></Card.Text>}
-        </Card.Body>
-      </Card>
+      <div className='report-cards-ordered'>
+        <Card key={week} className={`day ${clickable ? '' : 'non-clickable'} `}>
+          <Card.Body>
+            <Card.Text className='day-week'>Week {week}</Card.Text>
+            {reportSubmitted && <Card.Text className='topic'>Report submitted</Card.Text>}
+            {weekCompleted && !reportSubmitted && <Card.Text className='topic'>Ready to submit</Card.Text>}
+            {!weekCompleted && !reportSubmitted && <Card.Text className='topic'>Week Incomplete</Card.Text>}
+            {reportSubmitted && <Card.Text><FontAwesomeIcon icon={icon({ name: 'circle-check' })} className='green-circle' /></Card.Text>}
+            {weekCompleted && !reportSubmitted && <Card.Text className='topic'><FontAwesomeIcon icon={icon({ name: 'circle-question' })} className='question-circle' /></Card.Text>}
+            {!weekCompleted && !reportSubmitted && <Card.Text className='topic'><FontAwesomeIcon icon={icon({ name: 'lock' })} className='lock-icon' /></Card.Text>}
+          </Card.Body>
+        </Card>
+      </div>
     )
 
     if (clickable) {
@@ -96,13 +98,13 @@ const ProfileView = () => {
   }
 
   return (
-    <main className='main-container'>
+    <main className='main-container reports-main'>
       <BackButton />
       <div className='profile-headers'>
         <h1 onClick={handleClickWeeklyPulse} className={activeTitle === 'weeklyPulse' ? 'main-header active' : 'main-header'}>Weekly Pulse</h1>
         <h1 onClick={handleClickMyUploads} className={activeTitle === 'myUploads' ? 'main-header active' : 'main-header'}>My Content</h1>
       </div>
-      <div className='cards-container'>
+      <div className='random-container'>
         {activeTitle === 'weeklyPulse' && (
           <div className='progress-card'>
             {Array.from({ length: 12 }, (_, i) => i + 1).map(week => renderWeekCard(week))}
