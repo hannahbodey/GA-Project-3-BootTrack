@@ -1,6 +1,6 @@
 export default [
   {
-    username: 'student demo',
+    username: 'Student Demo',
     email: 'demo@demo.com',
     password: 'demo123', 
     passwordConfirmation: 'demo123',
@@ -8,10 +8,11 @@ export default [
     teacher: false
   },
   {
-    username: 'teacher demo',
+    username: 'Hannah Ali',
     email: 'demo2@demo.com',
     password: 'demo456', 
     passwordConfirmation: 'demo456',
+    isDemo: true,
     teacher: true
   }
 ]
