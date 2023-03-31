@@ -110,17 +110,23 @@ const ProfileView = () => {
             {Array.from({ length: 12 }, (_, i) => i + 1).map(week => renderWeekCard(week))}
           </div>
         )}
-        {activeTitle === 'myUploads' && studentWork.map((day) => {
+      </div>
+      <div className='uploads-overview-container'>
+        {activeTitle === 'myUploads' && studentWork.map((day, index) => {
           const notesIndex = uuid()
           const homeworkIndex = uuid()
           return (
+            // <div key={index} className='uploads-overview'>
             <>
               {day.homeworkUploads.length > 0 && <img key={notesIndex} src={day.homeworkUploads[0].homeworkLink} className='homework-image' onClick={handleFocus} />}
               {day.classworkNotes.length > 0 && <p key={homeworkIndex} className='homework-image text-box overflow-auto notes-image' onClick={handleFocus} onTouchEnd={handleTouch} onScroll={handleScroll}>{day.classworkNotes[0].notesDescription}</p>}
             </>
+            // </div>
+
           )
         })}
       </div>
+
     </main>
   )
 }
