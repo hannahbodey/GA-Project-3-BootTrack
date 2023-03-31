@@ -22,7 +22,7 @@ export default [
       bookmarked: false
     }],
     homeworkUploads: [{
-      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680042331/Project-3/bwkuvrjpo2l9lv0xk9rq.webp'
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680229393/Project-3/l7mzwesfclsu704yrwcc.png'
     }]
   },
   {
@@ -45,6 +45,9 @@ export default [
       completed: true,
       confidenceRating: 5,
       bookmarked: false
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680228789/Project-3/fel4qaopzrgrtkkfjbvh.png'
     }]
   },
   {
@@ -68,6 +71,9 @@ export default [
       completed: true,
       confidenceRating: 4,
       bookmarked: false
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680228800/Project-3/njhyg7welpfawr62axgs.png'
     }]
   },
   {
@@ -91,6 +97,9 @@ export default [
       completed: true,
       confidenceRating: 3,
       bookmarked: true
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680228811/Project-3/hu6uqe9cw4faoxr7z8di.png'
     }]
   },
   {
@@ -113,6 +122,9 @@ export default [
       completed: true,
       confidenceRating: 4,
       bookmarked: false
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680228821/Project-3/pbkgu6wjheyclnxyqyul.png'
     }]
   },
   {
@@ -133,6 +145,9 @@ export default [
       completed: true,
       confidenceRating: 3,
       bookmarked: false
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680228830/Project-3/c7oatkojgeduslqyiv9k.png'
     }]
   },
   {
@@ -153,6 +168,9 @@ export default [
       completed: true,
       confidenceRating: 3,
       bookmarked: false
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680228838/Project-3/idxicfg1ul0jhjsrbyrs.png'
     }]
   },
   {
@@ -173,6 +191,9 @@ export default [
       completed: true,
       confidenceRating: 5,
       bookmarked: false
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680228857/Project-3/ujswbk5p6oojogbwv035.png'
     }]
   },
   {
@@ -195,6 +216,9 @@ export default [
       completed: true,
       confidenceRating: 3,
       bookmarked: true
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680228866/Project-3/ni60imurjwmht5qozul8.png'
     }]
   },
   {
@@ -217,6 +241,9 @@ export default [
       completed: true,
       confidenceRating: 2,
       bookmarked: true
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680228876/Project-3/aispynikldlxpw4r7wdh.png'
     }]
   },
   {
@@ -238,6 +265,9 @@ export default [
       completed: true,
       confidenceRating: 3,
       bookmarked: false
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680228885/Project-3/br2vkb871mpkmlykhgzi.png'
     }]
   },
   {
@@ -260,6 +290,9 @@ export default [
       completed: true,
       confidenceRating: 3,
       bookmarked: true
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680228900/Project-3/hvzliotxkah5jg5yobno.png'
     }]
   },
   {
@@ -282,6 +315,9 @@ export default [
       completed: true,
       confidenceRating: 4,
       bookmarked: false
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680228910/Project-3/xkzxqydtbya9sxa5hjta.png'
     }]
   },
   {
@@ -304,6 +340,9 @@ export default [
       completed: true,
       confidenceRating: 5,
       bookmarked: false
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680228931/Project-3/zt6oqyhfiwzz157nyrxt.png'
     }]
   },
   {
@@ -325,6 +364,9 @@ export default [
       completed: true,
       confidenceRating: 4,
       bookmarked: false
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680228931/Project-3/zt6oqyhfiwzz157nyrxt.png'
     }]
   },
   {
@@ -426,6 +468,9 @@ export default [
       completed: true,
       confidenceRating: 3,
       bookmarked: false
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680229580/Project-3/ydp2jy6dnpf6tegwpojy.png'
     }]
   },
   {
@@ -446,6 +491,9 @@ export default [
       completed: true,
       confidenceRating: 3,
       bookmarked: false
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680228992/Project-3/j9ha5nvfuvmva5gyvbz6.png'
     }]
   },
   {
@@ -468,6 +516,9 @@ export default [
       completed: true,
       confidenceRating: 1,
       bookmarked: true
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680229005/Project-3/nrlxq6o4dlecpfg8mdxz.png'
     }]
   },
   {
@@ -489,6 +540,9 @@ export default [
       completed: true,
       confidenceRating: 4,
       bookmarked: false
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680229020/Project-3/un3j2rb9inokve7wd9rr.png'
     }]
   },
   {
@@ -509,6 +563,9 @@ export default [
       completed: true,
       confidenceRating: 3,
       bookmarked: false
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680229038/Project-3/xkwaivwmeyhiypauat3e.png'
     }]
   },
   {
@@ -530,6 +587,9 @@ export default [
       completed: true,
       confidenceRating: 3,
       bookmarked: true
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680230945/Project-3/h0dopkcnokcckdpsjeno.png'
     }]
   },
   {
@@ -551,6 +611,9 @@ export default [
       completed: true,
       confidenceRating: 3,
       bookmarked: false
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680229082/Project-3/gjl1hl8hscmxluxbsluf.png'
     }]
   },
   {
@@ -571,6 +634,9 @@ export default [
       completed: true,
       confidenceRating: 3,
       bookmarked: true
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680229094/Project-3/sgj0mnvt5wcenzt9z4yd.png'
     }]
   },
   {
@@ -633,6 +699,9 @@ export default [
       completed: true,
       confidenceRating: 5,
       bookmarked: false
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680229136/Project-3/vy41mzuwilvx32uniu9v.png'
     }]
   },
   {
@@ -653,6 +722,9 @@ export default [
       completed: true,
       confidenceRating: 3,
       bookmarked: true
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680229156/Project-3/pdbab2pe8pgo98jrjx2s.png'
     }]
   },
   {
@@ -673,6 +745,9 @@ export default [
       completed: true,
       confidenceRating: 2,
       bookmarked: true
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680229737/Project-3/eicxhz0epzeyytlhpral.png'
     }]
   },
   {
@@ -693,6 +768,9 @@ export default [
       completed: true,
       confidenceRating: 3,
       bookmarked: false
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680229198/Project-3/csk008mkppvhr1wduwhi.png'
     }]
   },
   {
@@ -713,6 +791,9 @@ export default [
       completed: true,
       confidenceRating: 3,
       bookmarked: false
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680229215/Project-3/mbasdmitvxve6qxjzwd9.png'
     }]
   },
   {
@@ -734,6 +815,9 @@ export default [
       completed: true,
       confidenceRating: 3,
       bookmarked: false
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680229227/Project-3/m3naljhihgdcjqps5m6x.png'
     }]
   },
   {
@@ -755,6 +839,9 @@ export default [
       completed: true,
       confidenceRating: 4,
       bookmarked: false
+    }],
+    homeworkUploads: [{
+      homeworkLink: 'https://res.cloudinary.com/dh6nrt6pu/image/upload/v1680229241/Project-3/q55bqtxpglnq1dnv7tnu.png'
     }]
   },
   {
