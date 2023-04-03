@@ -120,7 +120,6 @@ const ProfileView = () => {
               {day.homeworkUploads.length > 0 && <img key={notesIndex} src={day.homeworkUploads[0].homeworkLink} className='homework-image' onClick={handleFocus} />}
               {day.classworkNotes.length > 0 && <p key={homeworkIndex} className='homework-image text-box overflow-auto notes-image' onClick={handleFocus} onTouchEnd={handleTouch} onScroll={handleScroll}>{day.classworkNotes[0].notesDescription}</p>}
             </>
-
           )
         })}
       </div>
