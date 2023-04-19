@@ -2,10 +2,14 @@ import express from 'express'
 import mongoose from 'mongoose'
 import router from './config/router.js'
 import 'dotenv/config'
+import path, { dirname } from 'path'
+import { fileURLToPath } from 'url'
 
 const app = express()
 const PORT = process.env.PORT
 const MONGO_URI = process.env.MONGO_URI 
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 const startServer = async () => {
   try {
@@ -22,6 +26,10 @@ const startServer = async () => {
     })
     // ? Router
     app.use(router)
+    app.use(express.static(path.join(__dirname, 'client', 'build')))
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+    })
     // ? 404 catch all middleware
     app.use((req, res) => {
       return res.status(404).json({ message: 'Route not found' })
