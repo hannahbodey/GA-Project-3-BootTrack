@@ -22,9 +22,8 @@ const seedDatabase = async () => {
     // await mongoose.connection.db.dropDatabase()
     // console.log('Database dropped 🫳')
     const collections = mongoose.connection.collections
-    await Promise.all(Object.values.collections).map(async (collection) => {
-      await collection.deleteMany({})
-    })
+    console.log('collections', collections)
+    await Promise.all(Object.values(mongoose.connection.collections).map(async (collection) => await collection.deleteMany()))
     //Create users
     const createdUsers = await User.create(userData)
     const daysWithUser = dayData.map(day => {
