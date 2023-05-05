@@ -99,7 +99,11 @@ As the project developed, I modified this to be based on a trello board, in plac
 
 **Build/Code Process**
 
-I built the schema for our data, and established them as models. I did this for both the User schema and the Days schema - both of these involved various relationships. In the User schema, I also incorporated the bcrypt encryption, for the User. The Days schema has multiple embedded relationships - any one user can make a new homework upload, for example. The User then a reference relationship to the owner key on each of those individual homework / classwork uploads; any one student user shouldn’t be able to own a ‘day’, since this is populated based on their course, and they should also only be able to submit one, for example, progress report, per day. We then used these reference relationships to populate the username on a student account so that a teacher can view a particular student’s progress overview. This data was also used to allow a teacher to filter to view one student’s overview. 
+I built the schema for our data, and established them as models. I did this for both the User schema and the Days schema - both of these involved various relationships. In the User schema, I also incorporated the bcrypt encryption, for the User. 
+
+The Days schema has multiple embedded relationships - any one user can make a new homework upload, for example. The User then a reference relationship to the owner key on each of those individual homework / classwork uploads; any one student user shouldn’t be able to own a ‘day’, since this is populated based on their course, and they should also only be able to submit one, for example, progress report, per day. 
+
+We then used these reference relationships to populate the username on a student account so that a teacher can view a particular student’s progress overview. This data was also used to allow a teacher to filter to view one student’s overview. 
 
 ![ScreenShot](read-me-screenshots/project-3-build-1.png)
 
@@ -150,7 +154,7 @@ I was very pleased to include the teacher account, which allows you to view an o
 
 **Key Learnings/Takeaways**
 
-I really enjoyed being able to work on both the front and back end together. It was very helpful to see how careful design of the database would significantly enhance the ability to manipulate that data with ease on the front end. In future, I think I would pay even more detail to this, given that the difficulties experienced in extracting individual usernames for the teacher page discussed above became quite challenging, and I think that this could have been somewhat mitigated with further thought or foresight with the database.
+I really enjoyed being able to work on both the front and back end together. It was very helpful to see how careful design of the database would significantly enhance the ability to manipulate that data with ease on the front end. In future, I think I would pay even more attention to this, given that the difficulties experienced in extracting individual usernames for the teacher page discussed above became quite challenging, and I think that this could have been somewhat mitigated with further thought or foresight with the database.
 
 **Bugs**
 
