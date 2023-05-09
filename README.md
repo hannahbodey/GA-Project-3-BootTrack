@@ -1,19 +1,16 @@
-**BootTrack - Bootcamp Progress Tracking App**
+# BootTrack - Bootcamp Progress Tracking App
 
-**General Assembly Project Three**
+## General Assembly Project Three
 
 We were tasked with producing a full-stack application as a team of three. We completed this in week 8 and 9 of our Software Engineering Immersive. We were given free reign on the topic of our project, and together with my group we decided to write an application to show class notes, progress and provide an overview of homework submissions for the user. I was the project manager for this project. 
 
-
-**Deployment link**
+### Deployment link
 
 <https://boot-track.herokuapp.com/> - Deployed project
 
 <https://github.com/hannahbodey/Project-3> - Git repo
 
-**Getting Started/Code Installation**
-
-**Timeframe & Working Team**
+### Timeframe & Working Team
 
 We completed this project in weeks 8 and 9 of the course, with 8 working days in total given to this project. We worked as group of three, and my collaborators were: 
 
@@ -21,39 +18,39 @@ Neya Omar <https://github.com/NeyaOmar>
 
 Ali Abed-Ali <https://github.com/AbedHubQA> 
 
-**Technologies Used**
+### Technologies Used
 
 *Back End:*
 
-Mongoose
+-Mongoose
 
-MongoDB
+-MongoDB
 
-Nodemon
+-Nodemon
 
-Bcrypt
+-Bcrypt
 
-JSON web tokens
+-JSON web tokens
 
 *Front End:*
 
-JavaScript
+-JavaScript
 
-React
+-React
 
-HTML
+-HTML
 
-CSS
-Sass
+-CSS
 
+-Sass
 
 *Development Tools:*
 
-Excalidraw
+-Excalidraw
 
-Trello
+-Trello
 
-**Brief**
+### Brief
 
 - Build a full-stack application by making your own backend and your own front-end
 - Use an Express API to serve your data from a Mongo database
@@ -62,16 +59,13 @@ Trello
 - Implement thoughtful user stories / wireframes that are significant enough to help you know which features are core MVP and which you can cut
 - Have a visually impressive design
 
-
-
-**Planning**
+### Planning
 
 ![ScreenShot](read-me-screenshots/project-3-wireframe-1.png)
 
 We began by detailing our minimum viable product, thinking through each of the elements involved:
 
 ![ScreenShot](read-me-screenshots/project-3-wireframe-2.png)
-
 
 We visualised the UX of this project, using black for all MVP items and colour for each extra element. These were also colour coded based on who might take those elements of the project once we had completed the MVP.  
 
@@ -97,7 +91,7 @@ As the project developed, I modified this to be based on a trello board, in plac
 
 ![ScreenShot](read-me-screenshots/project-3-management-2.png)
 
-**Build/Code Process**
+### Build / Code Process
 
 I built the schema for our data, and established them as models. I did this for both the User schema and the Days schema - both of these involved various relationships. In the User schema, I also incorporated the bcrypt encryption, for the User. 
 
@@ -139,7 +133,7 @@ Another element of the project with which I was particularly pleased was the imp
 
 ![ScreenShot](read-me-screenshots/project-3-build-12.png)
 
-**Challenges**
+### Challenges
 
 Although there were some technical challenges, in terms of figuring out exactly how to show the bits of data required (of which I will give one example below), the biggest challenge during this project was project management. I noted above that I moved to using Trello partway through to help support the team - this was because one member of the team was unwell and was not always able to follow what we were working on. In an attempt to further include them, I implemented this tool, but ultimately they pulled out of the project with minimal notice for the two of us remaining. This meant that the biggest challenge was purely getting everything that we had planned to do (when thinking that there would be three team members) done, and still having extra features on our project that we were keen to include to enhance it.
 
@@ -147,21 +141,21 @@ One particular technical challenge was implementing the filter select option box
 
 ![ScreenShot](read-me-screenshots/project-3-challenges-1.png)
 
-**Wins**
+### Wins
 
 I was very pleased to include the teacher account, which allows you to view an overview of the students’ progress. This was an additional feature beyond our MVP that I particularly wanted to implement, as I felt it would strongly enhance our product and raise it more to be something that would actually be attractive for use. Given our loss of a team member, it was a real push to get this in, and problems arose (like the one mentioned above) whilst I was creating it which made it quite challenging.
 
 
-**Key Learnings/Takeaways**
+### Key Learnings and Takeaways
 
 I really enjoyed being able to work on both the front and back end together. It was very helpful to see how careful design of the database would significantly enhance the ability to manipulate that data with ease on the front end. In future, I think I would pay even more attention to this, given that the difficulties experienced in extracting individual usernames for the teacher page discussed above became quite challenging, and I think that this could have been somewhat mitigated with further thought or foresight with the database.
 
-**Bugs**
+### Bugs
 
 When filtering for different users as a teacher on the select menu, teachers are also listed. We ran out of time to finish amending this.
 
 
-**Future Improvements**
+### Future Improvements
 
 In the future, I think that it would be excellent to include a graphical representation for both the student and teacher of their overall confidence / progress. For the teacher, this could then be twinned to include graphical overviews for the whole class. For example, they could see multiple pie charts indicating student progress or confidence. To add this, we would need to be able to state the courses to which the student was subscribed. It would also be excellent to add the ability to show multiple different courses or classes.
 
