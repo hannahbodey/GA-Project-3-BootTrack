@@ -59,7 +59,7 @@ Ali Abed-Ali <https://github.com/AbedHubQA>
 - Implement thoughtful user stories / wireframes that are significant enough to help you know which features are core MVP and which you can cut
 - Have a visually impressive design
 
-### Planning
+### Planning
 
 ![ScreenShot](read-me-screenshots/project-3-wireframe-1.png)
 
@@ -91,7 +91,7 @@ As the project developed, I modified this to be based on a trello board, in plac
 
 ![ScreenShot](read-me-screenshots/project-3-management-2.png)
 
-### Build / Code Process
+### Build / Code Process
 
 I built the schema for our data, and established them as models. I did this for both the User schema and the Days schema - both of these involved various relationships. In the User schema, I also incorporated the bcrypt encryption, for the User. 
 
